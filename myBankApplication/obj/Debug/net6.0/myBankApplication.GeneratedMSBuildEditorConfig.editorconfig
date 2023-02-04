@@ -1,0 +1,136 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = myBankApplication
+build_property.RootNamespace = myBankApplication
+build_property.ProjectDir = C:\Users\sohai\OneDrive - University of Hertfordshire\Third year\Final year project\My application bank\myBankApplication\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\sohai\OneDrive - University of Hertfordshire\Third year\Final year project\My application bank\myBankApplication
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerDepositCash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJEZXBvc2l0Q2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerDepositCheque.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJEZXBvc2l0Q2hlcXVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerLoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJMb2FuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerOverdraft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJPdmVyZHJhZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJQYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerStatements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJTdGF0ZW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerTransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJUcmFuc2FjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/CustomerWithdraw.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcQ3VzdG9tZXJXaXRoZHJhdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Customer/NewBankAccount.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcTmV3QmFua0FjY291bnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeDepositCash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVEZXBvc2l0Q2FzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeDepositCheque.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVEZXBvc2l0Q2hlcXVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeLoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVMb2FuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeOverdraft.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVPdmVyZHJhZnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeePayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVQYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeRegistration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeStatements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVTdGF0ZW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeTransaction.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVUcmFuc2FjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Employee/EmployeeWithdraw.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVXaXRoZHJhdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Home/Help.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWxwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/OneDrive - University of Hertfordshire/Third year/Final year project/My application bank/myBankApplication/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-amacyge94v
