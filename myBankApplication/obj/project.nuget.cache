@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "11Wz/edyjI2p16UBlsGMYrbw+KFi8FeR5pB+KeL0inZzpC3Q8zT2D3rTLQy2Kt2/Wu4p8He0jToPCglkuF9ijw==",
+  "dgSpecHash": "BfAdDPx7ZEbyEXU4q/URZk0xFqu7NZvs7o+fmPn7/1As3gXBM+FAXOgs2Z9x72VOI+hzGLyjvGTSS14yLVawSg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\myBankApplication.csproj",
+  "projectFilePath": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sohai\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\sohai\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

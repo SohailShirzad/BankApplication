@@ -1,0 +1,42 @@
+﻿body {
+    color:aliceblue;
+}
+
+nav {
+    position: absolute;
+    right: 0;
+}
+
+button {
+    font-size: 0.88889em;
+    font-weight: 700;
+    line-height: 1.2;
+    outline: none;
+    padding: 0.76rem 1rem;
+    display: table;
+    width: 200px;
+    margin: 5px;
+    text-transform: uppercase;
+}
+
+    button:hover {
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+    }
+/*	01. white CSS */
+.white {
+    background-color: white;
+    color: black;
+}
+/*	02. black CSS */
+.black {
+    background-color: black;
+    color: white;
+}
+
+/*	03. default CSS */
+.purple {
+    background-color: #572fbe;
+    color: black;
+}

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\myBankApplication.csproj": {}
+    "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\myBankApplication.csproj": {
+    "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\myBankApplication.csproj",
+        "projectUniqueName": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj",
         "projectName": "myBankApplication",
-        "projectPath": "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\myBankApplication.csproj",
+        "projectPath": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj",
         "packagesPath": "C:\\Users\\sohai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sohai\\OneDrive - University of Hertfordshire\\Third year\\Final year project\\My application bank\\myBankApplication\\obj\\",
+        "outputPath": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

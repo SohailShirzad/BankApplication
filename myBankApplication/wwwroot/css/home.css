@@ -1,0 +1,102 @@
+﻿
+.mega {
+    font-size: 4rem; /* 72 / 18 = 4 */
+    margin-bottom: 0.4125rem;
+    
+}
+
+.alpha {
+    font-size: 3.33333rem; /* 60 / 18 = 3.3333 */
+    margin-bottom: 0.495rem;
+}
+
+/* ==== Typefaces  ==== */
+
+.open-sans {
+    font-family: 'Open Sans';
+    color:aliceblue;
+}
+
+.lato {
+    font-family: 'Lato';
+    color:aqua;
+
+}
+
+
+/* ==== Weights, styles, letterspacing, etc. ==== */
+
+.thin {
+    font-weight: 100;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.ls-small {
+    letter-spacing: 2px;
+}
+
+
+/* ==== General styles ==== */
+section {
+    height: 600px;
+    padding: 3rem 0;
+    position: relative;
+    
+   
+    
+}
+
+.wrapper {
+    max-width: 53.33rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    transform: translateY(-50%);
+    top: 50%;
+    text-align: center;
+
+}
+
+section:nth-of-type(1) {
+    background: linear-gradient(45deg,#081e21,#572fbe 40%,#5636a7 60%,#9c5ee3);
+
+    
+    
+}
+
+
+/* Media queries */
+@media screen and (min-width: 1440px) {
+    section {
+        height: 700px
+    }
+
+/* Get started button css*/
+.cta-button {
+      background: #6935d3;
+      border-color: transparent;
+      border-radius: 1.875em;
+      color: #fff;
+      cursor: pointer;
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: normal; 
+      margin: 15px auto; 
+      padding: 0.8125em 1.875em;
+      text-align: center;
+      text-decoration: none;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      
+    }
+.buttonColor{
+     background: #19d3c5;
+     color: #192851;
+     }
+}
