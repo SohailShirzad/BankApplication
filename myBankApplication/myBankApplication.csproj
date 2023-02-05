@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -25,6 +25,7 @@
   <ItemGroup>
     <Content Remove="wwwroot\css\site - Copy.css" />
     <Content Remove="wwwroot\css\StyleSheet.css" />
+    <Content Remove="wwwroot\js\header.js" />
     <Content Remove="wwwroot\js\JavaScript.js" />
   </ItemGroup>
 
@@ -39,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="Views\Manager\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>

@@ -111,7 +111,7 @@ a:active {
     a,
     a:active,
     a:focus {
-        color: #333;
+        
         text-decoration: none;
         transition-timing-function: ease-in-out;
         -ms-transition-timing-function: ease-in-out;

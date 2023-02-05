@@ -7,7 +7,9 @@
 <head>
 	<link rel="stylesheet" href="~/css/home.css">
 	<link rel="stylesheet" href="~/css/theme.css">
+    <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 	<script src="~/js/theme.js"></script>
 
 	
@@ -15,12 +17,29 @@
 
 <body id="changeTheme">
 
+    <! -- This will be used for header of the page  -->
+    <header class="header">
+        <p href="" class="logo">Serena Bank</p>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#about">Get started</a></li>
+            <li><a href="#careers">Log in</a></li>
+        </ul>
+    </header>
+    
+    <! -- This will be used for main content Serena  -->
 	<nav>
 		<button onclick= "white()">Default</button>
 		<button onclick="black()">Black</button>
 		<button onclick="purple()">Purple</button>
 	
 	</nav>
+    
+    
+
+    <! -- This will be used for Color Theme Changer -->
 	<section id="changeTheme" data-description="thin/bold">
 		<div class="wrapper">
 			<h1 class="mega open-sans bold uppercase">
@@ -32,6 +51,8 @@
 			<a class="cta-button buttonColor" href="#">Get started</a>
 		</div>
 	</section>
+
+
 
 
 	

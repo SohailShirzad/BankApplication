@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nRR0FBq+vmzzsledzva/Mfdoya8l1IR4nVzd/wuR7hQ=",
+  "Hash": "ixpjv4XmQziW7bd10KoU8x1Bj4oQom7VrFy4vfjzVN0=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\myBankApplication.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\header.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/header.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\header.css"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\home.css",

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Models"
+    "\\Views",
+    "\\Views\\Customer",
+    "\\Views\\Home",
+    "\\Views\\Shared"
   ],
-  "SelectedNode": "\\myBankApplication.sln",
   "PreviewInSolutionExplorer": false
 }
