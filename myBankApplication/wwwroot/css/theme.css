@@ -1,5 +1,5 @@
 ﻿body {
-    color:aliceblue;
+    color:black;
 }
 
 nav {
@@ -39,5 +39,5 @@ button {
 /*	03. default CSS */
 .purple {
     background-color: #572fbe;
-    color: black;
+    color: white;
 }

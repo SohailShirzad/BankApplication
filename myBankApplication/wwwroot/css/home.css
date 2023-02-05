@@ -3,6 +3,7 @@
     font-size: 4rem; /* 72 / 18 = 4 */
     margin-bottom: 0.4125rem;
     
+    
 }
 
 .alpha {
@@ -14,7 +15,7 @@
 
 .open-sans {
     font-family: 'Open Sans';
-    color:aliceblue;
+  
 }
 
 .lato {
@@ -32,6 +33,7 @@
 
 .bold {
     font-weight: 700;
+    
 }
 
 .ls-small {
@@ -58,13 +60,13 @@ section {
     top: 50%;
     text-align: center;
 }
-
+/*
 section:nth-of-type(1) {
     background: linear-gradient(45deg,#081e21,#572fbe 40%,#5636a7 60%,#9c5ee3);
 
     
     
-}
+}*/
 
 
 
