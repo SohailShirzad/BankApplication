@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Manager\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>

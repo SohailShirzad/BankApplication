@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/home.css">
 	<link rel="stylesheet" href="~/css/theme.css">
     <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +19,7 @@
 
     <! -- This will be used for header of the page  -->
     <header class="header">
-        <p href="" class="logo">Serena Bank</p>
+        <img class="logo" src="~/css/logo.png" alt="Serena Bank Logo" width="140" height="130">
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
@@ -28,29 +28,32 @@
             <li><a href="#careers">Log in</a></li>
         </ul>
     </header>
-    
-    <! -- This will be used for main content Serena  -->
-	<nav>
-		<button onclick= "white()">Default</button>
-		<button onclick="black()">Black</button>
-		<button onclick="purple()">Purple</button>
-	
-	</nav>
-    
-    
 
     <! -- This will be used for Color Theme Changer -->
-	<section id="changeTheme" data-description="thin/bold">
-		<div class="wrapper">
-			<h1 class="mega open-sans bold uppercase">
-				Serena Bank
-			</h1>
-			<p class="alpha lato thin thick-header-line uppercase ls-small">
-				Bank with differents
-			</p>
-			<a class="cta-button buttonColor" href="#">Get started</a>
-		</div>
-	</section>
+	
+
+
+    <! -- This will be used for main content Serena  -->
+
+    <section>
+        <nav class="wrapper">
+            <ul>
+                <li><button onclick="white()">Default</button></li>
+                <li><button onclick="black()">Black</button></li>
+                <li><button onclick="purple()">Purple</button></li>
+            </ul>
+        </nav>
+
+        <article>
+            <h1 class="mega open-sans bold uppercase">
+                Serena Bank
+            </h1>
+            <p class="alpha lato thin thick-header-line uppercase ls-small">
+                Bank with a difference
+            </p>
+            <a class="cta-button buttonColor" href="#">Get started</a>
+        </article>
+    </section>
 
 
 
