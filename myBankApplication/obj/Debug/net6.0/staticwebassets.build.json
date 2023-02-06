@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ixpjv4XmQziW7bd10KoU8x1Bj4oQom7VrFy4vfjzVN0=",
+  "Hash": "SfvlFKIeI7in4PPQzqDnn2H5Vbonos0Yv5nm5vcCA0I=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\myBankApplication.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\footerStyle.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/footerStyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\footerStyle.css"
+    },
+    {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\header.css",
       "SourceId": "myBankApplication",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\home.css"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\logo.png",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\logo.png"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\Reg.css",

@@ -6,6 +6,7 @@
     position: fixed;
     width: 85%;
     z-index: 3;
+    
 }
 
     .header ul {
@@ -13,7 +14,6 @@
         padding: 0;
         list-style: none;
         overflow: hidden;
-        
     }
 
     .header li a {
@@ -93,6 +93,7 @@
 
         .header .menu-btn:checked ~ .menu {
             max-height: 240px;
+            float:right;
         }
 
         .header .menu-btn:checked ~ .menu-icon .navicon {
@@ -116,7 +117,7 @@
 
 @media (min-width: 48em) {
     .header li {
-        float: left;
+        float: right;
     }
 
         .header li a {
