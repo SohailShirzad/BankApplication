@@ -1,4 +1,10 @@
 ﻿
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width:none;
+}
+
+
+
 .mega {
     font-size: 4rem; /* 72 / 18 = 4 */
     margin-bottom: 0.4125rem;
@@ -15,6 +21,7 @@
 
 .open-sans {
     font-family: 'Open Sans';
+    color:aliceblue;
   
 }
 
@@ -149,16 +156,11 @@ img {
 section {
     padding: 60px 0;
     /* min-height: 100vh;*/
-    
+    background: linear-gradient(45deg,#081e21,#572fbe 40%,#5636a7 60%,#9c5ee3);
 }
 
 
 /* Media queries */
-@media screen and (min-width: 1440px) {
-    section {
-        height: 700px
-    }
-}
 
 @media only screen and (max-width:768px) {
     .single_footer {
