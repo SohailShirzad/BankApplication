@@ -1,136 +1,203 @@
-﻿/* header */
-
-.header {
-   
-    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
-    position: fixed;
-    width: 100%;
-    z-index: 3;
-    
+﻿.HeaderBar {
+    background-color:#192851;
+    display: flex;
+    padding: 3px 5%;
 }
 
-    .header ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        overflow: hidden;
+.None,
+.LogoMenu,
+.SwitchMenuMobile {
+    display: none;
+}
+
+.LogoHeader > img {
+    width:120px;
+    padding: 10px 18px;
+}
+
+.LogoHeader {
+    margin: auto 0;
+}
+
+li {
+    display: block;
+}
+
+ul {
+    display: flex;
+}
+
+.Loginbtn {
+    background: none;
+    border: none;
+    padding: 10px 18px;
+    font-size: 16px;
+    color: white;
+}
+
+.Registerbtn {
+    background: none;
+    border: 1px solid;
+    border-radius: 100px;
+    padding: 10px 18px;
+    font-size: 16px;
+    color: white;
+}
+
+button,
+.SwitchMenuMobile {
+    cursor: pointer;
+}
+
+.Registerbtn:hover {
+    background-color: #00a2ff;
+    border-color: #00a2ff;
+}
+
+.MenuTitle > a {
+    color: white;
+    padding: 0 10px;
+    text-decoration: auto;
+    font-size: 16px;
+}
+
+.MenuHeader {
+    margin: auto 0;
+    margin-top:20px;
+}
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.ButtonHeader {
+    margin-left: auto;
+    margin-top:12px;
+}
+
+.MenuMobile {
+    width: 100%;
+}
+
+.BoxMenuMobile {
+    display: flex;
+    z-index: 99999;
+}
+
+@media screen and (max-width: 900px) {
+    .SwitchMenuMobile {
+        border: 1px solid;
+        border-radius: 3px;
+        color: white;
+        width: 30px;
+        height: 30px;
+        margin: auto 0 auto auto;
     }
 
-    .header li a {
+    .MenuMobile {
+        margin-top: -3px;
+        animation-name: open;
+        animation-duration: 1s;
+        right: 0%;
+    }
+
+    .CloseMenu {
+        animation-name: close;
+        animation-duration: 1s;
+        right: 100%;
+    }
+
+    .BoxMenuMobile {
         display: block;
-        padding: 20px 20px;
-        border-right: 1px solid #f4f4f4;
-        text-decoration: none;
-        color: aqua;
-        font-weight: 700;
     }
 
-        .header li a:hover,
-        .header .menu-btn:hover {
-            background-color: #9c5ee3;
-        }
+    .SwitchMenuMobile > div {
+        margin: 5.7px 4px;
+        background-color: white;
+        padding: 1px 2px;
+    }
 
-    .header .logo {
+    .MenuMobile {
+        z-index: 9999;
+        background-color: #0000008c;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .BoxMenuMobile {
+        width: 45%;
+        background: #202020;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+    }
+
+    .LogoMenu > img {
+        width: 70px;
+    }
+
+    .LogoMenu {
+        width: 70px;
+        margin: 25px auto;
+    }
+
+    .SwitchMenuMobile,
+    .LogoMenu {
         display: block;
-        float: left;
-        font-size: 2em;
-        padding: 10px 20px;
-        text-decoration: none;
     }
 
-    /* menu */
-
-    .header .menu {
-        clear: both;
-        max-height: 0;
-        transition: max-height .2s ease-out;
+    .ButtonHeader {
+        position: absolute;
+        right: 16px;
+        bottom: 0;
     }
 
-    /* menu icon */
-
-    .header .menu-icon {
-        cursor: pointer;
-        display: inline-block;
-        float: right;
-        padding: 28px 20px;
-        position: relative;
-        user-select: none;
+    .MenuTitle {
+        text-align: right;
+        margin: 16px 7px 0 0;
     }
 
-        .header .menu-icon .navicon {
-            background: #333;
-            display: block;
-            height: 2px;
-            position: relative;
-            transition: background .2s ease-out;
-            width: 18px;
-        }
+    .MenuHeader > ul {
+        display: block;
+        margin-bottom: auto;
+    }
+}
 
-            .header .menu-icon .navicon:before,
-            .header .menu-icon .navicon:after {
-                background: #333;
-                content: '';
-                display: block;
-                height: 100%;
-                position: absolute;
-                transition: all .2s ease-out;
-                width: 100%;
-            }
+@media screen and (min-width: 900px) {
+    .MenuMobile {
+        display: block !important;
+    }
+}
 
-            .header .menu-icon .navicon:before {
-                top: 5px;
-            }
+@media screen and (max-width: 550px) {
+    .BoxMenuMobile {
+        width: 60% !important;
+    }
+}
 
-            .header .menu-icon .navicon:after {
-                top: -5px;
-            }
+@media screen and (max-width: 380px) {
+    .BoxMenuMobile {
+        width: 85% !important;
+    }
+}
 
-    /* menu btn */
-
-    .header .menu-btn {
-        display: none;
+@keyframes open {
+    from {
+        right: 100%;
     }
 
-        .header .menu-btn:checked ~ .menu {
-            max-height: 240px;
-            float:right;
-        }
+    to {
+        right: 0%;
+    }
+}
 
-        .header .menu-btn:checked ~ .menu-icon .navicon {
-            background: transparent;
-        }
-
-            .header .menu-btn:checked ~ .menu-icon .navicon:before {
-                transform: rotate(-45deg);
-            }
-
-            .header .menu-btn:checked ~ .menu-icon .navicon:after {
-                transform: rotate(45deg);
-            }
-
-        .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-        .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-            top: 0;
-        }
-
-/* 48em = 768px */
-
-@media (min-width: 48em) {
-    .header li {
-        float: right;
+@keyframes close {
+    from {
+        right: 0%;
     }
 
-        .header li a {
-            padding: 20px 30px;
-        }
-
-    .header .menu {
-        clear: none;
-        float: right;
-        max-height: none;
-    }
-
-    .header .menu-icon {
-        display: none;
+    to {
+        right: 100%;
     }
 }

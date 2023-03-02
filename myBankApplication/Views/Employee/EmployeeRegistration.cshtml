@@ -1,16 +1,19 @@
-﻿<!DOCTYPE html>
+﻿@model myBankApplication.Models.AddEmployeeModel
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Registration Form</title>
-    <link rel="stylesheet" href="Reg.css" />
+    <link rel="stylesheet" href="~/css/registration.css">
 </head>
 <body>
     <h1>Serena Bank</h1>
-    <p>Please fill out this form with the required information</p>
-    <form method="post" asp-action="NewBankAccount">
+    <p>Please fill out this form with the required information to register a new employee</p>
+    <form method="post" action="Add">
         <label>
             Title:
-            <select id="title" name="title" required>
+            <select asp-for="Title" id="title" required>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="Mr."> Mr.</option>
                 <option value="Mrs."> Mrs.</option>
@@ -31,14 +34,13 @@
             </select>
             </label>
 
-            <label>Enter Your First Name: <input type="text" name="first-name" required /></label>
-            <label>Enter Your Middle Name: <input type="text" name="first-name" required /></label>
-            <label>Enter Your Last Name: <input type="text" name="last-name" required /></label>
-            <label>Mobile Number: <input type="text" name="Mobile-Number" required maxlength="11"/></label>
-            <label>Education <input type="text" name="last-name" required /></label>
+            <label>Enter Your First Name: <input type="text" asp-for="FName" required /></label>
+            <label>Enter Your Middle Name: <input type="text" asp-for="MName" required /></label>
+            <label>Enter Your Last Name: <input type="text" asp-for="LName" required /></label>
+            <label>Mobile Number: <input type="text"  asp-for="Phone_No" required maxlength="11"/></label>
 
             <label> Education:
-                <select id="education" name="education" required>
+                <select id="education" asp-for="Education" required>
                     <option value="" selected="selected" disabled="disabled">-- select one --</option>
                     <option value="No formal education">No formal education</option>
                     <option value="Primary education">Primary education</option>
@@ -51,119 +53,28 @@
                 </select>
              </label>
 
-            <label> Occupation:
-                <select id="occupation" name="occupation" required>
+            <label> Job Title:
+                <select id="job_title" asp-for="Job_title" required>
                     <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                    <optgroup label="Healthcare Practitioners and Technical Occupations:">
-                        <option value="1">-  Chiropractor</option>
-                        <option value="2">-  Dentist</option>
-                        <option value="3">-  Dietitian or Nutritionist</option>
-                        <option value="4">-  Optometrist</option>
-                        <option value="5">-  Pharmacist</option>
-                        <option value="6">-  Physician</option>
-                        <option value="7">-  Physician Assistant</option>
-                        <option value="8">-  Podiatrist</option>
-                        <option value="9">-  Registered Nurse</option>
-                        <option value="10">-  Therapist</option>
-                        <option value="11">-  Veterinarian</option>
-                        <option value="12">-  Health Technologist or Technician</option>
-                        <option value="13">-  Other Healthcare Practitioners and Technical Occupation</option>
-                    </optgroup>
-                    <optgroup label="Healthcare Support Occupations:">
-                        <option value="14">-  Nursing, Psychiatric, or Home Health Aide</option>
-                        <option value="15">-  Occupational and Physical Therapist Assistant or Aide</option>
-                        <option value="16">-  Other Healthcare Support Occupation</option>
-                    </optgroup>
-                    <optgroup label="Business, Executive, Management, and Financial Occupations:">
-                        <option value="17">-  Chief Executive</option>
-                        <option value="18">-  General and Operations Manager</option>
-                        <option value="19">-  Advertising, Marketing, Promotions, Public Relations, and Sales Manager</option>
-                        <option value="20">-  Operations Specialties Manager (e.g., IT or HR Manager)</option>
-                        <option value="21">-  Construction Manager</option>
-                        <option value="22">-  Engineering Manager</option>
-                        <option value="23">-  Accountant, Auditor</option>
-                        <option value="24">-  Business Operations or Financial Specialist</option>
-                        <option value="25">-  Business Owner</option>
-                        <option value="26">-  Other Business, Executive, Management, Financial Occupation</option>
-                    </optgroup>
-                    <optgroup label="Architecture and Engineering Occupations:">
-                        <option value="27">-  Architect, Surveyor, or Cartographer</option>
-                        <option value="28">-  Engineer</option>
-                        <option value="29">-  Other Architecture and Engineering Occupation</option>
-                    </optgroup>
-                    <optgroup label="Education, Training, and Library Occupations:">
-                        <option value="30">-  Postsecondary Teacher (e.g., College Professor)</option>
-                        <option value="31">-  Primary, Secondary, or Special Education School Teacher</option>
-                        <option value="32">-  Other Teacher or Instructor</option>
-                        <option value="33">-  Other Education, Training, and Library Occupation</option>
-                    </optgroup>
-                    <optgroup label="Other Professional Occupations:">
-                        <option value="34">-  Arts, Design, Entertainment, Sports, and Media Occupations</option>
-                        <option value="35">-  Computer Specialist, Mathematical Science</option>
-                        <option value="36">-  Counselor, Social Worker, or Other Community and Social Service Specialist</option>
-                        <option value="37">-  Lawyer, Judge</option>
-                        <option value="38">-  Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist)</option>
-                        <option value="39">-  Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist)</option>
-                        <option value="40">-  Religious Worker (e.g., Clergy, Director of Religious Activities or Education)</option>
-                        <option value="41">-  Social Scientist and Related Worker</option>
-                        <option value="42">-  Other Professional Occupation</option>
-                    </optgroup>
-                    <optgroup label="Office and Administrative Support Occupations:">
-                        <option value="43">-  Supervisor of Administrative Support Workers</option>
-                        <option value="44">-  Financial Clerk</option>
-                        <option value="45">-  Secretary or Administrative Assistant</option>
-                        <option value="46">-  Material Recording, Scheduling, and Dispatching Worker</option>
-                        <option value="47">-  Other Office and Administrative Support Occupation</option>
-                    </optgroup>
-                    <optgroup label="Services Occupations:">
-                        <option value="48">-  Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)</option>
-                        <option value="49">-  Chef or Head Cook</option>
-                        <option value="50">-  Cook or Food Preparation Worker</option>
-                        <option value="51">-  Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress)</option>
-                        <option value="52">-  Building and Grounds Cleaning and Maintenance</option>
-                        <option value="53">-  Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge)</option>
-                        <option value="54">-  Sales Supervisor, Retail Sales</option>
-                        <option value="55">-  Retail Sales Worker</option>
-                        <option value="56">-  Insurance Sales Agent</option>
-                        <option value="57">-  Sales Representative</option>
-                        <option value="58">-  Real Estate Sales Agent</option>
-                        <option value="59">-  Other Services Occupation</option>
-                    </optgroup>
-                    <optgroup label="Agriculture, Maintenance, Repair, and Skilled Crafts Occupations:">
-                        <option value="60">-  Construction and Extraction (e.g., Construction Laborer, Electrician)</option>
-                        <option value="61">-  Farming, Fishing, and Forestry</option>
-                        <option value="62">-  Installation, Maintenance, and Repair</option>
-                        <option value="63">-  Production Occupations</option>
-                        <option value="64">-  Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation</option>
-                    </optgroup>
-                    <optgroup label="Transportation Occupations:">
-                        <option value="65">-  Aircraft Pilot or Flight Engineer</option>
-                        <option value="66">-  Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver)</option>
-                        <option value="67">-  Other Transportation Occupation</option>
-                    </optgroup>
-                    <optgroup label="Other Occupations:">
-                        <option value="68">-  Military</option>
-                        <option value="69">-  Homemaker</option>
-                        <option value="70">-  Other Occupation</option>
-                        <option value="71">-  Don't Know</option>
-                        <option value="72">-  Not Applicable</option>
-                    </optgroup>
-                </select>
+                        <option value="1">-  Staff</option>
+                        <option value="2">-  Manager</option>
+                        <option value="3">-  Other </option>
+                 </select>
             </label>
 
-            <label>
+            <label required>
                 Gender:
-                <input type="radio" name="Male" class="inline" /> Male
-                <input type="radio" name="Female" class="inline" /> Female
+                <input type="radio" class="inline" asp-for="Gender" value="A" required/> Male
+                <input type="radio" class="inline" asp-for="Gender" value="B"/> Female
             </label>
 
             <label for="Date of Birth">
                 Date of Birth:
-                <input type="date" id="DateOfBirth" name="DateOfBirth" required>
+                <input type="date" id="DateOfBirth"  asp-for="DateOfBirth" required>
             </label>
 
             <label>Income:
-                    <select id="title" name="title" required>
+                    <select id="Income" asp-for="Income" required>
                         <option value="" selected="selected" disabled="disabled">-- select one --</option>
                         <option value="£0-£10000"> £0-£10,000</option>
                         <option value="£10000-£20000"> £10,000 - £20,000</option>
@@ -176,7 +87,7 @@
             </label>
 
             <label> Country Of Birth:
-                 <select id="country" name="country" required>
+                 <select id="country" asp-for="CountryOfBirth" required>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -426,7 +337,7 @@
             </label> 
             
             <label> Nationality:
-                <select name="nationality" required>
+                <select asp-for="Nationality" required>
                   <option value="" selected="selected" disabled="disabled">-- select one --</option>
                   <option value="afghan">Afghan</option>
                   <option value="albanian">Albanian</option>
@@ -623,27 +534,20 @@
                 </select>
                 </label>
 
-               <label> Address: <input type="text" name="address" required /></label>
-               <label> Post_Code: <input type="text" name="post_code" placeholder="SG15BJ" required /></label>
-                                
-    
-              <label>Enter Your Email: <input type="email" name="email" required /></label>
-              <label>Create a New Password: <input type="password" name="password" pattern="[a-z0-5]{8,}" required /></label>
-        <label>Re-type Password: <input type="password" name="passwordConfirmation" pattern="[a-z0-5]{8,}" required /></label>
+               <label> Address: <input type="text" asp-for="Address" required /></label>
+               <label> Post_Code: <input type="text" placeholder="SG15BJ" asp-for="Post_Code" required /></label>
+               <label> Supervisor: <input type="text" asp-for="Supervisor" /></label>
+
+                        
+               <label>Enter Your Email: <input type="email" asp-for="Email" required /></label>
+              <label>Create a New Password: <input type="password"  asp-for="Banking_Password" required /></label>
+              <label>Re-type Password: <input type="password" asp-for="Banking_ConfirmationPassword"required /></label>
        
-        <fieldset>
-            <label><input type="radio" name="account-type" class="inline" /> Current Account</label>
-            <label><input type="radio" name="account-type" class="inline" /> Saving Account</label>
-            <label><input type="radio" name="account-type" class="inline" /> Business Account</label>
-            <label>
-                <input type="checkbox" name="terms" class="inline" required /> I accept the <a href="#">terms and conditions</a>
-            </label>
-        </fieldset>
-        <fieldset>
+       <!-- <fieldset>
             <label>Upload a profile picture: <input type="file" name="file" /></label>
             <label>Upload proof of Id: <input type="file" name="file1" /></label>
 
-        </fieldset>
+        </fieldset> -->
         <input type="submit" value="Submit" />
     </form>
 </body>

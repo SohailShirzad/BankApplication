@@ -9,22 +9,37 @@
   <ItemGroup>
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="Properties\NewFolder\**" />
+    <Compile Remove="Views\Login\**" />
+    <Compile Remove="Views\Manager\**" />
+    <Compile Remove="Views\NewFolder1\**" />
     <Content Remove="NewFolder1\**" />
     <Content Remove="Properties\NewFolder\**" />
+    <Content Remove="Views\Login\**" />
+    <Content Remove="Views\Manager\**" />
+    <Content Remove="Views\NewFolder1\**" />
     <EmbeddedResource Remove="NewFolder1\**" />
     <EmbeddedResource Remove="Properties\NewFolder\**" />
+    <EmbeddedResource Remove="Views\Login\**" />
+    <EmbeddedResource Remove="Views\Manager\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
     <None Remove="NewFolder1\**" />
     <None Remove="Properties\NewFolder\**" />
+    <None Remove="Views\Login\**" />
+    <None Remove="Views\Manager\**" />
+    <None Remove="Views\NewFolder1\**" />
     <_WebToolingArtifacts Remove="Properties\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\LoginController.cs" />
     <Compile Remove="Views\Home\Help.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\bulding.avif" />
     <Content Remove="wwwroot\css\logo new.png" />
     <Content Remove="wwwroot\css\logo-color.png" />
+    <Content Remove="wwwroot\css\Reg.css" />
     <Content Remove="wwwroot\css\site - Copy.css" />
     <Content Remove="wwwroot\css\StyleSheet.css" />
     <Content Remove="wwwroot\js\header.js" />
@@ -47,8 +62,9 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Views\Manager\" />
-    <Folder Include="Views\Login\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\Bank\" />
+    <Folder Include="Views\Supervisor\" />
   </ItemGroup>
 
 </Project>

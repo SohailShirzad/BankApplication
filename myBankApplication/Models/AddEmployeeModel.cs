@@ -1,53 +1,43 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
+using System.Diagnostics.CodeAnalysis;
 
 namespace myBankApplication.Models
 {
-    public class CustomerModel
+    public class AddEmployeeModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [MaxLength (8)]
-        public int Customer_Id { get; set; }
-
-        [Required(ErrorMessage = "Please select a title"), MaxLength(20)]
+        [Required(ErrorMessage = "Please select a title")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name"), MaxLength(50)]
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
         public string FName { get; set; }
 
         [MaxLength(50)]
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
         public string MName { get; set; }
 
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
+
         [Required(ErrorMessage = "Please enter your Last name"), MaxLength(50)]
         public string LName { get; set; }
 
         [Required(ErrorMessage = "Please enter your Phone Number"), MaxLength(15)]
         public string Phone_No { get; set; }
 
-        [Required(ErrorMessage = "Please enter your Email address"), MaxLength(100)]
-        public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please select your education"), MaxLength(200)]
+        [Required(ErrorMessage = "Please select your education"), MaxLength(80)]
         public string Education { get; set; }
 
         [Required(ErrorMessage = "Please select your Occupation"), MaxLength(50)]
-        public string Occupation { get; set; }
+        public string Job_title { get; set; }
 
-        [Required(ErrorMessage = "Please select your Gender"), MaxLength(12)]
+        [Required(ErrorMessage = "Please select your Gender")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Please enter your date of Birth"), MaxLength(50)]
+        [Required(ErrorMessage = "Please enter your date of Birth")]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Please select your Salary Range"), MaxLength(50)]
+        //[Required(ErrorMessage = "Please select your Salary Range"), MaxLength(50)]
         public long Income { get; set; }
 
-        [Required(ErrorMessage = "Please select your Country"), MaxLength(50)]
+        [Required(ErrorMessage = "Please select your Country")]
         public string CountryOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please select your Nationality"), MaxLength(50)]
@@ -59,17 +49,18 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Post Code"), MaxLength(8)]
         public string Post_Code { get; set; }
 
+        [AllowNull]
+        public string Supervisor { get; set; }
+
         public DateTime Date_Joined { get; set; }
+
+        [Required(ErrorMessage = "Please enter your Email address"), MaxLength(100)]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
         public string Banking_Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your Confirmation Password"), MaxLength(80)]
         public string Banking_ConfirmationPassword { get; set; }
-
-        [Required(ErrorMessage = "Please Upload profile picture")]
-        public byte[] Profile_Picture { get; set; }
-        [Required(ErrorMessage = "Please upload proof of Id")]
-        public byte[] Proof_Id { get; set; }
     }
 }

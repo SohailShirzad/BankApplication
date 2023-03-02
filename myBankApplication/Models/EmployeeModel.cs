@@ -1,10 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace myBankApplication.Models
 {
     public class EmployeeModel
     {
-        public Guid Employee_Id { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Employee_Id { get; set; }
 
         [Required(ErrorMessage = "Please select a title"), MaxLength(20)]
         public string Title { get; set; }
@@ -23,14 +27,12 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Phone Number"), MaxLength(15)]
         public string Phone_No { get; set; }
 
-        [Required(ErrorMessage = "Please enter your Email address"), MaxLength(100)]
-        public string Email { get; set; }
-
+        
         [Required(ErrorMessage = "Please select your education"), MaxLength(80)]
         public string Education { get; set; }
 
         [Required(ErrorMessage = "Please select your Occupation"), MaxLength(50)]
-        public string Occupation { get; set; }
+        public string Job_title { get; set; }
 
         [Required(ErrorMessage = "Please select your Gender"), MaxLength(12)]
         public string Gender { get; set; }
@@ -38,8 +40,8 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your date of Birth"), MaxLength(50)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Please select your Salary Range"), MaxLength(50)]
-        public string Income { get; set; }
+        //[Required(ErrorMessage = "Please select your Salary Range"), MaxLength(50)]
+        public long Income { get; set; }
 
         [Required(ErrorMessage = "Please select your Country"), MaxLength(50)]
         public string CountryOfBirth { get; set; }
@@ -53,7 +55,13 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Post Code"), MaxLength(8)]
         public string Post_Code { get; set; }
 
+        [AllowNull]
+        public string Supervisor { get; set; }
+
         public DateTime Date_Joined { get; set; }
+
+        [Required(ErrorMessage = "Please enter your Email address"), MaxLength(100)]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
         public string Banking_Password { get; set; }

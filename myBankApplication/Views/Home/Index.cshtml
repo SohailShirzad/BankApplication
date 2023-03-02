@@ -10,37 +10,56 @@
     <link rel="stylesheet" href="~/css/footerStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-	<script src="~/js/theme.js"></script>
-
+	<script src="~/js/site.js"></script>
 	
 </head>
 
 <body>
-
-
-
     <!-- This will be used for header of the page  -->
-    <header class="header">
-        <img class="logo" src="~/css/logo.png" alt="Serena Bank Logo" width="140" height="130">
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-        <ul class="menu">
-            <li><a href="#">Get started</a></li>
-            <li><a href="#">Log in</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Help">Contact us</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-        </ul>
-    </header>
-
+    <div class="HeaderBar">
+        <div class="LogoHeader">
+            <img src="~/css/logo1.png" alt="Logo co.">
+        </div>
+        <div class="MenuMobile None" id="MenuMobile">
+            <div class="BoxMenuMobile">
+                <div class="LogoMenu">
+                    <img src="~/css/logo1.png" alt="Serena Bank Logo">
+                </div>
+                <div class="MenuHeader">
+                    <ul>
+                        <li class ="MenuTitle"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="MenuTitle"><a asp-area="" asp-controller="Home" asp-action="Help">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="ButtonHeader">
+                    <ul>
+                        <li>
+                            <button class="Loginbtn"><a style="color:white;" asp-area="" asp-controller="Customer" asp-action="CustomerLogin">Login</a></button>
+                        </li>
+                        <li>
+                            <button class="Registerbtn"><a style="color:white;" asp-area="" asp-controller="Customer" asp-action="NewBankAccount">Signup</a></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="SwitchMenuMobile" id="SwitchMenuMobile">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
     <!-- This will be used for Color Theme Changer -->
-       <section>
+    <section class="sectionMainColor">
         <article>
             <h1 class="mega open-sans bold uppercase">
                 Serena Bank
             </h1>
             <p class="alpha lato thin thick-header-line uppercase ls-small">
-                Bank with a differences</p>
+                Bank with differences</p>
+            <div class="center">
             <a class="cta-button buttonColor" href="#">Get started</a>
+            </div>
         </article>
     </section>
 

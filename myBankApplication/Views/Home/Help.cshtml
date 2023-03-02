@@ -1,42 +1,92 @@
-﻿@{
-    ViewData["Title"] = "Help";
-}
-<h1>@ViewData["Title"]</h1>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="~/css/home.css">
-    <link rel="stylesheet" href="~/css/theme.css">
     <link rel="stylesheet" href="~/css/header.css">
-    <link rel="stylesheet" href="~/css/footerStyle.css">
+    <link rel="stylesheet" href="~/css/contactUs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="~/js/theme.js"></script>
+    <script src="~/js/header.js"></script>
 
 
 </head>
 
-<body id="changeTheme">
-<h1>Helpful answers</h1>
-    <section>
-        <nav class="wrapper">
-            <ul>
-                <h5>Choose your theme:</h5>
-                <li><button onclick="white()">Default</button></li>
-                <li><button onclick="black()">Black</button></li>
-                <li><button onclick="purple()">Purple</button></li>
-            </ul>
-        </nav>
+<body>
+    <!-- This will be used for header of the page  -->
+    <div class="HeaderBar">
+        <div class="LogoHeader">
+            <img src="~/css/logo1.png" alt="Logo co.">
+        </div>
+        <div class="MenuMobile None" id="MenuMobile">
+            <div class="BoxMenuMobile">
+                <div class="LogoMenu">
+                    <img src="~/css/logo1.png" alt="Serena Bank Logo">
+                </div>
+                <div class="MenuHeader">
+                    <ul>
+                        <li class="MenuTitle"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="MenuTitle"><a asp-area="" asp-controller="Home" asp-action="Help">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="ButtonHeader">
+                    <ul>
+                        <li>
+                            <button class="Loginbtn"><a style="color:white;" asp-area="" asp-controller="Customer" asp-action="CustomerLogin">Login</a></button>
+                        </li>
+                        <li>
+                            <button class="Registerbtn"><a style="color:white;" asp-area="" asp-controller="Customer" asp-action="NewBankAccount">Signup</a></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="SwitchMenuMobile" id="SwitchMenuMobile">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
-        <article>
-            <h1 class="mega open-sans bold uppercase">
-                Serena Bank
-            </h1>
-            <p class="alpha lato thin thick-header-line uppercase ls-small">
-                Bank with a differences
-            </p>
-            <a class="cta-button buttonColor" href="#">Get started</a>
-        </article>
+    <!--Contact form left contents-->
+    <section>
+        <div style="text-align:center">
+            <h1>Contact Us</h1>
+            <p>Please contact us with any questions or comments using the information below:</p>
+        </div>
+        <div class="rowContact">
+            <div class="column">
+                    <img src="~/css/bulding.png" width="95%" height="70%">
+              </div>
+           
+
+
+            <!--Contact form-->
+            <div class="column">
+                <form action="/action_page.php">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name.." required min="2">
+                    <label for="mname">MiddleName</label>
+                    <input type="text" id="mname" name="middleName" placeholder="Your middle name if applicable..">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+                    <label for="customerId">Your customer Id number</label>
+                    <input type="text" id="customerId" name="customerId" placeholder="e.g.. 78345898" required>
+
+
+                    <label for="email">Email address:</label>
+                    <input type="email" id="email" name="email" placeholder="john@gmail.com" required>
+                   
+                    <br />
+                    <br />
+                    <label for="Message">Message</label>
+                    <textarea id="message" name="message" placeholder="Write something.." style="height:170px" required></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        
     </section>
+
 </body>
 </html>

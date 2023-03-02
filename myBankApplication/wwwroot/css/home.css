@@ -15,6 +15,8 @@
 .alpha {
     font-size: 3.33333rem; /* 60 / 18 = 3.3333 */
     margin-bottom: 0.495rem;
+    color: #19d3c5;
+    text-align:center;
 }
 
 /* ==== Typefaces  ==== */
@@ -22,15 +24,14 @@
 .open-sans {
     font-family: 'Open Sans';
     color:aliceblue;
+    text-align:center;
   
 }
-
 .lato {
     font-family: 'Lato';
-    color:aqua;
-    color:#9c5ee3;
-
+   
 }
+
 
 
 /* ==== Weights, styles, letterspacing, etc. ==== */
@@ -55,11 +56,15 @@
     
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Get started button css*/
 .cta-button {
       background: #9c5ee3;
-      border-color: transparent;
       border-radius: 1.875em;
       color: #fff;
       cursor: pointer;
@@ -69,12 +74,7 @@
       line-height: normal; 
       margin: 15px auto; 
       padding: 0.8125em 1.875em;
-      text-align: center;
-      text-decoration: none;
-      width: -webkit-fit-content;
-      width: -moz-fit-content;
-      width: fit-content;
-      
+          
     }
 .buttonColor {
     background: #9c5ee3;
@@ -101,7 +101,7 @@ nav {
 article {
     float: left;
     padding: 20px;
-    width: 70%;
+    width: 100%;
     margin-top: 100px;
 }
 
@@ -147,15 +147,17 @@ ul {
     padding: 0;
     list-style: none;
 }
-
+/*
 img {
     max-width: 100%;
     height: auto;
-}
+}*/
 
 section {
     padding: 60px 0;
     /* min-height: 100vh;*/
+}
+.sectionMainColor {
     background: linear-gradient(45deg,#081e21,#572fbe 40%,#5636a7 60%,#9c5ee3);
 }
 
