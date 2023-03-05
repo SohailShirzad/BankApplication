@@ -63,7 +63,6 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Bank\" />
     <Folder Include="Views\Supervisor\" />
   </ItemGroup>
 

@@ -1,10 +1,12 @@
-﻿using Microsoft.Identity.Client;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Identity.Client;
+using myBankApplication.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myBankApplication.Models
 {
-    public class Account
+    public class AccountModel
     {
         [Key]
         [MaxLength(8)]
@@ -16,23 +18,28 @@ namespace myBankApplication.Models
 
         [Column(TypeName = "nvarchar(8)")]
         [Required]
-        public string Account_Type { get; set; }
+        public AccountType AccountType { get; set; } 
 
-        [Column(TypeName = "decimal")]
         [Required]
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
 
         [Required]
         public DateTime Date_Opened { get; set; }
 
         [Required]
-        public  bool Is_Active { get; set; }
-        [Required]
+        public AccountStatus Status { get; set; }
+        
         public DateTime? Close_Date { get; set; }
 
         [Required, MaxLength(8)]
-        public string Customer_Id { get; set; }
+        [ForeignKey ("CustomerModel")]
+        public int Customer_Id { get; set; }
         public CustomerModel Customer { get; set; }
+
+        [Required]
+        [ForeignKey("BankModel")]
+        public string BankName { get; set; }
+        public BankModel Bank { get; set; }
 
 
 

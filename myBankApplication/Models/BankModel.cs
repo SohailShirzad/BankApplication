@@ -8,7 +8,7 @@ namespace myBankApplication.Models
     {
         [Key]
         [Column(TypeName = "nvarchar(80)")]
-        public string Name { get; set; }
+        public string BankName { get; set; }
 
         [Column(TypeName = "nvarchar(80)")]
         public string Bank_Address { get; set; }
@@ -16,9 +16,10 @@ namespace myBankApplication.Models
 
         public DateTime Year_Opened { get; set; }
 
-
-        public int Customer_Id { get; set; }
-        public CustomerModel Manager { get; set; }
+        [Required]
+        [ForeignKey("CustomerModel")]
+        public int Employee_Id { get; set; }
+        public EmployeeModel Manager { get; set; }
     
         
     }

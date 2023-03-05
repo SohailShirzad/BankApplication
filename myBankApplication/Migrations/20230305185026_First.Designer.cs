@@ -12,8 +12,8 @@ using myBankApplication.Data;
 namespace myBankApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230302100039_First-Migration")]
-    partial class FirstMigration
+    [Migration("20230305185026_First")]
+    partial class First
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace myBankApplication.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("myBankApplication.Models.Account", b =>
+            modelBuilder.Entity("myBankApplication.Models.AccountModel", b =>
                 {
                     b.Property<int>("AccountNo")
                         .ValueGeneratedOnAdd()
@@ -34,21 +34,27 @@ namespace myBankApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountNo"));
 
-                    b.Property<string>("Account_Type")
+                    b.Property<string>("AccountType")
                         .IsRequired()
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<decimal>("Balance")
-                        .HasColumnType("decimal");
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("BankName1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(80)");
 
                     b.Property<DateTime?>("Close_Date")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Customer_Id")
-                        .IsRequired()
+                    b.Property<int>("Customer_Id")
                         .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasColumnType("int");
 
                     b.Property<int>("Customer_Id1")
                         .HasColumnType("int");
@@ -56,41 +62,74 @@ namespace myBankApplication.Migrations
                     b.Property<DateTime>("Date_Opened")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Is_Active")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Sort_Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(8)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("AccountNo");
+
+                    b.HasIndex("BankName1");
 
                     b.HasIndex("Customer_Id1");
 
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("myBankApplication.Models.BankCardModel", b =>
+                {
+                    b.Property<int>("cardNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CVVNumber")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("Account_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ContaclessLimit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Customer_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Customer_Id1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("cardNumber", "CVVNumber");
+
+                    b.HasIndex("Customer_Id1");
+
+                    b.ToTable("BankCards");
+                });
+
             modelBuilder.Entity("myBankApplication.Models.BankModel", b =>
                 {
-                    b.Property<string>("Name")
+                    b.Property<string>("BankName")
                         .HasColumnType("nvarchar(80)");
 
                     b.Property<string>("Bank_Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<int>("Customer_Id")
+                    b.Property<int>("Employee_Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("ManagerCustomer_Id")
+                    b.Property<int>("ManagerEmployee_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Year_Opened")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Name");
+                    b.HasKey("BankName");
 
-                    b.HasIndex("ManagerCustomer_Id");
+                    b.HasIndex("ManagerEmployee_Id");
 
                     b.ToTable("Bank");
                 });
@@ -103,6 +142,9 @@ namespace myBankApplication.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Customer_Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -118,6 +160,9 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryOfBirth")
                         .IsRequired()
@@ -141,15 +186,19 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("FName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("Income")
                         .HasMaxLength(50)
@@ -159,6 +208,12 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<string>("MName")
                         .IsRequired()
@@ -170,10 +225,25 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Occupation")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Phone_No")
                         .IsRequired()
@@ -193,10 +263,19 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Customer_Id");
 
@@ -210,6 +289,9 @@ namespace myBankApplication.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Employee_Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -225,6 +307,9 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryOfBirth")
                         .IsRequired()
@@ -248,15 +333,19 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("FName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("Income")
                         .HasColumnType("bigint");
@@ -271,15 +360,39 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("MName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("ManagerEmployee_Id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nationality")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Phone_No")
                         .IsRequired()
@@ -291,21 +404,55 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<string>("Supervisor")
-                        .IsRequired()
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Supervisor")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Employee_Id");
+
+                    b.HasIndex("ManagerEmployee_Id");
 
                     b.ToTable("Staff");
                 });
 
-            modelBuilder.Entity("myBankApplication.Models.Transaction", b =>
+            modelBuilder.Entity("myBankApplication.Models.StatementModel", b =>
+                {
+                    b.Property<int>("StatementID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatementID"));
+
+                    b.Property<int>("AccountNo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AccountNo1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StatementDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("StatementID");
+
+                    b.HasIndex("AccountNo1");
+
+                    b.ToTable("Statements");
+                });
+
+            modelBuilder.Entity("myBankApplication.Models.TransactionModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -313,16 +460,15 @@ namespace myBankApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AccountNo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Account_No")
+                    b.Property<string>("AccountNo")
                         .IsRequired()
-                        .HasMaxLength(8)
                         .HasColumnType("nvarchar(12)");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("AccountNo1")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
 
                     b.Property<string>("BankName")
                         .IsRequired()
@@ -336,19 +482,42 @@ namespace myBankApplication.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("SWIFTCode")
+                    b.Property<string>("Reference")
                         .IsRequired()
                         .HasMaxLength(20)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("SWIFTCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(11)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNo");
+                    b.HasIndex("AccountNo1");
 
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("myBankApplication.Models.Account", b =>
+            modelBuilder.Entity("myBankApplication.Models.AccountModel", b =>
+                {
+                    b.HasOne("myBankApplication.Models.BankModel", "Bank")
+                        .WithMany()
+                        .HasForeignKey("BankName1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("myBankApplication.Models.CustomerModel", "Customer")
+                        .WithMany()
+                        .HasForeignKey("Customer_Id1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bank");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("myBankApplication.Models.BankCardModel", b =>
                 {
                     b.HasOne("myBankApplication.Models.CustomerModel", "Customer")
                         .WithMany()
@@ -361,20 +530,40 @@ namespace myBankApplication.Migrations
 
             modelBuilder.Entity("myBankApplication.Models.BankModel", b =>
                 {
-                    b.HasOne("myBankApplication.Models.CustomerModel", "Manager")
+                    b.HasOne("myBankApplication.Models.EmployeeModel", "Manager")
                         .WithMany()
-                        .HasForeignKey("ManagerCustomer_Id")
+                        .HasForeignKey("ManagerEmployee_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("myBankApplication.Models.Transaction", b =>
+            modelBuilder.Entity("myBankApplication.Models.EmployeeModel", b =>
                 {
-                    b.HasOne("myBankApplication.Models.Account", "Account")
+                    b.HasOne("myBankApplication.Models.EmployeeModel", "Manager")
                         .WithMany()
-                        .HasForeignKey("AccountNo")
+                        .HasForeignKey("ManagerEmployee_Id");
+
+                    b.Navigation("Manager");
+                });
+
+            modelBuilder.Entity("myBankApplication.Models.StatementModel", b =>
+                {
+                    b.HasOne("myBankApplication.Models.AccountModel", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountNo1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
+                });
+
+            modelBuilder.Entity("myBankApplication.Models.TransactionModel", b =>
+                {
+                    b.HasOne("myBankApplication.Models.AccountModel", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountNo1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

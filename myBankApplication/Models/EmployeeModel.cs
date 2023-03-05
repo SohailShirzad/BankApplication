@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using myBankApplication.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace myBankApplication.Models
 {
-    public class EmployeeModel
+    public class EmployeeModel : IdentityUser
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -34,8 +36,8 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please select your Occupation"), MaxLength(50)]
         public string Job_title { get; set; }
 
-        [Required(ErrorMessage = "Please select your Gender"), MaxLength(12)]
-        public string Gender { get; set; }
+        [Required]
+        public Gender Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter your date of Birth"), MaxLength(50)]
         public DateTime DateOfBirth { get; set; }
@@ -55,8 +57,9 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Post Code"), MaxLength(8)]
         public string Post_Code { get; set; }
 
-        [AllowNull]
-        public string Supervisor { get; set; }
+        [ForeignKey ("EmployeeModel")]
+        public int Supervisor { get; set; }
+        public EmployeeModel? Manager { get; set; }
 
         public DateTime Date_Joined { get; set; }
 
@@ -64,9 +67,12 @@ namespace myBankApplication.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
+        [DataType(DataType.Password)]
         public string Banking_Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your Confirmation Password"), MaxLength(80)]
+        [DataType(DataType.Password)]
+        [Compare("Banking_Password", ErrorMessage = "Password do not match"]
         public string Banking_ConfirmationPassword { get; set; }
     }
 

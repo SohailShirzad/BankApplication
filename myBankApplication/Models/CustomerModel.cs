@@ -1,15 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using myBankApplication.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
 namespace myBankApplication.Models
 {
-    public class CustomerModel
+    public class CustomerModel : IdentityUser
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [MaxLength (8)]
         public int Customer_Id { get; set; }
+
 
         [Required(ErrorMessage = "Please select a title"), MaxLength(20)]
         public string Title { get; set; }
@@ -38,8 +41,8 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please select your Occupation"), MaxLength(50)]
         public string Occupation { get; set; }
 
-        [Required(ErrorMessage = "Please select your Gender"), MaxLength(12)]
-        public string Gender { get; set; }
+        [Required(ErrorMessage = "Please select your Gender")]
+        public Gender Gender { get; set; }
 
         [Required(ErrorMessage = "Please enter your date of Birth"), MaxLength(50)]
         public DateTime DateOfBirth { get; set; }
@@ -62,9 +65,12 @@ namespace myBankApplication.Models
         public DateTime Date_Joined { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
+        [DataType(DataType.Password)]
         public string Banking_Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your Confirmation Password"), MaxLength(80)]
+        [DataType(DataType.Password)]
+        [Compare("Banking_Password", ErrorMessage = "Password do not match"]
         public string Banking_ConfirmationPassword { get; set; }
 
         [Required(ErrorMessage = "Please Upload profile picture")]

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using myBankApplication.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace myBankApplication.Models
@@ -29,7 +30,7 @@ namespace myBankApplication.Models
         public string Job_title { get; set; }
 
         [Required(ErrorMessage = "Please select your Gender")]
-        public string Gender { get; set; }
+        public Gender Gender  { get; set; }
 
         [Required(ErrorMessage = "Please enter your date of Birth")]
         public DateTime DateOfBirth { get; set; }
@@ -49,8 +50,8 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Post Code"), MaxLength(8)]
         public string Post_Code { get; set; }
 
-        [AllowNull]
-        public string Supervisor { get; set; }
+        
+        public int  Supervisor { get; set; }
 
         public DateTime Date_Joined { get; set; }
 

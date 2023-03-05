@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using myBankApplication.Interfaces;
 
 namespace myBankApplication.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly ILogger<CustomerController> _logger;
+        private readonly ICustomerRepository _customerRepository;
 
-        public CustomerController(ILogger<CustomerController> logger)
+        public CustomerController(ICustomerRepository customerRepository)
         {
-            _logger = logger;
+            _customerRepository = customerRepository;
         }
         public IActionResult NewBankAccount()
         {
