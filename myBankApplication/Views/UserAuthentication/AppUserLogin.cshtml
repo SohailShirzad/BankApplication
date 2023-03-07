@@ -1,0 +1,71 @@
+﻿@model myBankApplication.Models.AppUsersLoginModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/contactUs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="~/js/theme.js"></script>
+    <script src="~/js/header.js"></script>
+
+
+</head>
+
+<body>
+
+    <!--Contact form left contents-->
+    <section>
+   
+        <div class="rowContact">
+            <div class="column">
+                <h1 class="mega open-sans bold uppercase" style="width:100%;">
+                    Serena Bank
+                </h1>
+                <p class="alpha lato thin thick-header-line uppercase ls-small">
+                    Bank with differences
+                </p>
+                <div>
+                    <img src="~/images/bulding.png" width="100%">
+                </div>
+            </div>
+
+
+
+            <!--Contact form-->
+            <div class="column">
+                <form asp-action="appUserLogin" method="post">
+                    <div style="text-align:left">
+                        <h6>Log in to </h6>
+                        <h1>Online Banking</h1>
+                    </div><br /><br />
+
+                    <label asp-for="EmailAddress">Email adress:</label><br />
+                    <input type="email" asp-for="EmailAddress" /><br /><br />
+                    <span asp-validation-for="EmailAddress"></span>
+
+                    <label asp-for="Password">Password:</label><br />
+                    <input type="password" asp-for="Password" /><br /><br />
+                    <span asp-validation-for="Password"></span>
+
+                    if(TempData["msg"])!=null){
+                        @TempData["msg"]
+                    }
+                    <br />
+                    <br />
+
+
+                    <input type="submit" value="Login">
+                    <div>
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+</html>

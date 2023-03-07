@@ -31,10 +31,9 @@ namespace myBankApplication.Models
         
         public DateTime? Close_Date { get; set; }
 
-        [Required, MaxLength(8)]
-        [ForeignKey ("CustomerModel")]
-        public int Customer_Id { get; set; }
-        public CustomerModel Customer { get; set; }
+        [ForeignKey("AppUserModel")]
+        public string? AppUserId { get; set; }
+        public AppUsersModel? AppUsers { get; set; }
 
         [Required]
         [ForeignKey("BankModel")]

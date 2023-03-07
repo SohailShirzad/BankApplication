@@ -16,12 +16,11 @@ namespace myBankApplication.Models
 
         public DateTime Year_Opened { get; set; }
 
-        [Required]
-        [ForeignKey("CustomerModel")]
-        public int Employee_Id { get; set; }
-        public EmployeeModel Manager { get; set; }
-    
-        
+        [ForeignKey("AppUserModel")]
+        public string? AppUserId { get; set; }
+        public AppUsersModel? AppUsers { get; set; }
+
+
     }
 
    

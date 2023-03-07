@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using myBankApplication.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,11 +25,16 @@ namespace myBankApplication.Models
         [Required, MaxLength(100)]
         public string BankName { get; set; }
 
+        [Required]
+        public TransactionType TransactionType { get; set; }
+
         [Column(TypeName = "nvarchar(11)")]
         [Required]
         public int SWIFTCode { get; set; }
+
         [Required]
         public double Amount { get; set; }
+
         [Required]
         public DateTime Date  { get; set; } = DateTime.Now;
 

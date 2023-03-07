@@ -1,17 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Models;
 
 namespace myBankApplication.Data
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext :IdentityDbContext<AppUsersModel>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
-        public DbSet<EmployeeModel> Staff { get; set; }
+        public DbSet<AppUsersModel> Users { get; set; }
         public DbSet<TransactionModel> Transactions { get; set; }
-        public DbSet<CustomerModel> Customers { get; set; }
         public DbSet<BankModel> Bank { get; set; }
         public DbSet<AccountModel> Accounts { get; set; }
         public DbSet<BankCardModel> BankCards { get; set; }
@@ -19,6 +19,7 @@ namespace myBankApplication.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<BankCardModel>().HasKey(bc => new { bc.cardNumber, bc.CVVNumber });
         }
 

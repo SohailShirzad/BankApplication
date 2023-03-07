@@ -566,3 +566,4 @@ C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\refint\my
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\myBankApplication.pdb
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\myBankApplication.genruntimeconfig.cache
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\ref\myBankApplication.dll
+C:\Users\sohai\Desktop\myProjectApp\myBankApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

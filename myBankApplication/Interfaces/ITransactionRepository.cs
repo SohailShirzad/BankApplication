@@ -1,9 +1,12 @@
-﻿using myBankApplication.Models;
+﻿using Azure;
+using myBankApplication.Models;
+using System.Transactions;
 
 namespace myBankApplication.Interfaces
 {
     public interface ITransactionRepository
     {
+
         Task<IEnumerable<TransactionModel>> GetAll();
         Task<TransactionModel> GetByIdAsync(int id);
 

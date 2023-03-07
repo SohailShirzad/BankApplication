@@ -10,9 +10,9 @@ namespace myBankApplication.Interfaces
         Task<BankCardModel> getByIdAsync(int id);
 
 
-        Task<IEnumerable<BankCardModel>> getCustomerByBankCard(int CustomerId);
+        //Task<IEnumerable<BankCardModel>> getCustomerByBankCard(int CustomerId);
 
-        Task<IEnumerable<BankCardModel>> GetAccountByBankCard(int AccountNo);
+        //Task<IEnumerable<BankCardModel>> GetAccountByBankCard(int AccountNo);
 
         bool Add(BankCardModel bankCard);
 

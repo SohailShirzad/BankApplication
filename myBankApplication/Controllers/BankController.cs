@@ -2,7 +2,7 @@
 
 namespace myBankApplication.Controllers
 {
-    public class BankController : Controller
+    public class BankModelController : Controller
     {
         [HttpGet]
         public IActionResult Add()

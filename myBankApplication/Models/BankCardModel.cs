@@ -21,10 +21,10 @@ namespace myBankApplication.Models
         public int Account_Id { get; set; }
         public AccountModel AccountNumber;
 
-        [Required]
-        [ForeignKey("CustomerModel")]
-        public int Customer_Id { get; set; }
-        public CustomerModel Customer { get; set; }
+ 
+        [ForeignKey("AppUserModel")]
+        public string? AppUserId { get; set; }
+        public AppUsersModel? AppUsers { get; set; }
 
     }
 }

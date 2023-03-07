@@ -26,20 +26,25 @@ namespace myBankApplication.Repository
             return await _context.Accounts.ToListAsync();
         }
 
-        public async Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId)
+        public Task<AccountModel> getByIdAsync(int id)
         {
-            return await _context.Accounts.Where(c => c.Customer.Customer_Id == CustomerId).ToListAsync();
-
-        }
-        public async Task<AccountModel> getByIdAsync(int id)
-        {
-            return await _context.Accounts.FirstOrDefaultAsync(i => i.AccountNo == id);
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<AccountModel>> GetAccountByBankName(string BankName)
-        {
-            return await _context.Accounts.Where(x => x.Bank.BankName.Contains(BankName)).ToListAsync();
-        }
+        //public async Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId)
+        //{
+        //    return await _context.Accounts.Where(c => c.AppUserId.Id == CustomerId).ToListAsync();
+
+        //}
+        //public async Task<AccountModel> getByIdAsync(int id)
+        //{
+        //    return await _context.Accounts.FirstOrDefaultAsync(i => i.AccountNo == id);
+        //}
+
+        //public async Task<IEnumerable<AccountModel>> GetAccountByBankName(string BankName)
+        //{
+        //    return await _context.Accounts.Where(x => x.Bank.BankName.Contains(BankName)).ToListAsync();
+        //}
 
         public bool Save()
         {
