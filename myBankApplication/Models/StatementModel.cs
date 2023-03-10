@@ -11,9 +11,8 @@ namespace myBankApplication.Models
         public int StatementID { get; set; }
 
 
-        [Required]
         [ForeignKey("AccountModel")]
-        public int AccountNo { get; set; }
+        public int? AccountNo { get; set; }
         public AccountModel Account { get; set; }
 
         public DateTime? StatementDate { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace myBankApplication.Models
+﻿namespace myBankApplication.ViewModels
 {
     public class StatusModel
     {

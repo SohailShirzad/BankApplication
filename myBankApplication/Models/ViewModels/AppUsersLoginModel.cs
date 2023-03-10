@@ -8,7 +8,7 @@ namespace myBankApplication.ViewModels
         [Required(ErrorMessage = "Email address is required")]
         public string EmailAddress { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

@@ -12,8 +12,8 @@ using myBankApplication.Data;
 namespace myBankApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230307101130_first")]
-    partial class first
+    [Migration("20230310210318_Identity")]
+    partial class Identity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -181,7 +181,6 @@ namespace myBankApplication.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("BankName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BankName1")
@@ -233,10 +232,10 @@ namespace myBankApplication.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasMaxLength(50)
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Date_Joined")
+                    b.Property<DateTime?>("Date_Joined")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Education")
@@ -260,7 +259,6 @@ namespace myBankApplication.Migrations
                         .HasColumnType("int");
 
                     b.Property<long>("Income")
-                        .HasMaxLength(50)
                         .HasColumnType("bigint");
 
                     b.Property<string>("LName")
@@ -275,7 +273,6 @@ namespace myBankApplication.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("MName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -294,8 +291,8 @@ namespace myBankApplication.Migrations
 
                     b.Property<string>("Occupation")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -311,13 +308,11 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<byte[]>("Profile_Picture")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Profile_Picture")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Proof_Id")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("Proof_Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -411,7 +406,7 @@ namespace myBankApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatementID"));
 
-                    b.Property<int>("AccountNo")
+                    b.Property<int?>("AccountNo")
                         .HasColumnType("int");
 
                     b.Property<int>("AccountNo1")
@@ -441,7 +436,6 @@ namespace myBankApplication.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(12)");
 
                     b.Property<int>("AccountNo1")

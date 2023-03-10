@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
@@ -14,18 +15,26 @@ builder.Services.AddScoped<IBankCardRepository, BankCardsRepository>();
 builder.Services.AddScoped<IAppUsersRepository, BankAppUsersRepository>();
 builder.Services.AddScoped<IStatementRepository, BankStatementRepository>();
 builder.Services.AddScoped<ITransactionRepository, BankTransactionRepository>();
-builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
+//builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //For Identity
 builder.Services.AddIdentity<AppUsersModel, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+    //AddDefaultTokenProviders();
 
-builder.Services.ConfigureApplicationCookie(c => c.LoginPath = "/UserAuthentication/Login");
+//builder.Services.AddMemoryCache();
+//builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
 
 var app = builder.Build();
+
+if (args.Length == 1 && args[0].ToLower() == "roledata")
+{
+    await Role.UsersAndRolesAsync(app);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

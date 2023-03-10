@@ -13,30 +13,31 @@ namespace myBankApplication.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please enter your first name"), MaxLength(50)]
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
         public string FName { get; set; }
 
         [MaxLength(50)]
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
-        public string MName { get; set; }
+        
+        public string? MName { get; set; }
 
-        [RegularExpression(@"^[0-9A-Za-z] +$", ErrorMessage = "Name cannot contain number or special characters")]
+        
         [Required(ErrorMessage = "Please enter your Last name"), MaxLength(50)]
         public string LName { get; set; }
 
         [Required(ErrorMessage = "Please select your education"), MaxLength(200)]
         public string Education { get; set; }
 
-        [Required(ErrorMessage = "Please select your Occupation"), MaxLength(50)]
+        [Required(ErrorMessage = "Please select your Occupation"), MaxLength(200)]
         public string Occupation { get; set; }
 
         [Required(ErrorMessage = "Please select your Gender")]
         public Gender Gender { get; set; }
 
-        [Required(ErrorMessage = "Please enter your date of Birth"), MaxLength(50)]
+        [Required(ErrorMessage = "Please enter your date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Please select your Salary Range"), MaxLength(50)]
+        [Required(ErrorMessage = "Please select your Salary Range")]
         public long Income { get; set; }
 
         [Required(ErrorMessage = "Please select your Country"), MaxLength(50)]
@@ -51,7 +52,13 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Post Code"), MaxLength(8)]
         public string Post_Code { get; set; }
 
-        public DateTime Date_Joined { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Date_Joined { get; set; } = DateTime.Now;
+
 
         //[Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
         //[DataType(DataType.Password)]
@@ -62,10 +69,10 @@ namespace myBankApplication.Models
         //[Compare("Banking_Password", ErrorMessage = "Password do not match"]
         //public string Banking_ConfirmationPassword { get; set; }
 
-        [Required(ErrorMessage = "Please Upload profile picture")]
-        public byte[] Profile_Picture { get; set; }
-        [Required(ErrorMessage = "Please upload proof of Id")]
-        public byte[] Proof_Id { get; set; }
+        //[Required(ErrorMessage = "Please Upload profile picture")]
+        public string? Profile_Picture { get; set; }
+        //[Required(ErrorMessage = "Please upload proof of Id")]
+        public string? Proof_Id { get; set; }
 
         public ICollection<AccountModel> Accounts { get; set; }
         

@@ -35,9 +35,9 @@ namespace myBankApplication.Models
         public string? AppUserId { get; set; }
         public AppUsersModel? AppUsers { get; set; }
 
-        [Required]
+        
         [ForeignKey("BankModel")]
-        public string BankName { get; set; }
+        public string? BankName { get; set; }
         public BankModel Bank { get; set; }
 
 

@@ -34,6 +34,7 @@
     <Compile Remove="Migrations\20230306105132_First.cs" />
     <Compile Remove="Migrations\20230306105132_First.Designer.cs" />
     <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Compile Remove="Models\AppUsersLoginModel.cs" />
     <Compile Remove="Views\Home\Help.cshtml.cs" />
   </ItemGroup>
 

@@ -12,9 +12,8 @@ namespace myBankApplication.Models
         [Column (TypeName ="nvarchar(12)")]
 
 
-        [Required]
         [ForeignKey("AccountModel")]
-        public int AccountNo { get; set; }
+        public int? AccountNo { get; set; }
         public AccountModel Account { get; set; }
 
         [Column(TypeName = "nvarchar(150)")]

@@ -16,10 +16,10 @@ namespace myBankApplication.Models
 
         public int? ContaclessLimit { get; set; }
 
-        [Required]
+      
         [ForeignKey("AccountModel")]
         public int Account_Id { get; set; }
-        public AccountModel AccountNumber;
+        public AccountModel? AccountNumber;
 
  
         [ForeignKey("AppUserModel")]

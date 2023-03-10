@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace myBankApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class Identity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,20 +32,20 @@ namespace myBankApplication.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     FName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    MName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     LName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Education = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Occupation = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Occupation = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", maxLength: 50, nullable: false),
-                    Income = table.Column<long>(type: "bigint", maxLength: 50, nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Income = table.Column<long>(type: "bigint", nullable: false),
                     CountryOfBirth = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PostCode = table.Column<string>(name: "Post_Code", type: "nvarchar(8)", maxLength: 8, nullable: false),
                     DateJoined = table.Column<DateTime>(name: "Date_Joined", type: "datetime2", nullable: false),
-                    ProfilePicture = table.Column<byte[]>(name: "Profile_Picture", type: "varbinary(max)", nullable: false),
-                    ProofId = table.Column<byte[]>(name: "Proof_Id", type: "varbinary(max)", nullable: false),
+                    ProfilePicture = table.Column<string>(name: "Profile_Picture", type: "nvarchar(max)", nullable: true),
+                    ProofId = table.Column<string>(name: "Proof_Id", type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -228,7 +228,7 @@ namespace myBankApplication.Migrations
                     CloseDate = table.Column<DateTime>(name: "Close_Date", type: "datetime2", nullable: true),
                     AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUsersId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BankName1 = table.Column<string>(type: "nvarchar(80)", nullable: false)
                 },
                 constraints: table =>
@@ -253,7 +253,7 @@ namespace myBankApplication.Migrations
                 {
                     StatementID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountNo = table.Column<int>(type: "int", nullable: false),
+                    AccountNo = table.Column<int>(type: "int", nullable: true),
                     AccountNo1 = table.Column<int>(type: "int", nullable: false),
                     StatementDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AppUsersModelId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -280,7 +280,7 @@ namespace myBankApplication.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountNo = table.Column<string>(type: "nvarchar(12)", nullable: false),
+                    AccountNo = table.Column<string>(type: "nvarchar(12)", nullable: true),
                     AccountNo1 = table.Column<int>(type: "int", nullable: false),
                     BeniciaryName = table.Column<string>(type: "nvarchar(150)", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
