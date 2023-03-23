@@ -6,8 +6,13 @@ namespace myBankApplication.Models
 {
     public class BankCardModel
     {
-        
-        public int cardNumber { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [MaxLength (16)]
+        [MinLength(16)]
+        public string CardNumber { get; set; } 
+
         [Required, MaxLength(3), MinLength(3)]
         public int CVVNumber { get; set; }
 

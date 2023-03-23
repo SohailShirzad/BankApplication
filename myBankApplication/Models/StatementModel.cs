@@ -6,8 +6,7 @@ namespace myBankApplication.Models
     public class StatementModel
     {
         [Key]
-
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StatementID { get; set; }
 
 
@@ -15,7 +14,7 @@ namespace myBankApplication.Models
         public int? AccountNo { get; set; }
         public AccountModel Account { get; set; }
 
-        public DateTime? StatementDate { get; set; }
+        public DateTime? StatementDate { get; set; } = DateTime.Now;
 
 
     }

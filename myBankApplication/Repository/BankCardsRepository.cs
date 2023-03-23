@@ -33,7 +33,7 @@ namespace myBankApplication.Repository
 
         public async Task<BankCardModel> getByIdAsync(int id)
         {
-            return await _context.BankCards.FirstOrDefaultAsync(i => i.cardNumber == id);
+            return await _context.BankCards.FirstOrDefaultAsync(i => i.CardNumber.Equals(id));
         }
 
         //public async Task<IEnumerable<BankCardModel>> getCustomerByBankCard(int CustomerId)

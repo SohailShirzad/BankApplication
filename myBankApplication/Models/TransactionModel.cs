@@ -8,9 +8,8 @@ namespace myBankApplication.Models
     public class TransactionModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Column (TypeName ="nvarchar(12)")]
-
 
         [ForeignKey("AccountModel")]
         public int? AccountNo { get; set; }
@@ -20,16 +19,12 @@ namespace myBankApplication.Models
         [Required]
         public string BeniciaryName { get; set; }
        
-        [Column(TypeName = "nvarchar(80)")]
+ 
         [Required, MaxLength(100)]
         public string BankName { get; set; }
 
         [Required]
         public TransactionType TransactionType { get; set; }
-
-        [Column(TypeName = "nvarchar(11)")]
-        [Required]
-        public int SWIFTCode { get; set; }
 
         [Required]
         public double Amount { get; set; }
@@ -37,7 +32,7 @@ namespace myBankApplication.Models
         [Required]
         public DateTime Date  { get; set; } = DateTime.Now;
 
-        [Column(TypeName = "nvarchar(80)")]
+
         [Required, MaxLength(20)]
         public String Reference { get; set; }
     }

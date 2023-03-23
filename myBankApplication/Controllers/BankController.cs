@@ -2,10 +2,10 @@
 
 namespace myBankApplication.Controllers
 {
-    public class BankModelController : Controller
+    public class BankController : Controller
     {
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Index()
         {
             return View();
         }

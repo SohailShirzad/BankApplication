@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using myBankApplication.Models;
 
 namespace myBankApplication.Data
@@ -20,7 +21,17 @@ namespace myBankApplication.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<BankCardModel>().HasKey(bc => new { bc.cardNumber, bc.CVVNumber });
+            modelBuilder.Entity<BankCardModel>().HasKey(bc => new { bc.CardNumber, bc.CVVNumber });
+
+            modelBuilder.Entity<AccountModel>()
+                .Property(s => s.Sort_Code)
+                .HasDefaultValue (070493);
+
+            modelBuilder.Entity<TransactionModel>()
+                .Property(d => d.Date)
+                .HasDefaultValueSql("getdate()");
+
+
         }
 
     }

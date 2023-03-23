@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="~/css/sideNav.css">
@@ -19,11 +20,11 @@
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserDetail">Account Details</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserLogout">Log out</a>
+        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
     </div>
-
+    
     <div class="main">
-        <h2>Sidebar</h2>
+        <a asp-area="" asp-controller="Account" asp-action="Create">Create an Account</a>
         
     </div>
 

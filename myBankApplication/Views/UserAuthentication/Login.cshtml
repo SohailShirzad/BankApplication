@@ -4,10 +4,6 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/contactUs.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="~/js/theme.js"></script>
-    <script src="~/js/header.js"></script>
 
     <!-- Alret style when user credentials are not correct-->
     <style>
@@ -28,9 +24,9 @@
             transition: 0.3s;
         }
 
-        .closebtn:hover {
-             color: black;
-        }
+            .closebtn:hover {
+                color: black;
+            }
 
     </style>
 
@@ -45,24 +41,13 @@
         {
             <div class="alertAuthentication">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong>Sorry!- @TempData["Error"]</strong>
+                <strong>Sorry!- @TempData["Error"]</strong>
             </div>
         }
         <div class="rowContact">
-            <div class="column">
-                <h1 class="mega open-sans bold uppercase" style="width:100%;">
-                    Serena Bank
-                </h1>
-                <p class="alpha lato thin thick-header-line uppercase ls-small">
-                    Bank with differences
-                </p>
-                <div>
-                    <img src="~/images/bulding.png" width="100%">
-                </div>
-            </div>
             <!--Contact form-->
             <div class="column">
-                <form asp-action="Login">
+                <form asp-action="Login" class="login">
                     <div style="text-align:left">
                         <h6>Log in to </h6>
                         <h1>Online Banking</h1>
@@ -70,7 +55,7 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control">
+                        <input asp-for="EmailAddress" class="form-control" />
                         <span asp-validation-for="EmailAddress" class="text-danger"></span>
                     </div>
                     <div class="form-group">

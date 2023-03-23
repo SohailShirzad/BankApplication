@@ -9,25 +9,26 @@ namespace myBankApplication.Models
     public class AccountModel
     {
         [Key]
-        [MaxLength(8)]
-        public int AccountNo { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AccountNo{ get; set; }
+       
 
-        [Required]
+        
         [Column(TypeName = "nvarchar(8)")]
-        public string Sort_Code { get; set; }
+        public int? Sort_Code { get; set; }
 
         [Column(TypeName = "nvarchar(8)")]
-        [Required]
-        public AccountType AccountType { get; set; } 
+        [Required(ErrorMessage = "Please select Account Type")]
+        public AccountType AccountType { get; set; }
 
-        [Required]
-        public double Balance { get; set; }
+       
+        public double? Balance { get; set; }
 
-        [Required]
-        public DateTime Date_Opened { get; set; }
 
-        [Required]
-        public AccountStatus Status { get; set; }
+        public DateTime? Date_Opened { get; set; } = DateTime.Now;
+
+        
+        public AccountStatus? Status { get; set; } = AccountStatus.Active;
         
         public DateTime? Close_Date { get; set; }
 
@@ -35,10 +36,6 @@ namespace myBankApplication.Models
         public string? AppUserId { get; set; }
         public AppUsersModel? AppUsers { get; set; }
 
-        
-        [ForeignKey("BankModel")]
-        public string? BankName { get; set; }
-        public BankModel Bank { get; set; }
 
 
 

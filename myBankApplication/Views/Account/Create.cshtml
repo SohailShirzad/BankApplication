@@ -1,0 +1,31 @@
+﻿@using myBankApplication.Data.Enum
+@using myBankApplication.ViewModels
+@model CreateAccountViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="~/css/registration.css">
+</head>
+<body>
+    <h1>Serena Bank</h1>
+
+    <form asp-action="Create">
+        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId"/>
+
+        <div class="col">
+            <select asp-for="AccountType" asp-items="@Html.GetEnumSelectList<AccountType>()" class="form-control form-control-lg">
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+            </select>
+            <span asp-validation-for="AccountType" class="text-danger"></span>
+
+            <button class="btn btn-info" type="submit" value="Sgin up">Next</button>
+        </div>
+
+
+    </form>
+
+
+</body>
+</html>

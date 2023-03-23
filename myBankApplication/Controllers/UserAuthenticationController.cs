@@ -11,8 +11,10 @@ using NuGet.Protocol.Core.Types;
 using System.Net;
 using System.Reflection;
 
+
 namespace myBankApplication.Controllers
 {
+    
     public class UserAuthenticationController : Controller
     {
         private readonly SignInManager<AppUsersModel> _signInManager;
@@ -38,7 +40,7 @@ namespace myBankApplication.Controllers
         }
 
         //Login check to check if the username and password matches
-
+        
         [HttpPost]
         public async Task<IActionResult> Login(AppUsersLoginModel appUsersLoginModel)
         {
@@ -98,6 +100,7 @@ namespace myBankApplication.Controllers
                 FName = appUsersRegistrationModel.FName,
                 MName = appUsersRegistrationModel.MName,
                 LName = appUsersRegistrationModel.LName,
+                PhoneNumber = appUsersRegistrationModel.PhoneNumber,
                 Education = appUsersRegistrationModel.Education,
                 Occupation = appUsersRegistrationModel.Occupation,
                 Gender = appUsersRegistrationModel.Gender,
@@ -131,7 +134,7 @@ namespace myBankApplication.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("AppUserLogin", "AppUsers");
+            return RedirectToAction("Login", "UserAuthentication");
         }
 
         // Add admin 

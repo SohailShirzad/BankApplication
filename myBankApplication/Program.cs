@@ -24,8 +24,8 @@ builder.Services.AddIdentity<AppUsersModel, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
     //AddDefaultTokenProviders();
 
-//builder.Services.AddMemoryCache();
-//builder.Services.AddSession();
+   //builder.Services.AddMemoryCache();
+    //builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
 
@@ -49,6 +49,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Only allow authorised users to see the dashboard.
 app.UseAuthentication();
 app.UseAuthorization();
 

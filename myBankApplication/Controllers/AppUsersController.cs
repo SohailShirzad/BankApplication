@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using myBankApplication.Interfaces;
 
 namespace myBankApplication.Controllers
 {
+    
     public class AppUsersController : Controller
     {
         private readonly IAppUsersRepository _customerRepository;
@@ -13,14 +15,6 @@ namespace myBankApplication.Controllers
         }
         [HttpGet("CustomerStatements")]
 
-        public IActionResult AppUserRegistration()
-        {
-            return View();
-        }
-        public IActionResult AppUserLogin()
-        {
-            return View();
-        }
         public IActionResult AppUserDepositCheque()
         {
             return View();
@@ -53,8 +47,11 @@ namespace myBankApplication.Controllers
         {
             return View();
         }
+        
         public IActionResult AppUserHome()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "UserAuthentication");
             return View();
         }
         public IActionResult AppUserCard()

@@ -9,6 +9,11 @@ namespace myBankApplication.Repository
     {
         private readonly ApplicationDbContext _context;
 
+        public BankAccountRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public bool Add(AccountModel account)
         {
             _context.Add(account);
@@ -49,7 +54,7 @@ namespace myBankApplication.Repository
         public bool Save()
         {
             var saved = _context.SaveChanges();
-            return saved > 0 ? true : false;
+            return saved > 0;
         }
 
         public bool Update(AccountModel account)

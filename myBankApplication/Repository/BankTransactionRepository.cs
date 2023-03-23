@@ -46,11 +46,6 @@ namespace myBankApplication.Repository
         {
             return await _context.Transactions.FirstOrDefaultAsync(i => i.Reference.Contains(reference));
         }
-        
-        public async Task<TransactionModel> GetTransactionBySwiftCode(int swiftCode)
-        {
-            return await _context.Transactions.FirstOrDefaultAsync(i => i.SWIFTCode == swiftCode);
-        }
 
         public bool Save()
         {

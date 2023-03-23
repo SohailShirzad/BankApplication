@@ -2,7 +2,7 @@
 
 namespace myBankApplication.Controllers
 {
-    public class BankCardModelController : Controller
+    public class BankCardController : Controller
     {
         public IActionResult Index()
         {

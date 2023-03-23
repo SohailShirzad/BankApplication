@@ -14,7 +14,6 @@ namespace myBankApplication.Interfaces
 
         Task<TransactionModel> GetTransactionByReference (string reference);
 
-        Task<TransactionModel> GetTransactionBySwiftCode(int swiftCode);
 
         Task<TransactionModel> GetTransactionByDate(DateTime date);
 

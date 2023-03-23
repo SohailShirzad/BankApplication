@@ -8,6 +8,7 @@ namespace myBankApplication.Models
 {
     public class AppUsersModel : IdentityUser
     {
+      
 
         [Required(ErrorMessage = "Please select a title"), MaxLength(20)]
         public string Title { get; set; }
@@ -77,8 +78,6 @@ namespace myBankApplication.Models
         public ICollection<AccountModel> Accounts { get; set; }
         
         public ICollection<BankCardModel> BankCards { get; set; }
-
-        public ICollection <BankModel> Banks { get; set; }
 
         public ICollection <StatementModel> Statements { get; set; }  
 

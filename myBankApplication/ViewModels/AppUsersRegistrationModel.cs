@@ -1,10 +1,13 @@
 ﻿using myBankApplication.Data.Enum;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myBankApplication.ViewModels
 {
     public class AppUsersRegistrationModel
     {
+        
+
         [Required(ErrorMessage = "Please select a title"), MaxLength(20)]
         public string Title { get; set; }
 
@@ -55,8 +58,9 @@ namespace myBankApplication.ViewModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date_Joined { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "Please enter your phone number"), MaxLength(20)]
-        public string phoneNumber { get; set; }
+        [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Please enter your phone number")]
+        public string PhoneNumber { get; set; }
 
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "Email address is required")]

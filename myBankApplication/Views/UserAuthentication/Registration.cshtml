@@ -1,4 +1,5 @@
-﻿@model myBankApplication.ViewModels.AppUsersRegistrationModel
+﻿@using myBankApplication.Data.Enum
+@model myBankApplication.ViewModels.AppUsersRegistrationModel
 
 <!DOCTYPE html>
 <html>
@@ -52,8 +53,8 @@
             <label>Enter Your Last Name: <input type="text" asp-for="LName"/></label>
             <span class="text-danger" asp-validation-for="LName"></span>
 
-            <label>Mobile Number: <input type="text" asp-for="phoneNumber"/></label>
-            <span class="text-danger" asp-validation-for="phoneNumber"></span>
+            <label>Mobile Number: <input type="text" asp-for="PhoneNumber"/></label>
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
 
             
 
@@ -173,17 +174,17 @@
                 </select>
             </label>
 
-            <label asp-for="Gender">
-                Gender:
-                <input type="radio" asp-for="Gender" value="Male" class="inline" /> Male
-                <span class="text-danger" asp-validation-for="Gender"></span>
-                <input type="radio" asp-for= "Gender" value="Female" class="inline" /> Female
-                <span class="text-danger" asp-validation-for="Gender"></span>
-            </label>
+            <lable> Gender:
+            <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()">  
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+            </select>
+            
+            <span asp-validation-for="Gender" class="text-danger"></span>
+            </lable>
 
             <label>
                 Date of Birth:
-                <input type="date" id="Dateasp-for="DateOfBirth">
+                <input type="date" asp-for="DateOfBirth">
                 <span class="text-danger" asp-validation-for="DateOfBirth"></span>
             </label>
 
@@ -191,13 +192,13 @@
                     <select asp-for="Income">
                     <span class="text-danger" asp-validation-for="Income"></span>
                         <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                        <option value="10000"> 10000</option>
-                        <option value="20000"> 20000</option>
-                        <option value="40000"> 40000</option>
-                        <option value= "60000"> 60000</option>
-                        <option value="80000"> 80000</option>
-                        <option value="100000"> 100000</option>
-                        <option value="100000"> 100000</option>
+                        <option value="10000"> £10,000</option>
+                        <option value="20000"> £20,000</option>
+                        <option value="40000"> £40,000</option>
+                        <option value= "60000"> £60,000</option>
+                        <option value="80000"> £80,000</option>
+                        <option value="100000"> £100,000</option>
+                        <option value="100000"> £1,000,000</option>
                     </select>
             </label>
 
@@ -649,14 +650,15 @@
                   <option value="zambian">Zambian</option>
                   <option value="zimbabwean">Zimbabwean</option>
                 </select>
-                </label>
+
+            </label>
 
                <label> Address: <input type="text" asp-for="Address" /></label>
                <span class="text-danger" asp-validation-for="Address"></span>
 
                <label> Post_Code: <input type="text" asp-for="Post_Code" placeholder="SG15BJ"/></label>
                <span class="text-danger" asp-validation-for="Post_Code"></span>
-                                
+               
     
               <label>Enter Your Email: <input type="email" asp-for="EmailAddress"/></label>
               <span class="text-danger" asp-validation-for="EmailAddress"></span>
@@ -667,7 +669,7 @@
               <label>Re-type Password: <input type="password"  asp-for="ConfirmPassword"/></label>
               <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
    
-              <button class="btn btn-info" type="submit" value="Sgin up">Submit</button>
+              <button class="btn btn-info" type="submit" value="Sgin up">Next</button>
               <a class="btn btn-info" href="/UserAuthentication/AppUserLogin">Cancel</a>
        
     </form>

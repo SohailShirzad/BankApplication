@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace myBankApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class Identity : Migration
+    public partial class Identitity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,95 @@ namespace myBankApplication.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000000, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Accounts",
+                columns: table => new
+                {
+                    AccountNo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SortCode = table.Column<string>(name: "Sort_Code", type: "nvarchar(8)", nullable: true, defaultValue: "70493"),
+                    AccountType = table.Column<string>(type: "nvarchar(8)", nullable: false),
+                    Balance = table.Column<double>(type: "float", nullable: true),
+                    DateOpened = table.Column<DateTime>(name: "Date_Opened", type: "datetime2", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
+                    CloseDate = table.Column<DateTime>(name: "Close_Date", type: "datetime2", nullable: true),
+                    AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AppUsersId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    BankModelBankName = table.Column<string>(type: "nvarchar(80)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Accounts", x => x.AccountNo);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,6 +135,7 @@ namespace myBankApplication.Migrations
                     DateJoined = table.Column<DateTime>(name: "Date_Joined", type: "datetime2", nullable: false),
                     ProfilePicture = table.Column<string>(name: "Profile_Picture", type: "nvarchar(max)", nullable: true),
                     ProofId = table.Column<string>(name: "Proof_Id", type: "nvarchar(max)", nullable: true),
+                    BankModelBankName = table.Column<string>(type: "nvarchar(80)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -64,92 +154,6 @@ namespace myBankApplication.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserClaims",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserLogins",
-                columns: table => new
-                {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,7 +182,7 @@ namespace myBankApplication.Migrations
                 {
                     BankName = table.Column<string>(type: "nvarchar(80)", nullable: false),
                     BankAddress = table.Column<string>(name: "Bank_Address", type: "nvarchar(80)", nullable: false),
-                    YearOpened = table.Column<DateTime>(name: "Year_Opened", type: "datetime2", nullable: false),
+                    YearOpened = table.Column<DateTime>(name: "Year_Opened", type: "datetime2", nullable: true),
                     AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AppUsersId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
@@ -196,7 +200,7 @@ namespace myBankApplication.Migrations
                 name: "BankCards",
                 columns: table => new
                 {
-                    cardNumber = table.Column<int>(type: "int", nullable: false),
+                    CardNumber = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     CVVNumber = table.Column<int>(type: "int", maxLength: 3, nullable: false),
                     ExpiryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ContaclessLimit = table.Column<int>(type: "int", nullable: true),
@@ -206,45 +210,12 @@ namespace myBankApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BankCards", x => new { x.cardNumber, x.CVVNumber });
+                    table.PrimaryKey("PK_BankCards", x => new { x.CardNumber, x.CVVNumber });
                     table.ForeignKey(
                         name: "FK_BankCards_AspNetUsers_AppUsersId",
                         column: x => x.AppUsersId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Accounts",
-                columns: table => new
-                {
-                    AccountNo = table.Column<int>(type: "int", maxLength: 8, nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SortCode = table.Column<string>(name: "Sort_Code", type: "nvarchar(8)", nullable: false),
-                    AccountType = table.Column<string>(type: "nvarchar(8)", nullable: false),
-                    Balance = table.Column<double>(type: "float", nullable: false),
-                    DateOpened = table.Column<DateTime>(name: "Date_Opened", type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    CloseDate = table.Column<DateTime>(name: "Close_Date", type: "datetime2", nullable: true),
-                    AppUserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AppUsersId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    BankName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BankName1 = table.Column<string>(type: "nvarchar(80)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Accounts", x => x.AccountNo);
-                    table.ForeignKey(
-                        name: "FK_Accounts_AspNetUsers_AppUsersId",
-                        column: x => x.AppUsersId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Accounts_Bank_BankName1",
-                        column: x => x.BankName1,
-                        principalTable: "Bank",
-                        principalColumn: "BankName",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -280,12 +251,11 @@ namespace myBankApplication.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountNo = table.Column<string>(type: "nvarchar(12)", nullable: true),
+                    AccountNo = table.Column<int>(type: "int", nullable: true),
                     AccountNo1 = table.Column<int>(type: "int", nullable: false),
                     BeniciaryName = table.Column<string>(type: "nvarchar(150)", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     TransactionType = table.Column<int>(type: "int", nullable: false),
-                    SWIFTCode = table.Column<string>(type: "nvarchar(11)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Reference = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
@@ -313,9 +283,9 @@ namespace myBankApplication.Migrations
                 column: "AppUsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Accounts_BankName1",
+                name: "IX_Accounts_BankModelBankName",
                 table: "Accounts",
-                column: "BankName1");
+                column: "BankModelBankName");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -348,6 +318,11 @@ namespace myBankApplication.Migrations
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_BankModelBankName",
+                table: "AspNetUsers",
+                column: "BankModelBankName");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -385,11 +360,60 @@ namespace myBankApplication.Migrations
                 name: "IX_Transactions_AppUsersModelId",
                 table: "Transactions",
                 column: "AppUsersModelId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Accounts_AspNetUsers_AppUsersId",
+                table: "Accounts",
+                column: "AppUsersId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Accounts_Bank_BankModelBankName",
+                table: "Accounts",
+                column: "BankModelBankName",
+                principalTable: "Bank",
+                principalColumn: "BankName");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                table: "AspNetUserRoles",
+                column: "UserId",
+                principalTable: "AspNetUsers",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_AspNetUsers_Bank_BankModelBankName",
+                table: "AspNetUsers",
+                column: "BankModelBankName",
+                principalTable: "Bank",
+                principalColumn: "BankName");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Bank_AspNetUsers_AppUsersId",
+                table: "Bank");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -421,10 +445,10 @@ namespace myBankApplication.Migrations
                 name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Bank");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Bank");
         }
     }
 }
