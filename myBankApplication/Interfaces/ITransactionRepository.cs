@@ -1,4 +1,5 @@
 ﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using myBankApplication.Models;
 using System.Transactions;
 
@@ -15,11 +16,10 @@ namespace myBankApplication.Interfaces
         Task<TransactionModel> GetTransactionByReference (string reference);
 
 
-        Task<TransactionModel> GetTransactionByDate(DateTime date);
 
-        bool Add(TransactionModel transaction);
-        bool Update(TransactionModel transaction);
-        bool Delete(TransactionModel transaction);
-        bool Save();
+
+ 
+
+
     }
 }

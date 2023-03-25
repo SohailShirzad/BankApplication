@@ -1,0 +1,82 @@
+﻿
+@using myBankApplication.ViewModels
+@model DashboardViewModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #tableStyle {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #tableStyletd, #tableStyle th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #tableStyle tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #tableStyle tr:hover {
+                background-color: #ddd;
+            }
+
+            #tableStyle th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+
+        table, th, td {
+            border: 1px solid;
+        }
+
+    </style>
+
+</head>
+
+<h1>User</h1>
+
+<div style="overflow-x: auto;">
+    <table id="tableStyle">
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>Middle Name</th>
+            <th>LastName</th>
+            <th>Gender</th>
+            <th>More details</th>
+
+        </tr>
+        @foreach (var user in Model.Accounts)
+        {
+
+
+            <tr>
+                <td>@user.AccountNo</td>
+                <td> @user.AccountType </td>
+                <td>@user.Balance</td>
+                <td>@user.Date_Opened</td>
+                <td>@user.Close_Date</td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-controller="AppUsers" asp-action="Detail">
+                        View Profile
+                    </a>
+                </td>
+            </tr>
+
+
+        }
+    </table>
+</div>
+
+</section>
+</html>

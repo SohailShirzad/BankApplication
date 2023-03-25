@@ -27,9 +27,8 @@ namespace myBankApplication.Data
                 .Property(s => s.Sort_Code)
                 .HasDefaultValue (070493);
 
-            modelBuilder.Entity<TransactionModel>()
-                .Property(d => d.Date)
-                .HasDefaultValueSql("getdate()");
+
+           
 
 
         }

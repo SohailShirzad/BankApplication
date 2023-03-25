@@ -9,6 +9,11 @@ namespace myBankApplication.Repository
     {
         private readonly ApplicationDbContext _context;
 
+        public BankAppUsersRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }   
+
         public bool Add(AppUsersModel customer)
         {
             _context.Add(customer);
@@ -19,10 +24,11 @@ namespace myBankApplication.Repository
         {
             throw new NotImplementedException();
         }
-
+        
         public async Task<IEnumerable<AppUsersModel>> GetAll()
         {
             return await _context.Users.ToListAsync();
+            
         }
 
         public async Task<AppUsersModel> GetByEmailAsync(string email)
@@ -30,9 +36,9 @@ namespace myBankApplication.Repository
             return await _context.Users.FirstOrDefaultAsync(i => i.Email.Contains(email));
         }
 
-        public async Task<AppUsersModel> GetByIdAsync(string id)
+        public async Task<AppUsersModel> GetUserById(string id)
         {
-            return await _context.Users.FirstOrDefaultAsync(i => i.Id.Contains(id));
+            return await _context.Users.FindAsync(id);
         }
 
         public bool Save()
@@ -47,9 +53,6 @@ namespace myBankApplication.Repository
             return Save();
         }
 
-        Task<AppUsersModel> IAppUsersRepository.GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+   
     }
 }

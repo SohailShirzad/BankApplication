@@ -1,5 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model myBankApplication.ViewModels.CreateAccountViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="~/js/theme.js"></script>
+    <script src="~/js/header.js"></script>
+    <style>
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .margin {
+            margin: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 100%;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="sidenav">
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserHome">Home</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment">Payment</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserOverdraft">Overdraft</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserloan">Loans</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserCard">Card</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserDetail">Account Details</a>
+        <a asp-area="" asp-controller="UserAuthentication" asp-action="login">Log out</a>
+    </div>
+    <div class=" main">
+         <div>
+            <a style="text-align:right;">Account information</a> |
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail">Personal Details</a> |
+
+        </div>
+        <h1>Account Details:</h1>
+
+<div style="overflow-x: auto;">
+    <table id="tableStyle">
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>Middle Name</th>
+            <th>LastName</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>More details</th>
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

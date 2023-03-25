@@ -11,7 +11,7 @@ namespace myBankApplication.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AccountNo{ get; set; }
-       
+
 
         
         [Column(TypeName = "nvarchar(8)")]
@@ -22,7 +22,7 @@ namespace myBankApplication.Models
         public AccountType AccountType { get; set; }
 
        
-        public double? Balance { get; set; }
+        public double? Balance { get; set; } 
 
 
         public DateTime? Date_Opened { get; set; } = DateTime.Now;

@@ -23,10 +23,9 @@ namespace myBankApplication.Controllers
             return View(accounts);
         }
 
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail()
         {
-            AccountModel accountModel = await _accountRepository.getByIdAsync(id);
-            return View(accountModel);
+            return View();
         }
         [HttpGet]
 
@@ -37,6 +36,7 @@ namespace myBankApplication.Controllers
 
             return View(createAccountViewModel);
         }
+
         [HttpPost]
 
         public async Task<IActionResult> Create(CreateAccountViewModel accountVM)
@@ -67,6 +67,8 @@ namespace myBankApplication.Controllers
             
 
         }
+
+     
 
     }
 }

@@ -1,30 +1,8 @@
 ﻿
-/*https://github.com/programmercloud/wavy-login-form Reference*/ 
-
-input[type=submit] {
-    background: #9c5ee3;
-    border-radius: 1.875em;
-    border-color: transparent;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: normal;
-    margin: 15px auto;
-    padding: 0.8125em 1.875em;
-}
-
-    input[type=submit]:hover {
-        color: black;
-        font-size: 1rem;
-        font-weight: 900;
-        letter-spacing: 1px;
-    }
+/*https://github.com/programmercloud/wavy-login-form Reference*/
 
 body {
-    background-color: #f45b69;
-    font-family: "Asap", sans-serif;
+    background-color: #2c1c49;
 }
 
 .login {
@@ -55,12 +33,15 @@ body {
     }
 
     .login::before {
+        left: 40%;
+        bottom: -130%;
         background-color: rgba(69, 105, 144, 0.15);
         animation: wawes 6s infinite linear;
     }
 
     .login::after {
-        bottom: 50%;
+        left: 35%;
+        bottom: -125%;
         background-color: rgba(2, 128, 144, 0.2);
         animation: wawes 7s infinite;
     }
@@ -77,8 +58,23 @@ body {
         margin: 15px -10px;
     }
 
+.button {
+    font-family: "Asap", sans-serif;
+    cursor: pointer;
+    color: #192851;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    border-radius: 5rem;
+    background-color: #19d3c5;
+    transition: background-color 300ms;
+}
 
-    .login > button:hover {
+    .button:hover {
         background-color: #f24353;
     }
 

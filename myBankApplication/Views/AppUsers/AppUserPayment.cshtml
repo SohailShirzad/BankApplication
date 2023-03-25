@@ -48,7 +48,7 @@
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserCard">Card</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserDetail">Account Details</a>
+        <a asp-area="" asp-controller="Account" asp-action="Detail">Account Details</a>
         <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
     </div>
     <div class=" main">
@@ -84,21 +84,18 @@
                         <span asp-validation-for="Amount" class="text-danger"></span>
                     </div>
 
-                    
-        
-                    
                 </form>
             </div>
             <div class="column" style="background-color:#bbb;">
                 <h2> Beneficiary Account</h2>
                 <form>
                     <div class="margin">
-                        <input type="text" class="form-control" placeholder="Name">
-                        <span class="text-danger" asp-validation-for="BeniciaryName"></span>
+                        <input type="text" class="form-control" placeholder="Enter Account Number">
+                        <span class="text-danger" asp-validation-for="AccountNo"></span>
                     </div>
                     <div class="margin">
-                        <input type="text" class="form-control" placeholder="Enter Bank Name:">
-                        <span class="text-danger" asp-validation-for="BankName"></span>
+                        <input type="text" class="form-control" placeholder="Name">
+                        <span class="text-danger" asp-validation-for="BeniciaryName"></span>
                     </div>
                     <div class="margin">
                         <input type="text" class="form-control" placeholder="Refernce">

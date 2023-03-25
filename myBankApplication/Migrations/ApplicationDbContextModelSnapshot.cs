@@ -348,8 +348,11 @@ namespace myBankApplication.Migrations
                         .HasColumnType("nvarchar(16)");
 
                     b.Property<int>("CVVNumber")
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(3)
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CVVNumber"));
 
                     b.Property<int>("Account_Id")
                         .HasColumnType("int");
@@ -378,12 +381,6 @@ namespace myBankApplication.Migrations
                     b.Property<string>("BankName")
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AppUsersId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Bank_Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(80)");
@@ -392,8 +389,6 @@ namespace myBankApplication.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("BankName");
-
-                    b.HasIndex("AppUsersId");
 
                     b.ToTable("Bank");
                 });
@@ -446,11 +441,6 @@ namespace myBankApplication.Migrations
 
                     b.Property<string>("AppUsersModelId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("BankName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("BeniciaryName")
                         .IsRequired()
@@ -551,15 +541,6 @@ namespace myBankApplication.Migrations
                 {
                     b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
                         .WithMany("BankCards")
-                        .HasForeignKey("AppUsersId");
-
-                    b.Navigation("AppUsers");
-                });
-
-            modelBuilder.Entity("myBankApplication.Models.BankModel", b =>
-                {
-                    b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
-                        .WithMany()
                         .HasForeignKey("AppUsersId");
 
                     b.Navigation("AppUsers");

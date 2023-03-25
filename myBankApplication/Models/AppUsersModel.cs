@@ -59,17 +59,6 @@ namespace myBankApplication.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Date_Joined { get; set; } = DateTime.Now;
-
-
-        //[Required(ErrorMessage = "Please enter your Password"), MaxLength(80)]
-        //[DataType(DataType.Password)]
-        //public string Banking_Password { get; set; }
-
-        //[Required(ErrorMessage = "Please enter your Confirmation Password"), MaxLength(80)]
-        //[DataType(DataType.Password)]
-        //[Compare("Banking_Password", ErrorMessage = "Password do not match"]
-        //public string Banking_ConfirmationPassword { get; set; }
-
         //[Required(ErrorMessage = "Please Upload profile picture")]
         public string? Profile_Picture { get; set; }
         //[Required(ErrorMessage = "Please upload proof of Id")]

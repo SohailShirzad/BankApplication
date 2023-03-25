@@ -1,0 +1,84 @@
+﻿@using myBankApplication.ViewModels
+@model UserDetailViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #tableStyle {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #tableStyletd, #tableStyle th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #tableStyle tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            #tableStyle tr:hover {
+                background-color: #ddd;
+            }
+
+            #tableStyle th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #04AA6D;
+                color: white;
+            }
+
+        table, th, td {
+            border: 1px solid;
+        }
+
+    </style>
+
+</head>
+
+<h1>User</h1>
+
+<div style="overflow-x: auto;">
+    <table id="tableStyle">
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>Middle Name</th>
+            <th>LastName</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>More details</th>
+
+        </tr>
+        {
+
+        @{
+            var user = Model;
+        }
+
+
+            <tr>
+                <td>@user.Id</td>
+                <td> @user.FName </td>
+                <td>@user.MName</td>
+                <td>@user.LName</td>
+                <td>@user.Gender</td>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-controller="AppUser" asp-action="Detail" asp-route-id="@user.Id">
+                        View Profile
+                    </a>
+                </td>
+            </tr>
+
+
+        }
+    </table>
+</div>
+
+</html>

@@ -11,6 +11,7 @@ namespace myBankApplication.Interfaces
         Task<AccountModel> getByIdAsync(int id);
 
 
+
         //Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId);
 
         //Task<IEnumerable<AccountModel>> GetAccountByBankName(string BankName);

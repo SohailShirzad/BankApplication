@@ -15,6 +15,7 @@ builder.Services.AddScoped<IBankCardRepository, BankCardsRepository>();
 builder.Services.AddScoped<IAppUsersRepository, BankAppUsersRepository>();
 builder.Services.AddScoped<IStatementRepository, BankStatementRepository>();
 builder.Services.AddScoped<ITransactionRepository, BankTransactionRepository>();
+builder.Services.AddScoped<IDashboardRepository, BankDashboardRepository>();
 //builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));

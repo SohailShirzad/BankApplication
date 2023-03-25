@@ -1,18 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myBankApplication.Models
 {
+    
     public class BankCardModel
     {
-
-        [Key]
+        
+        [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [MaxLength (16)]
         [MinLength(16)]
-        public string CardNumber { get; set; } 
+        public string CardNumber { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required, MaxLength(3), MinLength(3)]
         public int CVVNumber { get; set; }
 

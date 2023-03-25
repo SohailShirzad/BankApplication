@@ -8,10 +8,12 @@ namespace myBankApplication.Repository
     public class BankAccountRepository : IAccountRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpcontextAccessor;
 
-        public BankAccountRepository(ApplicationDbContext context)
+        public BankAccountRepository(ApplicationDbContext context, IHttpContextAccessor httpcontextAccessor)
         {
             _context = context;
+            _httpcontextAccessor = httpcontextAccessor; 
         }
 
         public bool Add(AccountModel account)
@@ -31,25 +33,24 @@ namespace myBankApplication.Repository
             return await _context.Accounts.ToListAsync();
         }
 
+        public async Task<List<AccountModel>> getAllUserAccounts()
+        {
+            var curUser = _httpcontextAccessor.HttpContext?.User.GetUserId();
+            var userAccounts = _context.Accounts.Where(r => r.AppUsers.Id == curUser);
+            return userAccounts.ToList();
+        }
+
         public Task<AccountModel> getByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        //public async Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId)
-        //{
-        //    return await _context.Accounts.Where(c => c.AppUserId.Id == CustomerId).ToListAsync();
 
-        //}
-        //public async Task<AccountModel> getByIdAsync(int id)
-        //{
-        //    return await _context.Accounts.FirstOrDefaultAsync(i => i.AccountNo == id);
-        //}
-
-        //public async Task<IEnumerable<AccountModel>> GetAccountByBankName(string BankName)
-        //{
-        //    return await _context.Accounts.Where(x => x.Bank.BankName.Contains(BankName)).ToListAsync();
-        //}
+        public async Task<IEnumerable<AccountModel>> GetAccountByUserId(string accountId)
+        {
+            var curUser = _httpcontextAccessor.HttpContext?.User.GetUserId();
+            return await _context.Accounts.Where(x => x.AppUsers.Id == accountId).ToListAsync();
+        }
 
         public bool Save()
         {
@@ -62,5 +63,7 @@ namespace myBankApplication.Repository
             _context.Update(account);
             return Save();
         }
+
+      
     }
 }

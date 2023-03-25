@@ -39,6 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\AppUsers\AppUserDetail.cshtml" />
     <Content Remove="wwwroot\css\bulding.avif" />
     <Content Remove="wwwroot\css\logo new.png" />
     <Content Remove="wwwroot\css\logo-color.png" />

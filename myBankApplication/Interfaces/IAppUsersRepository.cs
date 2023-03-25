@@ -7,7 +7,7 @@ namespace myBankApplication.Interfaces
 
         Task<IEnumerable<AppUsersModel>> GetAll();
 
-        Task<AppUsersModel> GetByIdAsync(int id);
+        Task<AppUsersModel> GetUserById(string id);
 
         Task<AppUsersModel> GetByEmailAsync(string email);
 

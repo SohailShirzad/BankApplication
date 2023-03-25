@@ -18,10 +18,6 @@ namespace myBankApplication.Models
         [Column(TypeName = "nvarchar(150)")]
         [Required]
         public string BeniciaryName { get; set; }
-       
- 
-        [Required, MaxLength(100)]
-        public string BankName { get; set; }
 
         [Required]
         public TransactionType TransactionType { get; set; }

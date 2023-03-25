@@ -44,34 +44,29 @@
                 <strong>Sorry!- @TempData["Error"]</strong>
             </div>
         }
-        <div class="rowContact">
-            <!--Contact form-->
-            <div class="column">
-                <form asp-action="Login" class="login">
-                    <div style="text-align:left">
-                        <h6>Log in to </h6>
-                        <h1>Online Banking</h1>
-                    </div><br /><br />
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <label asp-for="EmailAddress" class="control-label"></label>
-                        <input asp-for="EmailAddress" class="form-control" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input class="btn btn-outline-success float right" type="submit" value="Log in" />
-                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
-                    </div>
-                </form>
+
+        <form asp-action="Login" class="login">
+            <div style="text-align:left">
+                <h6>Log in to </h6>
+                <h1>Online Banking</h1>
+            </div><br /><br />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
-        </div>
-        </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input class="button" type="submit" value="Log in" />
+                <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+            </div>
+        </form>
     </section>
 </body>
 </html>

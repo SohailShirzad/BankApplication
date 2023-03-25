@@ -48,7 +48,7 @@
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserCard">Card</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
         <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserDetail">Account Details</a>
+        <a asp-area="" asp-controller="Account" asp-action="Detail">Account Details</a>
         <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
     </div>
     <div class=" main">
@@ -76,6 +76,7 @@
                     </div>
                     <div class="col">
                         <select asp-for="TransactionType" asp-items="@Html.GetEnumSelectList<TransactionType>()" class="form-control">
+                            <option value="" selected="selected" disabled="disabled">-- select transaction type --</option>
                         </select>
                         <span asp-validation-for="TransactionType" class="text-danger"></span>
                     </div>
@@ -91,8 +92,8 @@
                 
             </div>
             <div class="form-group">
-                <input class="btn btn-outline-success float right" type="submit" value="Log in" />
-                <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                <input class="btn btn-outline-success float right" type="submit" value="Deposit" />
+                <a class="btn btn-outline-secondary" asp-controller="AppUsers" asp-action="AppUserPayment">Cancel</a>
             </div>
   
            
