@@ -567,3 +567,4 @@ C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\myBankApp
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\myBankApplication.genruntimeconfig.cache
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\obj\Debug\net6.0\ref\myBankApplication.dll
 C:\Users\sohai\Desktop\myProjectApp\myBankApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\sohai\Desktop\myProjectApp\myBankApplication\bin\Debug\net6.0\CloudinaryDotNet.dll

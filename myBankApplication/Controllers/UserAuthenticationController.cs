@@ -6,6 +6,7 @@ using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
+using myBankApplication.Services;
 using myBankApplication.ViewModels;
 using NuGet.Protocol.Core.Types;
 using System.Net;
@@ -20,14 +21,16 @@ namespace myBankApplication.Controllers
         private readonly SignInManager<AppUsersModel> _signInManager;
         private readonly UserManager<AppUsersModel> _userManager;
         private ApplicationDbContext _context;
+        private readonly IPhotoService _photoService;
 
         public UserAuthenticationController( SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
-                                             ApplicationDbContext dbContext)
+                                             ApplicationDbContext dbContext, IPhotoService photoService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _context = dbContext;
+            _photoService = photoService;
             
         }
 

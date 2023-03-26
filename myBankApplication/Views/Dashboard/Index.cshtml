@@ -48,29 +48,28 @@
 <div style="overflow-x: auto;">
     <table id="tableStyle">
         <tr>
-            <th>Id</th>
-            <th>FirstName</th>
-            <th>Middle Name</th>
-            <th>LastName</th>
-            <th>Gender</th>
-            <th>More details</th>
+            <th>Accout Number</th>
+            <th>SortCode</th>
+            <th>Account Type</th>
+            <th>Balance</th>
+            <th>Date Opened</th>
+            <th>Status</th>
+
 
         </tr>
-        @foreach (var user in Model.Accounts)
+        @foreach (var account in Model.Accounts)
         {
 
 
             <tr>
-                <td>@user.AccountNo</td>
-                <td> @user.AccountType </td>
-                <td>@user.Balance</td>
-                <td>@user.Date_Opened</td>
-                <td>@user.Close_Date</td>
-                <td>
-                    <a class="btn btn-outline-primary" asp-controller="AppUsers" asp-action="Detail">
-                        View Profile
-                    </a>
-                </td>
+                <td>@account.AccountNo</td>
+                <td>@account.Sort_Code</td>
+                <td> @account.AccountType </td>
+                <td>@account.Balance</td>
+                <td>@account.Date_Opened</td>
+                <td>@account.Status</td>
+                
+          
             </tr>
 
 

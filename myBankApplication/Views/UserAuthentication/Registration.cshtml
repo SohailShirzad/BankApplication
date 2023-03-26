@@ -668,6 +668,14 @@
 
               <label>Re-type Password: <input type="password"  asp-for="ConfirmPassword"/></label>
               <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+
+              <input asp-for="Proof_Id" type="file" class="form-control form-control-lg" placeholder="Image" />
+              <span asp-validation-for="Proof_Id" class="text-danger"></span>
+              
+              <input asp-for="Profile_Picture" type="file" class="form-control form-control-lg" placeholder="Image" />
+              <span asp-validation-for="Profile_Picture" class="text-danger"></span>
+
+            
    
               <button class="btn btn-info" type="submit" value="Sgin up">Next</button>
               <a class="btn btn-info" href="/UserAuthentication/AppUserLogin">Cancel</a>
@@ -675,18 +683,3 @@
     </form>
 </body>
 </html>
-
-                     @* <fieldset>
-            <label><input type="radio" asp-for="Accou" class="inline" /> Current Account</label>
-            <label><input type="radio" name="account-type" class="inline" /> Saving Account</label>
-            <label><input type="radio" name="account-type" class="inline" /> Business Account</label>
-            <label>
-                <input type="checkbox" name="terms" class="inline" required /> I accept the <a href="#">terms and conditions</a>
-            </label>
-        </fieldset>*@
-       @* <fieldset>
-            <label>Upload a profile picture: <input type="file" asp-for="Profile_Picture" /></label>
-
-            <label>Upload proof of Id: <input type="file" asp-for="Proof_Id" /></label>
-
-        </fieldset>*@

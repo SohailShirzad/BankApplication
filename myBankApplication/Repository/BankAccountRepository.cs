@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
@@ -45,6 +46,10 @@ namespace myBankApplication.Repository
             throw new NotImplementedException();
         }
 
+        public Task<IActionResult> DepositCash(int accountNo, int amount)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<IEnumerable<AccountModel>> GetAccountByUserId(string accountId)
         {
@@ -64,6 +69,6 @@ namespace myBankApplication.Repository
             return Save();
         }
 
-      
+        
     }
 }

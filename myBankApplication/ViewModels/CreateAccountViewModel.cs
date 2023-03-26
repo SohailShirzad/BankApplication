@@ -20,7 +20,7 @@ namespace myBankApplication.ViewModels
 
         public DateTime Date_Opened { get; set; }
 
-        public AccountStatus Status { get; set; }
+        public AccountStatus Status { get; set; } = AccountStatus.Active;
 
         public DateTime Close_Date { get; set; }
 

@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Build.Execution;
 using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
+using myBankApplication.Helpers;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 using myBankApplication.Repository;
@@ -16,6 +18,7 @@ builder.Services.AddScoped<IAppUsersRepository, BankAppUsersRepository>();
 builder.Services.AddScoped<IStatementRepository, BankStatementRepository>();
 builder.Services.AddScoped<ITransactionRepository, BankTransactionRepository>();
 builder.Services.AddScoped<IDashboardRepository, BankDashboardRepository>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 //builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));

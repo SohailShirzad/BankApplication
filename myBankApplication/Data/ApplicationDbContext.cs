@@ -25,10 +25,14 @@ namespace myBankApplication.Data
 
             modelBuilder.Entity<AccountModel>()
                 .Property(s => s.Sort_Code)
-                .HasDefaultValue (070493);
+                .HasDefaultValue(070493);
 
 
-           
+
+
+
+
+
 
 
         }

@@ -12,7 +12,7 @@
     <h1>Serena Bank</h1>
 
     <form asp-action="Create">
-        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId"/>
+        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" enctype="multipart/form-data/>
 
         <div class="col">
             <select asp-for="AccountType" asp-items="@Html.GetEnumSelectList<AccountType>()" class="form-control form-control-lg">
@@ -20,9 +20,8 @@
             </select>
             <span asp-validation-for="AccountType" class="text-danger"></span>
 
-            <button class="btn btn-info" type="submit" value="Sgin up">Next</button>
+           
         </div>
-
 
     </form>
 

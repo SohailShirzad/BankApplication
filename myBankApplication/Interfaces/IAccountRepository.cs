@@ -1,4 +1,5 @@
-﻿using myBankApplication.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using myBankApplication.Models;
 
 namespace myBankApplication.Interfaces
 {
@@ -9,6 +10,8 @@ namespace myBankApplication.Interfaces
         Task<IEnumerable<AccountModel>> GetAll();
 
         Task<AccountModel> getByIdAsync(int id);
+
+        Task <IActionResult> DepositCash(int accountNo, int amount);
 
 
 
