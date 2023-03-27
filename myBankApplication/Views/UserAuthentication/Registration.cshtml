@@ -17,7 +17,7 @@
                     <strong>Sorry!- @TempData["Error"]</strong>
             </div>
         }
-    <form asp-action="Registration">
+    <form method="post" asp-action="Registration" enctype="multipart/form-data">
         <label>
             Title:
             <select id="title" asp-for="Title">
@@ -669,11 +669,11 @@
               <label>Re-type Password: <input type="password"  asp-for="ConfirmPassword"/></label>
               <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
 
-              <input asp-for="Proof_Id" type="file" class="form-control form-control-lg" placeholder="Image" />
-              <span asp-validation-for="Proof_Id" class="text-danger"></span>
-              
-              <input asp-for="Profile_Picture" type="file" class="form-control form-control-lg" placeholder="Image" />
-              <span asp-validation-for="Profile_Picture" class="text-danger"></span>
+        @*    <input asp-for="Proof_Id" type="file" class="form-control form-control-lg" placeholder="Image" />
+              <span asp-validation-for="Proof_Id" class="text-danger"></span>*@
+              @*<label asp-for"Image">Image </label>
+              <input asp-for="Profile_Picture" type="file" class="form-control form-control-lg" />
+              <span asp-validation-for="Profile_Picture" class="text-danger"></span>*@
 
             
    

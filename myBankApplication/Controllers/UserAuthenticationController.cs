@@ -6,31 +6,30 @@ using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
-using myBankApplication.Services;
 using myBankApplication.ViewModels;
 using NuGet.Protocol.Core.Types;
 using System.Net;
 using System.Reflection;
-
+using System.Runtime.InteropServices;
 
 namespace myBankApplication.Controllers
 {
-    
+
     public class UserAuthenticationController : Controller
     {
         private readonly SignInManager<AppUsersModel> _signInManager;
         private readonly UserManager<AppUsersModel> _userManager;
         private ApplicationDbContext _context;
-        private readonly IPhotoService _photoService;
+        //private readonly IPhotoService _photoService;
 
-        public UserAuthenticationController( SignInManager<AppUsersModel> signInManager,
+        public UserAuthenticationController(SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
-                                             ApplicationDbContext dbContext, IPhotoService photoService)
+                                             ApplicationDbContext dbContext) //IPhotoService photoService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _context = dbContext;
-            _photoService = photoService;
+            //_photoService = photoService;
             
         }
 
@@ -88,14 +87,18 @@ namespace myBankApplication.Controllers
         public async Task<IActionResult> Registration(AppUsersRegistrationModel appUsersRegistrationModel)
         {
             if (!ModelState.IsValid) return View(appUsersRegistrationModel);
+            
 
             var user = await _userManager.FindByEmailAsync(appUsersRegistrationModel.EmailAddress);
+            
+            //var proofId = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Proof_Id);
 
             if (user != null)
             {
                 TempData["Error"] = "This email address is already in use, please use another email address";
                 return View(appUsersRegistrationModel);
             }
+            //var profilePic = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Profile_Picture);
 
             var newAppUser = new AppUsersModel()
             {
@@ -113,13 +116,13 @@ namespace myBankApplication.Controllers
                 Nationality = appUsersRegistrationModel.Nationality,
                 Address = appUsersRegistrationModel.Address,
                 Post_Code = appUsersRegistrationModel.Post_Code,
-                Date_Joined = appUsersRegistrationModel.Date_Joined,
+                Date_Joined = appUsersRegistrationModel.Date_Joined = DateTime.Now,
                 Email = appUsersRegistrationModel.EmailAddress,
                 UserName = appUsersRegistrationModel.EmailAddress,
-                Profile_Picture = appUsersRegistrationModel.Profile_Picture,
-                Proof_Id = appUsersRegistrationModel.Proof_Id,
+                //Profile_Picture = profilePic.Url.ToString(),
 
             };
+        
 
             var newAppUserResponse = await _userManager.CreateAsync(newAppUser, appUsersRegistrationModel.Password);
             if (newAppUserResponse.Succeeded)

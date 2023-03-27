@@ -17,6 +17,7 @@ namespace myBankApplication.Data
         public DbSet<AccountModel> Accounts { get; set; }
         public DbSet<BankCardModel> BankCards { get; set; }
         public DbSet<StatementModel> Statements { get; set; }
+        public DbSet<DepositChequeModel> DepositCheque { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

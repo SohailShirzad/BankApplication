@@ -30,6 +30,6 @@ namespace myBankApplication.Models
 
 
         [Required, MaxLength(20)]
-        public String Reference { get; set; }
+        public string Reference { get; set; }
     }
 }

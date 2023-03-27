@@ -55,10 +55,10 @@ namespace myBankApplication.Models
 
 
 
-        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? Date_Joined { get; set; } = DateTime.Now;
+        public DateTime? Date_Joined { get; set; }
+
         //[Required(ErrorMessage = "Please Upload profile picture")]
         public string? Profile_Picture { get; set; }
         //[Required(ErrorMessage = "Please upload proof of Id")]

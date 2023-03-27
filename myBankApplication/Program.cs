@@ -7,6 +7,7 @@ using myBankApplication.Helpers;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 using myBankApplication.Repository;
+using myBankApplication.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,10 @@ builder.Services.AddScoped<IAppUsersRepository, BankAppUsersRepository>();
 builder.Services.AddScoped<IStatementRepository, BankStatementRepository>();
 builder.Services.AddScoped<ITransactionRepository, BankTransactionRepository>();
 builder.Services.AddScoped<IDashboardRepository, BankDashboardRepository>();
+builder.Services.AddScoped<IDepositChequeRepository, BankDepositChequeRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+
 //builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));

@@ -231,7 +231,6 @@ namespace myBankApplication.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Date_Joined")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Education")
@@ -393,6 +392,39 @@ namespace myBankApplication.Migrations
                     b.ToTable("Bank");
                 });
 
+            modelBuilder.Entity("myBankApplication.Models.DepositChequeModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("FrontChequeImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUsersId");
+
+                    b.ToTable("DepositCheque");
+                });
+
             modelBuilder.Entity("myBankApplication.Models.StatementModel", b =>
                 {
                     b.Property<int>("StatementID")
@@ -541,6 +573,15 @@ namespace myBankApplication.Migrations
                 {
                     b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
                         .WithMany("BankCards")
+                        .HasForeignKey("AppUsersId");
+
+                    b.Navigation("AppUsers");
+                });
+
+            modelBuilder.Entity("myBankApplication.Models.DepositChequeModel", b =>
+                {
+                    b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
+                        .WithMany()
                         .HasForeignKey("AppUsersId");
 
                     b.Navigation("AppUsers");

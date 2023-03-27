@@ -1,0 +1,76 @@
+﻿@using myBankApplication.ViewModels
+@model DepositChequeViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="~/js/theme.js"></script>
+    <script src="~/js/header.js"></script>
+    <style>
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .margin {
+            margin: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            width: 70%;
+            padding: 10px;
+            height: fit-content;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="sidenav">
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserHome">Home</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment">Payment</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserOverdraft">Overdraft</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserloan">Loans</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserCard">Card</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
+        <a asp-area="" asp-controller="Account" asp-action="Detail">Account Details</a>
+        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
+    </div>
+
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+
+
+        <div class="margin">
+            <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Number">
+            <span class="text-danger" asp-validation-for="Amount"></span>
+        </div>
+        <div class="col">
+            <input asp-for="Description" type="text" class="form-control" placeholder="Description">
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <label asp-for"Image">Image </label>
+        <input asp-for="FrontChequeImage" type="file" class="form-control form-control-lg" />
+        <span asp-validation-for="FrontChequeImage" class="text-danger"></span>
+
+        <button class="btn btn-block btn-success btn-lg" type="submit">Create Account</button>
+        <a class="btn btn-info" href="/UserAuthentication/AppUserLogin">Cancel</a>
+
+    </form>
+
+</body>
+</html>

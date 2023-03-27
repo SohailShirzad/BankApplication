@@ -12,7 +12,7 @@
     <h1>Serena Bank</h1>
 
     <form asp-action="Create">
-        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" enctype="multipart/form-data/>
+        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId"/>
 
         <div class="col">
             <select asp-for="AccountType" asp-items="@Html.GetEnumSelectList<AccountType>()" class="form-control form-control-lg">
@@ -22,6 +22,8 @@
 
            
         </div>
+
+        <button class="btn btn-info" type="submit" value="Sgin up">Create</button>
 
     </form>
 

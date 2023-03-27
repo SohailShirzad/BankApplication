@@ -15,10 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\sohai\Desktop\myProjectApp\myBankApplication
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Account/AppUserDepositCash.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBcHBVc2VyRGVwb3NpdENhc2guY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Account/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -33,14 +29,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckNhcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserDepositCash.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckRlcG9zaXRDYXNoLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserDepositCheque.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckRlcG9zaXRDaGVxdWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserHome.cshtml]
@@ -89,6 +77,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/DepositCheque/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdENoZXF1ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/DepositCheque/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdENoZXF1ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Home/About.cshtml]

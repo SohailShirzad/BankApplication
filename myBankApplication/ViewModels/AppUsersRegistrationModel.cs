@@ -75,9 +75,7 @@ namespace myBankApplication.ViewModels
         [Compare("Password", ErrorMessage = "Password do not match")]
         public string ConfirmPassword { get; set; }
 
-        //[Required(ErrorMessage = "Please Upload profile picture")]
-        public string? Profile_Picture { get; set; }
-        //[Required(ErrorMessage = "Please upload proof of Id")]
-        public string? Proof_Id { get; set; }
+        //public IFormFile Profile_Picture { get; set; }
+        //public IFormFile Proof_Id { get; set; }
     }
 }

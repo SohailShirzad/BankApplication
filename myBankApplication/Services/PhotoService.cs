@@ -3,6 +3,7 @@ using CloudinaryDotNet.Actions;
 using Microsoft.Build.Framework;
 using Microsoft.Extensions.Options;
 using myBankApplication.Helpers;
+using myBankApplication.Interfaces;
 
 namespace myBankApplication.Services
 {
@@ -12,30 +13,30 @@ namespace myBankApplication.Services
         private readonly Cloudinary _cloudinary;
         public PhotoService(IOptions<CloudinarySettings> config)
         {
-            var account = new Account(
+            var acc = new Account(
                 config.Value.CloudName,
                 config.Value.ApiKey,
                 config.Value.ApiSecret
 
                 );
-            _cloudinary = new Cloudinary(account);
+            _cloudinary = new Cloudinary(acc);
 
         }
         public async Task<ImageUploadResult> AddPhotoAsync(IFormFile file)
         {
-            var uploadImageResult = new ImageUploadResult();
+            var uploadResult = new ImageUploadResult();
             if (file.Length > 0)
             {
                 using var stream = file.OpenReadStream();
-                var uploadParams = new ImageUploadParams
+                var uploadParams = new ImageUploadParams()
                 {
                     File = new FileDescription(file.FileName, stream),
-                    Transformation = new Transformation().Height(450).Width(450).Crop("file")
+                    Transformation = new Transformation().Height(450).Width(450).Crop("fill")
                 };
-                uploadImageResult  = await _cloudinary.UploadAsync(uploadParams);
+                uploadResult  = await _cloudinary.UploadAsync(uploadParams);
             }
 
-            return uploadImageResult;
+            return uploadResult;
         }
 
         public async Task<DeletionResult> DeletePhotoAsync(string publicId)
