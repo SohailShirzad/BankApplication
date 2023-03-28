@@ -20,16 +20,16 @@ namespace myBankApplication.Controllers
         private readonly SignInManager<AppUsersModel> _signInManager;
         private readonly UserManager<AppUsersModel> _userManager;
         private ApplicationDbContext _context;
-        //private readonly IPhotoService _photoService;
+        private readonly IPhotoService _photoService;
 
         public UserAuthenticationController(SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
-                                             ApplicationDbContext dbContext) //IPhotoService photoService)
+                                             ApplicationDbContext dbContext, IPhotoService photoService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _context = dbContext;
-            //_photoService = photoService;
+            _photoService = photoService;
             
         }
 
@@ -62,7 +62,7 @@ namespace myBankApplication.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, appUsersLoginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("AppUserHome", "AppUsers");
+                        return RedirectToAction("Balance", "AppUsers");
                     }
                 }
                 //Password is incorrect
@@ -98,7 +98,8 @@ namespace myBankApplication.Controllers
                 TempData["Error"] = "This email address is already in use, please use another email address";
                 return View(appUsersRegistrationModel);
             }
-            //var profilePic = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Profile_Picture);
+            var profilePic = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Profile_Picture);
+            var proofId = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Profile_Picture);
 
             var newAppUser = new AppUsersModel()
             {
@@ -119,7 +120,8 @@ namespace myBankApplication.Controllers
                 Date_Joined = appUsersRegistrationModel.Date_Joined = DateTime.Now,
                 Email = appUsersRegistrationModel.EmailAddress,
                 UserName = appUsersRegistrationModel.EmailAddress,
-                //Profile_Picture = profilePic.Url.ToString(),
+                Profile_Picture = profilePic.Url.ToString(),
+                Proof_Id = proofId.Url.ToString(),
 
             };
         
@@ -128,7 +130,7 @@ namespace myBankApplication.Controllers
             if (newAppUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newAppUser, UserRoles.User);
 
-            return RedirectToAction("AppUserHome", "AppUsers");
+            return RedirectToAction("Balance", "AppUsers");
 
          }
 

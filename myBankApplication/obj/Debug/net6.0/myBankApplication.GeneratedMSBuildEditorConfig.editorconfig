@@ -31,32 +31,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckNhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserHome.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckhvbWUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserLoan.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlckxvYW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserOverdraft.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlck92ZXJkcmFmdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserPayment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlclBheW1lbnQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserStatements.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlclN0YXRlbWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserTransaction.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlclRyYW5zYWN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/AppUserWithdraw.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQXBwVXNlcldpdGhkcmF3LmNzaHRtbA==
+[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/Balance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQmFsYW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/Detail.cshtml]

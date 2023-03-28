@@ -188,9 +188,9 @@ namespace myBankApplication.Migrations
                     b.Property<string>("Sort_Code")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(8)")
-                        .HasDefaultValue("70493");
+                        .HasDefaultValue("07-04-93");
 
-                    b.Property<int?>("Status")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("AccountNo");
@@ -362,6 +362,9 @@ namespace myBankApplication.Migrations
                     b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("CardPin")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ContaclessLimit")
                         .HasColumnType("int");
 
@@ -409,6 +412,10 @@ namespace myBankApplication.Migrations
                     b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BackChequeImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -417,6 +424,9 @@ namespace myBankApplication.Migrations
                     b.Property<string>("FrontChequeImage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

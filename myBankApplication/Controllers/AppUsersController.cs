@@ -68,40 +68,22 @@ namespace myBankApplication.Controllers
             return View(userDetailViewModel);
         }
 
-        public IActionResult AppUserDepositCheque()
-        {
-            return isUserAuthenticated();
-        }
-        public IActionResult AppUserloan()
-        {
-            return isUserAuthenticated();
-        }
         public IActionResult AppUserPayment()
         {
             return isUserAuthenticated();
         }
-        public IActionResult AppUserOverdraft()
-        {
-            return isUserAuthenticated();
-        }
-        public IActionResult AppUserStatements()
-        {
-            return isUserAuthenticated();
-        }
+
         public IActionResult AppUserTransaction()
         {
             return isUserAuthenticated();
         }
-        public IActionResult AppUserWithdraw()
-        {
-            return isUserAuthenticated();
-        }
+
         public IActionResult AppUserDepositCash()
         {
             return isUserAuthenticated();
         }
         
-        public IActionResult AppUserHome()
+        public IActionResult Balance()
         {
             return isUserAuthenticated();
         }

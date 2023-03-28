@@ -24,6 +24,8 @@ namespace myBankApplication.Models
 
         public int? ContaclessLimit { get; set; }
 
+        public int CardPin { get; set; } = new Random().Next(1000,9999);
+
       
         [ForeignKey("AccountModel")]
         public int Account_Id { get; set; }

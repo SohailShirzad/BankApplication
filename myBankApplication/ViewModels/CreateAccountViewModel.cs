@@ -10,7 +10,7 @@ namespace myBankApplication.ViewModels
 
         public int AccountNo { get; set; }
 
-        public int Sort_Code { get; set; }
+        public string Sort_Code { get; set; }
 
         public AccountType AccountType { get; set; }
 
@@ -20,7 +20,7 @@ namespace myBankApplication.ViewModels
 
         public DateTime Date_Opened { get; set; }
 
-        public AccountStatus Status { get; set; } = AccountStatus.Active;
+        public Status Status { get; set; } = Status.Active;
 
         public DateTime Close_Date { get; set; }
 

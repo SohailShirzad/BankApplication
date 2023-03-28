@@ -47,11 +47,11 @@ namespace myBankApplication.Controllers
                 var account = new AccountModel
                 {
                     
-                    Sort_Code = accountVM.Sort_Code = 070493,
+                    Sort_Code = accountVM.Sort_Code = "07-04-1993",
                     AccountType = accountVM.AccountType,
                     Balance = accountVM.Balance,
                     Date_Opened = accountVM.Date_Opened = DateTime.Now,
-                    Status = accountVM.Status = Data.Enum.AccountStatus.Active,
+                    Status = accountVM.Status = Data.Enum.Status.Active,
                     Close_Date = accountVM.Close_Date,
                     AppUserId = accountVM.AppUserId,
                 };

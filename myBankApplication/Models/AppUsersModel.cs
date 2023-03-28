@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -58,6 +59,7 @@ namespace myBankApplication.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Date_Joined { get; set; }
+
 
         //[Required(ErrorMessage = "Please Upload profile picture")]
         public string? Profile_Picture { get; set; }

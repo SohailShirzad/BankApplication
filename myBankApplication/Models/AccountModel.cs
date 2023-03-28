@@ -15,7 +15,7 @@ namespace myBankApplication.Models
 
         
         [Column(TypeName = "nvarchar(8)")]
-        public int? Sort_Code { get; set; }
+        public string? Sort_Code { get; set; }
 
         [Column(TypeName = "nvarchar(8)")]
         [Required(ErrorMessage = "Please select Account Type")]
@@ -28,7 +28,7 @@ namespace myBankApplication.Models
         public DateTime? Date_Opened { get; set; } = DateTime.Now;
 
         
-        public AccountStatus? Status { get; set; } = AccountStatus.Active;
+        public Status Status { get; set; } = Status.Active;
         
         public DateTime? Close_Date { get; set; }
 

@@ -9,6 +9,12 @@
 <div class="col-md-4">
     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
+        <a asp-area="" asp-controller="AppUsers" asp-action="Balance">Balance</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment">Move Money</a>
+        <a asp-area="" asp-controller="BankCard" asp-action="Index">Card</a>
+        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
+        <a asp-area="" asp-controller="Dashboard" asp-action="Index">Profile</a>
+        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
         <a asp-controller="BankCard" asp-action="Create" class="btn btn-sm btn-outline-secondary">Create</a>
     }
         

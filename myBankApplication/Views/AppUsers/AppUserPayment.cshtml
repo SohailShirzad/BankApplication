@@ -41,15 +41,17 @@
 </head>
 <body>
     <div class="sidenav">
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserHome">Home</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment">Payment</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserOverdraft">Overdraft</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserloan">Loans</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserCard">Card</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
-        <a asp-area="" asp-controller="AppUsers" asp-action="AppUserStatements">Statements</a>
-        <a asp-area="" asp-controller="Account" asp-action="Detail">Account Details</a>
-        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
+            @if (User.Identity.IsAuthenticated)
+        {
+            
+            <a asp-area="" asp-controller="AppUsers" asp-action="Balance">Balance</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment">Move Money</a>
+            <a asp-area="" asp-controller="BankCard" asp-action="Index">Card</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="AppUserTransaction">Transcations</a>
+            <a asp-area="" asp-controller="Dashboard" asp-action="Index">Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout">Log out</a>
+
+        }
     </div>
     <div class=" main">
         <div class="center">
