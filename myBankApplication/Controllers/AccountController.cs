@@ -56,7 +56,7 @@ namespace myBankApplication.Controllers
                     AppUserId = accountVM.AppUserId,
                 };
                 _accountRepository.Add(account);
-                return RedirectToAction("AppUserHome", "AppUsers");
+                return RedirectToAction("Balance", "AppUsers");
 
             }
             else

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OvdV7YvMBmeKFP2SL+HE/T+fJhkI3vQcQk/Ohl8VAF4=",
+  "Hash": "Nt/Z6LYaS8W+TOrt+KltiKNt00OSLVxhB+29PLPrU0c=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\contactUs.css"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\DepositTransactionAccount.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/DepositTransactionAccount.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\DepositTransactionAccount.css"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\footerStyle.css",

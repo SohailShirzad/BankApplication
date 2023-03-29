@@ -130,7 +130,7 @@ namespace myBankApplication.Controllers
             if (newAppUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newAppUser, UserRoles.User);
 
-            return RedirectToAction("Balance", "AppUsers");
+            return RedirectToAction("Login", "UserAuthentication");
 
          }
 

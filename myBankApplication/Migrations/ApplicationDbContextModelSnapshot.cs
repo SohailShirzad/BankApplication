@@ -371,6 +371,9 @@ namespace myBankApplication.Migrations
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("ValidFrom")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("CardNumber", "CVVNumber");
 
                     b.HasIndex("AppUsersId");

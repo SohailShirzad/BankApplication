@@ -19,6 +19,8 @@ namespace myBankApplication.Models
         [Required, MaxLength(3), MinLength(3)]
         public int CVVNumber { get; set; }
 
+        public DateTime ValidFrom { get; set; } = DateTime.Now;
+
         [Required]
         public DateTime ExpiryDate { get; set; }
 
