@@ -2,8 +2,8 @@
 {
     public enum TransactionType
     {
-        Withdraw,
-        Deposit
+        Withdraw = 'W',
+        Deposit = 'D'
         
     }
 }

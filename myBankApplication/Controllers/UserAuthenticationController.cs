@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.Framework;
@@ -141,6 +142,7 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Logout()
         {
+         
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "UserAuthentication");
         }

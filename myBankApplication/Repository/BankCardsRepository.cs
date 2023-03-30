@@ -8,6 +8,12 @@ namespace myBankApplication.Repository
     public class BankCardsRepository : IBankCardRepository
     {
         private readonly ApplicationDbContext _context;
+
+        public BankCardsRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public bool Add(BankCardModel bankCard)
         {
             _context.Add(bankCard);

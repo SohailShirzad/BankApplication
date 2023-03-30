@@ -132,13 +132,13 @@
                     </div>
 
                     <div class="field padding-bottom--24">
-                        <input asp-for="Account_Id" type="text" class="form-control" placeholder="User Account Number">
+                        <input asp-for="Account_Id" name = "Account_Id" id="Account_Id" type="text" class="form-control" placeholder="User Account Number">
                         <span class="text-danger" asp-validation-for="Account_Id"></span>
                     </div>
 
                     <div class="field padding-bottom--24">
-                        <input asp-for="ContaclessLimit" type="text"  class="form-control" placeholder="User Id Number">
-                        <span class="text-danger" asp-validation-for="ContaclessLimit"></span>
+                        <input id="AppUserId" name="AppUserId" asp-for="AppUserId" type="text" class="form-control" placeholder="User Id Number">
+                        <span class="text-danger" asp-validation-for="AppUserId"></span>
                     </div>
                     <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
                 </form>

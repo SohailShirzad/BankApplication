@@ -11,13 +11,8 @@ namespace myBankApplication.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey("AccountModel")]
-        public int? AccountNo { get; set; }
-        public AccountModel Account { get; set; }
-
         [Column(TypeName = "nvarchar(150)")]
-        [Required]
-        public string BeniciaryName { get; set; }
+        public string? BeniciaryName { get; set; }
 
         [Required]
         public TransactionType TransactionType { get; set; }
@@ -30,6 +25,14 @@ namespace myBankApplication.Models
 
 
         [Required, MaxLength(20)]
-        public string Reference { get; set; }
+        public string? Reference { get; set; }
+
+        [ForeignKey("AccountModel")]
+        public int? AccountNo { get; set; }
+        public AccountModel? Account { get; set; }
+
+        [ForeignKey("AppUserModel")]
+        public string? AppUserId { get; set; }
+        public AppUsersModel? AppUsers { get; set; }
     }
 }

@@ -34,14 +34,15 @@ namespace myBankApplication.Controllers
             {
                 var bankCard = new BankCardModel
                 {
-
+                    CardNumber = BankCardVM.CardNumber,
+                    CVVNumber = BankCardVM.CVVNumber,
                     ExpiryDate = BankCardVM.ExpiryDate,
                     ContaclessLimit = BankCardVM.ContaclessLimit,
                     Account_Id = BankCardVM.Account_Id,
                     AppUserId = BankCardVM.AppUserId,
                 };
                 _bankCardRepository.Add(bankCard);
-                return RedirectToAction("AppUserHome", "AppUsers");
+                return RedirectToAction("Balance", "AppUsers");
 
             }
             else

@@ -22,7 +22,6 @@ namespace myBankApplication.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<BankCardModel>().HasKey(bc => new { bc.CardNumber, bc.CVVNumber });
 
             modelBuilder.Entity<AccountModel>()
                 .Property(s => s.Sort_Code)

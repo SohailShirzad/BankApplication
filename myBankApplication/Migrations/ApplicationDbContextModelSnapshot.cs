@@ -341,17 +341,11 @@ namespace myBankApplication.Migrations
 
             modelBuilder.Entity("myBankApplication.Models.BankCardModel", b =>
                 {
-                    b.Property<string>("CardNumber")
+                    b.Property<long>("CardNumber")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("CVVNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(3)
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CVVNumber"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CardNumber"));
 
                     b.Property<int>("Account_Id")
                         .HasColumnType("int");
@@ -361,6 +355,9 @@ namespace myBankApplication.Migrations
 
                     b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CVVNumber")
+                        .HasColumnType("int");
 
                     b.Property<int>("CardPin")
                         .HasColumnType("int");
@@ -374,7 +371,7 @@ namespace myBankApplication.Migrations
                     b.Property<DateTime>("ValidFrom")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("CardNumber", "CVVNumber");
+                    b.HasKey("CardNumber");
 
                     b.HasIndex("AppUsersId");
 
@@ -478,17 +475,19 @@ namespace myBankApplication.Migrations
                     b.Property<int?>("AccountNo")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountNo1")
+                    b.Property<int?>("AccountNo1")
                         .HasColumnType("int");
 
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
-                    b.Property<string>("AppUsersModelId")
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BeniciaryName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("Date")
@@ -506,7 +505,7 @@ namespace myBankApplication.Migrations
 
                     b.HasIndex("AccountNo1");
 
-                    b.HasIndex("AppUsersModelId");
+                    b.HasIndex("AppUsersId");
 
                     b.ToTable("Transactions");
                 });
@@ -619,15 +618,15 @@ namespace myBankApplication.Migrations
                 {
                     b.HasOne("myBankApplication.Models.AccountModel", "Account")
                         .WithMany()
-                        .HasForeignKey("AccountNo1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AccountNo1");
 
-                    b.HasOne("myBankApplication.Models.AppUsersModel", null)
+                    b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
                         .WithMany("Transactions")
-                        .HasForeignKey("AppUsersModelId");
+                        .HasForeignKey("AppUsersId");
 
                     b.Navigation("Account");
+
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("myBankApplication.Models.AppUsersModel", b =>

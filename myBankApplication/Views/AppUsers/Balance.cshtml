@@ -20,7 +20,7 @@
             <div class="dropdown-container">
                 <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
                 <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
-                <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
             </div>
 
             <!-- Card-->
@@ -64,8 +64,8 @@
 
             <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserTransaction"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserPayment"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
             </div>
 
             <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>

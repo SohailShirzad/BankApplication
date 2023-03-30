@@ -14,7 +14,7 @@ namespace myBankApplication.Repository
         public BankAccountRepository(ApplicationDbContext context, IHttpContextAccessor httpcontextAccessor)
         {
             _context = context;
-            _httpcontextAccessor = httpcontextAccessor; 
+            _httpcontextAccessor = httpcontextAccessor;
         }
 
         public bool Add(AccountModel account)
@@ -46,10 +46,6 @@ namespace myBankApplication.Repository
             throw new NotImplementedException();
         }
 
-        public Task<IActionResult> DepositCash(int accountNo, int amount)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IEnumerable<AccountModel>> GetAccountByUserId(string accountId)
         {

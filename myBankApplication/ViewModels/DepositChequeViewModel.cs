@@ -15,5 +15,7 @@ namespace myBankApplication.ViewModels
         public string AppUserId { get; set; }
 
         public IFormFile FrontChequeImage { get; set; }
+
+        public IFormFile BackChequeImage { get; set; }
     }
 }

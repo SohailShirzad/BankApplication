@@ -43,6 +43,7 @@ namespace myBankApplication.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _photoService.AddPhotoAsync(ChequeVM.FrontChequeImage);
+                var backChequeResult = await _photoService.AddPhotoAsync(ChequeVM.BackChequeImage);
 
                 var depositChequeModel = new DepositChequeModel
                 {
@@ -50,11 +51,12 @@ namespace myBankApplication.Controllers
                     Amount = ChequeVM.Amount,
                     Description = ChequeVM.Description,
                     FrontChequeImage = result.Url.ToString(),
+                    BackChequeImage = backChequeResult.Url.ToString(),
                     AppUserId = ChequeVM.AppUserId,
 
                 };
                 _depositChequeRepository.Add(depositChequeModel);
-                return RedirectToAction("Index");
+                return RedirectToAction("Balance", "AppUsers");
             }
             else
             {

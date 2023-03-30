@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+<style>
+.currency-wrap {
+    position: relative;
+}
+
+.currency-code {
+    position: absolute;
+    left: 2px;
+    top: 25px;
+}
+
+.text-currency {
+    padding: 10px 20px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+}
+</style>
+
 </head>
 <body>
 
@@ -50,9 +68,20 @@
             <span class="padding-bottom--15">Deposit Cheque</span>
             <form method="post" asp-action="Create" enctype="multipart/form-data">
                 <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
-                <div class="field padding-bottom--24">
-                    <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Number">
+              @*  <div class="field padding-bottom--24">
+                    <label> Amount
+                    <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Amount">
                     <span class="text-danger" asp-validation-for="Amount"></span>
+                     </label>
+                </div>*@
+
+                <div class = "currency-wrap">
+                    <label>Amount
+                    <span class="currency-code">£</span>
+                    <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Amount">
+                    <span class="text-danger" asp-validation-for="Amount"></span>
+                    </label>
+
                 </div>
                 <div class="field padding-bottom--24">
                     <input asp-for="Description" type="text" class="form-control" placeholder="Description">
@@ -66,8 +95,8 @@
                 </div>
                 <div class="field padding-bottom--24">
                     <label asp-for"Image">Please upload back of the cheque </label>
-                    <input asp-for="FrontChequeImage" type="file" class="form-control form-control-lg" />
-                    <span asp-validation-for="FrontChequeImage" class="text-danger"></span>
+                    <input asp-for="BackChequeImage" type="file" class="form-control form-control-lg" />
+                    <span asp-validation-for="BackChequeImage" class="text-danger"></span>
                 </div>
                 <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
             </form>

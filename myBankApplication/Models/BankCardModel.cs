@@ -8,16 +8,12 @@ namespace myBankApplication.Models
     
     public class BankCardModel
     {
-        
-        [Required]
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [MaxLength (16)]
-        [MinLength(16)]
-        public string CardNumber { get; set; }
+        public long CardNumber { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required, MaxLength(3), MinLength(3)]
-        public int CVVNumber { get; set; }
+        [Required]
+        public int CVVNumber { get; set; } = new Random().Next(100, 999);
 
         public DateTime ValidFrom { get; set; } = DateTime.Now;
 
@@ -26,6 +22,7 @@ namespace myBankApplication.Models
 
         public int? ContaclessLimit { get; set; }
 
+        [Required]
         public int CardPin { get; set; } = new Random().Next(1000,9999);
 
       

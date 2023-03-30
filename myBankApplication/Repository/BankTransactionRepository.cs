@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
@@ -10,17 +11,12 @@ namespace myBankApplication.Repository
     {
         private readonly ApplicationDbContext _context;
 
-        public bool Add(TransactionModel transaction)
+        public BankTransactionRepository(ApplicationDbContext context)
         {
-            _context.Add(transaction);
-            return Save();
+            _context = context;
         }
 
-        public bool Delete(TransactionModel transaction)
-        {
-            _context.Remove(transaction);
-            return Save();
-        }
+   
 
         public async Task<IEnumerable<TransactionModel>> GetAll()
         {
@@ -42,9 +38,25 @@ namespace myBankApplication.Repository
             return await _context.Transactions.FirstOrDefaultAsync(i => i.Date == date);
         }
 
+
+
         public async Task<TransactionModel> GetTransactionByReference(string reference)
         {
             return await _context.Transactions.FirstOrDefaultAsync(i => i.Reference.Contains(reference));
+        }
+
+
+
+        public bool Add(TransactionModel transaction)
+        {
+            _context.Add(transaction);
+            return Save();
+        }
+
+        public bool Delete(TransactionModel transaction)
+        {
+            _context.Remove(transaction);
+            return Save();
         }
 
         public bool Save()
@@ -52,6 +64,8 @@ namespace myBankApplication.Repository
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
+
+      
 
         public bool Update(TransactionModel transaction)
         {

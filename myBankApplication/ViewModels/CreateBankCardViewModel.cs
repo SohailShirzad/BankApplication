@@ -7,9 +7,11 @@ namespace myBankApplication.ViewModels
     public class CreateBankCardViewModel
     {
 
-        public string CardNumber { get; set; }
+        public long CardNumber { get; set; }
 
-        public int CVVNumber { get; set; }
+        public int CVVNumber { get; set; } = new Random().Next(100, 999);
+
+        public DateTime ValidFrom { get; set; } = DateTime.Now;
 
         public DateTime ExpiryDate { get; set; }
 

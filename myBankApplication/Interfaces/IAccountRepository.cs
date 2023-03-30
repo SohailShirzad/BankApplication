@@ -11,9 +11,8 @@ namespace myBankApplication.Interfaces
 
         Task<AccountModel> getByIdAsync(int id);
 
-        Task <IActionResult> DepositCash(int accountNo, int amount);
 
-
+        
 
         //Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId);
 
