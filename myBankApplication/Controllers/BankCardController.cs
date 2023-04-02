@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 using myBankApplication.ViewModels;
@@ -8,10 +10,12 @@ namespace myBankApplication.Controllers
     public class BankCardController : Controller
     {
         private readonly IBankCardRepository _bankCardRepository;
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public BankCardController(IBankCardRepository bankCardRepository)
+        public BankCardController(IBankCardRepository bankCardRepository, ApplicationDbContext applicationDbContext)
         {
             _bankCardRepository = bankCardRepository;
+            _applicationDbContext = applicationDbContext;
         }
 
         public async Task<IActionResult> Detail()
@@ -20,7 +24,7 @@ namespace myBankApplication.Controllers
             return View(bankCards);
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }

@@ -11,6 +11,7 @@ using myBankApplication.ViewModels;
 using NuGet.Protocol.Core.Types;
 using System.Net;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace myBankApplication.Controllers
@@ -22,7 +23,6 @@ namespace myBankApplication.Controllers
         private readonly UserManager<AppUsersModel> _userManager;
         private ApplicationDbContext _context;
         private readonly IPhotoService _photoService;
-
         public UserAuthenticationController(SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
                                              ApplicationDbContext dbContext, IPhotoService photoService)
@@ -31,7 +31,6 @@ namespace myBankApplication.Controllers
             _userManager = userManager;
             _context = dbContext;
             _photoService = photoService;
-            
         }
 
         [HttpGet]
@@ -47,6 +46,7 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AppUsersLoginModel appUsersLoginModel)
         {
+
             if (!ModelState.IsValid) return View(appUsersLoginModel);
 
             // check if the user exist
@@ -63,6 +63,10 @@ namespace myBankApplication.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, appUsersLoginModel.Password, false, false);
                     if (result.Succeeded)
                     {
+                        if (user.Accounts == null)
+                        {
+                            return RedirectToAction("Create", "Account");
+                        }
                         return RedirectToAction("Balance", "AppUsers");
                     }
                 }
@@ -87,6 +91,9 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration(AppUsersRegistrationModel appUsersRegistrationModel)
         {
+            
+
+
             if (!ModelState.IsValid) return View(appUsersRegistrationModel);
             
 

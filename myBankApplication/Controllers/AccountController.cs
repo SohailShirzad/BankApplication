@@ -1,20 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Build.Framework;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 using myBankApplication.ViewModels;
+using System.Runtime.CompilerServices;
 
 namespace myBankApplication.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly ApplicationDbContext _dbContext;
          
 
-        public AccountController(IAccountRepository AccountRepositoy)
+        public AccountController(IAccountRepository AccountRepositoy, ApplicationDbContext dbContext)
         {
             _accountRepository = AccountRepositoy;
+            _dbContext = dbContext;
         }
 
         public async Task<IActionResult> Index()
@@ -23,8 +28,9 @@ namespace myBankApplication.Controllers
             return View(accounts);
         }
 
-        public async Task<IActionResult> Detail()
+        public IActionResult Detail()
         {
+
             return View();
         }
 
@@ -54,6 +60,7 @@ namespace myBankApplication.Controllers
                     Status = accountVM.Status = Data.Enum.Status.Active,
                     Close_Date = accountVM.Close_Date,
                     AppUserId = accountVM.AppUserId,
+        
                 };
                 _accountRepository.Add(account);
                 return RedirectToAction("Balance", "AppUsers");

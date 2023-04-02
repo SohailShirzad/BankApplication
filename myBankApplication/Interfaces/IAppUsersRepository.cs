@@ -11,6 +11,7 @@ namespace myBankApplication.Interfaces
 
         Task<AppUsersModel> GetByEmailAsync(string email);
 
+   
         bool Add(AppUsersModel customer);
         bool Update(AppUsersModel customer);
         bool Delete(AppUsersModel customer);

@@ -8,10 +8,12 @@ namespace myBankApplication.Repository
     public class BankAppUsersRepository : IAppUsersRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public BankAppUsersRepository(ApplicationDbContext context)
+        public BankAppUsersRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }   
 
         public bool Add(AppUsersModel customer)
@@ -38,7 +40,8 @@ namespace myBankApplication.Repository
 
         public async Task<AppUsersModel> GetUserById(string id)
         {
-            return await _context.Users.FindAsync(id);
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            return await _context.Users.FindAsync(curUser);
         }
 
         public bool Save()

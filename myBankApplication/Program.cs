@@ -41,7 +41,7 @@ var app = builder.Build();
 
 if (args.Length == 1 && args[0].ToLower() == "roledata")
 {
-    await Role.UsersAndRolesAsync(app);
+    await Seed.UsersAndRolesAsync(app);
 }
 
 // Configure the HTTP request pipeline.

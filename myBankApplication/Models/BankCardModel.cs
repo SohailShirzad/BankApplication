@@ -15,9 +15,13 @@ namespace myBankApplication.Models
         [Required]
         public int CVVNumber { get; set; } = new Random().Next(100, 999);
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ValidFrom { get; set; } = DateTime.Now;
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ExpiryDate { get; set; }
 
         public int? ContaclessLimit { get; set; }

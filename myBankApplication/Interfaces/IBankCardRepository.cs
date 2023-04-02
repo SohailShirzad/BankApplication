@@ -7,7 +7,11 @@ namespace myBankApplication.Interfaces
         //Services from the database or calls from the datase
 
         Task<IEnumerable<BankCardModel>> GetAll();
-        Task<BankCardModel> getByIdAsync(int id);
+
+        Task<BankCardModel> GetByIdAsync(int id);
+
+
+        //Task <IEnumerable<BankCardModel>> GetCardByCustomerId(string customerId);
 
 
         //Task<IEnumerable<BankCardModel>> getCustomerByBankCard(int CustomerId);

@@ -24,7 +24,11 @@ namespace myBankApplication.Models
         public string? AppUserId { get; set; }
         public AppUsersModel? AppUsers { get; set; }
 
-     
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? Date { get; set; } = DateTime.Now;
+
+
 
         [Required]
         

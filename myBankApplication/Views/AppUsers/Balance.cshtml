@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using myBankApplication.ViewModels
+@model AppUsersViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="~/css/sideNav.css">
@@ -59,13 +62,13 @@
             </div>
 
             <!-- Card-->
-            <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-credit-card"></i> Card </a>
+            <a asp-area="" asp-controller="Dashboard" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
             <!-- Transaction-->
 
             <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
                 <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
+                <a asp-area="" asp-controller="Dashboard" asp-action="Home"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
             </div>
 
             <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -75,8 +78,13 @@
     </div>
 
     <div class="content">
+        <p class="text-muted">Welcome: @Model.Title @Model.FullName</p>
+
+
+        
 
         <a asp-controller="Account" asp-action="Create"><i class="fa-solid fa-piggy-bank"></i> To get started please create an account now. </a>
+
 
 
         

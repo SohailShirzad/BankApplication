@@ -23,5 +23,6 @@ namespace myBankApplication.ViewModels
 
         public string AppUserId { get; set; }
 
+
     }
 }

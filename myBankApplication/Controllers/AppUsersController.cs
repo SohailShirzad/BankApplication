@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CloudinaryDotNet;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using myBankApplication.Data;
 using myBankApplication.Interfaces;
+using myBankApplication.Models;
 using myBankApplication.ViewModels;
 
 namespace myBankApplication.Controllers
@@ -10,10 +14,12 @@ namespace myBankApplication.Controllers
     public class AppUsersController : Controller
     {
         private readonly IAppUsersRepository _customerRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AppUsersController(IAppUsersRepository customerRepository)
+        public AppUsersController(IAppUsersRepository customerRepository, IHttpContextAccessor httpContextAccessor)
         {
             _customerRepository = customerRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IActionResult> Index()
@@ -68,6 +74,28 @@ namespace myBankApplication.Controllers
             return View(userDetailViewModel);
         }
 
+
+        public async Task<IActionResult> Balance(string id)
+        {
+            var user = await _customerRepository.GetUserById(id);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var appUsersViewModel = new AppUsersViewModel()
+            {
+                Title = user.Title,
+                LName = user.LName,
+                FName = user.FName,
+                MName= user.MName,
+
+
+            };
+
+            return View(appUsersViewModel);
+        }
+
+
         public IActionResult AppUserPayment()
         {
             return isUserAuthenticated();
@@ -83,10 +111,7 @@ namespace myBankApplication.Controllers
             return isUserAuthenticated();
         }
         
-        public IActionResult Balance()
-        {
-            return isUserAuthenticated();
-        }
+        
         public IActionResult AppUserCard()
         {
             return isUserAuthenticated();

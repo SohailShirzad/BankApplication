@@ -1,4 +1,5 @@
-﻿using myBankApplication.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 
@@ -13,6 +14,8 @@ namespace myBankApplication.Repository
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+
+        //Accounts
         public async Task<List<AccountModel>> GetAllUserAccounts()
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
@@ -21,9 +24,23 @@ namespace myBankApplication.Repository
             return userAccounts.ToList();
         }
 
+        
+        //Trransactions 
+
         public async Task<List<TransactionModel>> GetAllUsersTransactions()
         {
-          throw new NotImplementedException();  
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userTransactions = _context.Transactions.Where(r => r.AppUserId == curUser);
+            return userTransactions.ToList();
         }
+
+        public Task<List<BankCardModel>> GetAllUsersBankCards()
+        {
+            //var userBankCards = _applicationDbContext.BankCards.Include("AppUsers").ToList();
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userBankCards = _context.BankCards.Include("AppUsers").Where(r => r.AppUserId == curUser);
+            return userBankCards.ToListAsync();
+        }
+
     }
 }

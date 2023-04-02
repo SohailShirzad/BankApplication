@@ -25,6 +25,12 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please enter your Last name"), MaxLength(50)]
         public string LName { get; set; }
 
+        [Display(Name = "Full Name")]
+        public string? FullName
+        {
+            get { return FName + MName + LName; }
+        }
+
         [Required(ErrorMessage = "Please select your education"), MaxLength(200)]
         public string Education { get; set; }
 
@@ -66,7 +72,12 @@ namespace myBankApplication.Models
         //[Required(ErrorMessage = "Please upload proof of Id")]
         public string? Proof_Id { get; set; }
 
-        public ICollection<AccountModel> Accounts { get; set; }
+        
+
+
+  
+
+        public ICollection<AccountModel> Accounts { get; set; } = new List<AccountModel>();
         
         public ICollection<BankCardModel> BankCards { get; set; }
 

@@ -13,7 +13,8 @@ namespace myBankApplication.Models
         [Column(TypeName = "nvarchar(80)")]
         public string Bank_Address { get; set; } = "London";
 
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? Year_Opened { get; set; } = DateTime.Now;
 
 

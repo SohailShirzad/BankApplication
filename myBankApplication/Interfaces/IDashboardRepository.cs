@@ -9,6 +9,9 @@ namespace myBankApplication.Interfaces
 
         Task<List<TransactionModel>> GetAllUsersTransactions();
 
+        Task<List<BankCardModel>> GetAllUsersBankCards();
+
+
         //More services
     }
 }

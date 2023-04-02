@@ -12,7 +12,8 @@ namespace myBankApplication.Models
         public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(150)")]
-        public string? BeniciaryName { get; set; }
+        [DisplayFormat(NullDisplayText = "No recipient")]
+        public string? RecipientName { get; set; }
 
         [Required]
         public TransactionType TransactionType { get; set; }
@@ -20,6 +21,8 @@ namespace myBankApplication.Models
         [Required]
         public double Amount { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Required]
         public DateTime Date  { get; set; } = DateTime.Now;
 
@@ -30,6 +33,10 @@ namespace myBankApplication.Models
         [ForeignKey("AccountModel")]
         public int? AccountNo { get; set; }
         public AccountModel? Account { get; set; }
+
+        [DisplayFormat(NullDisplayText = "N/A")]
+        [Display(Name = "Distination Account")]
+        public int? DestAccount { get; set; }
 
         [ForeignKey("AppUserModel")]
         public string? AppUserId { get; set; }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
+using myBankApplication.Models;
 using myBankApplication.ViewModels;
 
 namespace myBankApplication.Controllers
@@ -26,6 +28,36 @@ namespace myBankApplication.Controllers
 
             return View(dashboardViewModel);
         }
+
+
+        public async Task<IActionResult> Home(string id)
+        {
+            var userTransactions = await _dashboardRepository.GetAllUsersTransactions();
+            var dashboardViewModel = new DashboardViewModel()
+            {
+                Transactions = userTransactions
+            };
+
+            return View(dashboardViewModel);
+
+        }
+
+        public async Task<IActionResult> CustomerCardDetails()
+        {
+            var userBankCards = await _dashboardRepository.GetAllUsersBankCards();
+            var dashboardViewModel = new DashboardViewModel()
+            {
+                BankCards = userBankCards,
+           
+                
+            };
+
+            return View(dashboardViewModel);
+        }
+
+
+
+
 
 
 

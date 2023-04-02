@@ -8,10 +8,12 @@ namespace myBankApplication.Repository
     public class BankCardsRepository : IBankCardRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public BankCardsRepository(ApplicationDbContext context)
+        public BankCardsRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public bool Add(BankCardModel bankCard)
@@ -37,10 +39,14 @@ namespace myBankApplication.Repository
             return await _context.BankCards.ToListAsync();
         }
 
-        public async Task<BankCardModel> getByIdAsync(int id)
+
+        public async Task<BankCardModel> GetByIdAsync(int id)
         {
             return await _context.BankCards.FirstOrDefaultAsync(i => i.CardNumber.Equals(id));
         }
+
+
+
 
         //public async Task<IEnumerable<BankCardModel>> getCustomerByBankCard(int CustomerId)
         //{

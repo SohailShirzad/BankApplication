@@ -13,7 +13,10 @@ namespace myBankApplication.ViewModels
 
         public string FName { get; set; }
 
-
+        public string FullName
+        {
+            get { return FName+" " +MName+" " + LName; }
+        }
 
         public string? MName { get; set; }
 
@@ -38,6 +41,11 @@ namespace myBankApplication.ViewModels
         public string Post_Code { get; set; }
 
         public string Email { get; set;  }
+
+        public string bankcardNumber { get; set; }
+
+
+        
 
 
         [DataType(DataType.Date)]

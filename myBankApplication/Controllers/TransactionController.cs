@@ -38,7 +38,7 @@ namespace myBankApplication.Controllers
         }
 
         [HttpGet]
-        public async Task <IActionResult> Deposit()
+        public async Task<IActionResult> Deposit()
         {
             var curUserId = HttpContext.User.GetUserId();
 
@@ -72,7 +72,7 @@ namespace myBankApplication.Controllers
                 var transaction = new TransactionModel
                 {
                     Id = transactionVM.Id,
-                    BeniciaryName = transactionVM.BeniciaryName,
+                    RecipientName = transactionVM.RecipientName,
                     TransactionType = TransactionType.Deposit,
                     Amount = transactionVM.Amount,
                     Reference = transactionVM.Reference,
@@ -88,8 +88,8 @@ namespace myBankApplication.Controllers
             }
 
             else
-            { 
-                    ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
+            {
+                ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
             }
 
             return View(transactionVM);
@@ -101,42 +101,114 @@ namespace myBankApplication.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Transfer()
+        {
+            var curUserId = HttpContext.User.GetUserId();
 
+            //var cust = await _applicationDbContext.Users.ToListAsync();
+            //var cuurentCust = cust.Where(c => c.Id == curUserId).SingleOrDefault();
+
+           var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
+           ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
+            
+
+            var createTransaction = new TransactionModel
+            {
+                AppUserId = curUserId,
+                AccountNo = account[0].AccountNo,
+                
+            };
+            createTransaction.AppUserId = curUserId;
+
+
+            return View(createTransaction);
+
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Transfer(TransactionModel transactionVM)
+        {
+            TransactionModel TransactionFrom = new TransactionModel();
+
+            TransactionModel TransactionTo = new TransactionModel();
+
+            var curUserId = HttpContext.User.GetUserId();
+
+
+            TransactionFrom.TransactionType = TransactionType.Transfer;
+            TransactionTo.TransactionType = TransactionType.Transfer;
+
+
+            TransactionFrom.AppUserId = curUserId;
+            TransactionTo.AppUserId = curUserId;
+
+            TransactionFrom.AccountNo = transactionVM.AccountNo;
+            TransactionTo.AccountNo = transactionVM.DestAccount;
+
+            TransactionFrom.Amount = transactionVM.Amount;
+            TransactionTo.Amount = transactionVM.Amount;
+
+            var acc = await _applicationDbContext.Accounts.ToListAsync();
+            var accountFrom = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
+            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.AccountNo).SingleOrDefault();
+
+            if (accountFrom == accountTo)
+            {
+                return RedirectToAction("TransactionFail");
+            }
+            else
+            {
+                if (accountFrom.AccountType.Equals(AccountType.Savings))
+                {
+                    if (accountFrom.Balance >= transactionVM.Amount)
+                    {
+                        accountFrom.Balance = -(transactionVM.Amount - accountFrom.Balance) * 1.05;
+                    }
+
+                    accountTo.Balance += transactionVM.Amount;
+
+                }
+
+                else
+                {
+                    accountFrom.Balance -= transactionVM.Amount;
+                    accountTo.Balance += transactionVM.Amount;
+                }
+
+                if(ModelState.IsValid)
+                {
+                    var transaction = new TransactionModel
+                    {
+                        Id = transactionVM.Id,
+                        RecipientName = transactionVM.RecipientName,
+                        TransactionType = TransactionType.Transfer,
+                        Amount = transactionVM.Amount,
+                        Reference = transactionVM.Reference,
+                        AccountNo = transactionVM.AccountNo,
+                        DestAccount = transactionVM.DestAccount,
+                        AppUserId = transactionVM.AppUserId,
+
+
+                    };
+
+                    _transactionRepository.Add(transaction);
+                    return RedirectToAction("Balance","AppUsers");
+                    
+                }
+
+                else
+                {
+                    ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
+                }
+
+                return View(transactionVM);
+
+
+            }
+
+        }
     }
 }
-
-
-
-
-
-//[HttpGet]
-
-//public ActionResult Deposit(int AccountNo)
-//{
-//    return View();
-//}
-
-//[HttpPost]
-//public ActionResult Deposit(TransactionModel transactionModel)
-//{
-//    if (ModelState.IsValid)
-//    {
-//        _applicationDbContext.Transactions.Add(transactionModel);
-//        _applicationDbContext.SaveChanges();
-
-//        var checking = _applicationDbContext.Accounts.Where(c => c.AccountNo == transactionModel.AccountNo).First();
-//        checking.Balance = _applicationDbContext.Transactions.Where(c => c.AccountNo == transactionModel.AccountNo)
-//            .Sum(c => c.Amount);
-//        _applicationDbContext.SaveChanges();
-
-//        return RedirectToAction("Balance", "AppUsers");
-
-//    }
-
-
-//    return View();
-
-
-
-
-//}

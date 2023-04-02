@@ -7,13 +7,14 @@ using System.ComponentModel.DataAnnotations;
 namespace myBankApplication.ViewModels
 {
     public class CreateTransactionViewModel
-    {
+    { 
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(150)")]
-        public string BeniciaryName { get; set; }
+        public string? RecipientName { get; set; }
 
         [Required]
         public TransactionType TransactionType { get; set; }
@@ -26,11 +27,14 @@ namespace myBankApplication.ViewModels
 
 
         [Required, MaxLength(20)]
-        public string Reference { get; set; }
+        public string? Reference { get; set; }
 
         [ForeignKey("AccountModel")]
         public int? AccountNo { get; set; }
         public AccountModel? Account { get; set; }
+
+        [Display(Name = "Distination Account")]
+        public int? DestAccount { get; set; }
 
         [ForeignKey("AppUserModel")]
         public string? AppUserId { get; set; }

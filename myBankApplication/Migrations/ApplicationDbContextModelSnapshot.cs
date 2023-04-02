@@ -416,6 +416,9 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -487,11 +490,14 @@ namespace myBankApplication.Migrations
                     b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BeniciaryName")
-                        .HasColumnType("nvarchar(150)");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("DestAccount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RecipientName")
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("Reference")
                         .IsRequired()
