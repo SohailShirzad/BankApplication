@@ -496,6 +496,9 @@ namespace myBankApplication.Migrations
                     b.Property<int?>("DestAccount")
                         .HasColumnType("int");
 
+                    b.Property<string>("DestId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RecipientName")
                         .HasColumnType("nvarchar(150)");
 

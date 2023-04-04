@@ -33,6 +33,56 @@ namespace myBankApplication.Repository
             
         }
 
+
+
+
+        //Accounts
+
+        public async Task<ICollection<AccountModel>> GetAllUsersAccounts()
+        {
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userAccounts = _context.Accounts.Where(r => r.AppUserId == curUser);
+
+            return userAccounts.ToList();
+        }
+
+
+        // Bank Cards
+
+        public async Task<ICollection<BankCardModel>> GetAllUsersBankCards()
+        {
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userBankCards = _context.BankCards.Include("AppUsers").Where(r => r.AppUserId == curUser);
+            return userBankCards.ToList();
+        }
+
+
+        // Cheques
+
+        public async  Task<ICollection<DepositChequeModel>> GetAllUsersCheques()
+        {
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var userCheques = _context.DepositCheque.Where(r => r.AppUserId == curUser);
+            return userCheques.ToList();
+        }
+
+
+        // Transactins
+
+        public async Task<ICollection<TransactionModel>> GetAllUsersTransactions()
+        {
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+
+            var acc = await _context.Accounts.ToListAsync();
+            var accountFrom = acc.Where(a => a.AppUserId == curUser).SingleOrDefault();
+
+            var userTransactions = _context.Transactions.Where(t => t.DestAccount == accountFrom.AccountNo || t.AccountNo == accountFrom.AccountNo);
+            return userTransactions.ToList();
+        }
+
+
+
+
         public async Task<AppUsersModel> GetByEmailAsync(string email)
         {
             return await _context.Users.FirstOrDefaultAsync(i => i.Email.Contains(email));

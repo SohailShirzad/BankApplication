@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.Framework;
+using Microsoft.Extensions.DependencyInjection;
 using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using myBankApplication.Interfaces;
@@ -13,6 +16,7 @@ using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Claims;
 
 namespace myBankApplication.Controllers
 {
@@ -23,6 +27,7 @@ namespace myBankApplication.Controllers
         private readonly UserManager<AppUsersModel> _userManager;
         private ApplicationDbContext _context;
         private readonly IPhotoService _photoService;
+
         public UserAuthenticationController(SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
                                              ApplicationDbContext dbContext, IPhotoService photoService)
@@ -31,7 +36,11 @@ namespace myBankApplication.Controllers
             _userManager = userManager;
             _context = dbContext;
             _photoService = photoService;
+
         }
+
+
+
 
         [HttpGet]
 
@@ -47,10 +56,10 @@ namespace myBankApplication.Controllers
         public async Task<IActionResult> Login(AppUsersLoginModel appUsersLoginModel)
         {
 
-            if (!ModelState.IsValid) return View(appUsersLoginModel);
-
-            // check if the user exist
-            var user = await _userManager.FindByEmailAsync(appUsersLoginModel.EmailAddress);
+           if (!ModelState.IsValid) return View(appUsersLoginModel);
+           
+                // check if the user exist
+           var user = await _userManager.FindByEmailAsync(appUsersLoginModel.EmailAddress);
 
             if (user != null)
             {
@@ -63,10 +72,23 @@ namespace myBankApplication.Controllers
                     var result = await _signInManager.PasswordSignInAsync(user, appUsersLoginModel.Password, false, false);
                     if (result.Succeeded)
                     {
-                        if (user.Accounts == null)
+                        
+                        //Get Role
+                        var roles = await _userManager.GetRolesAsync(user);
+
+
+
+                        if (roles.Contains("admin"))
+                        {
+                           return RedirectToAction("Admin", "Dashboard");
+                        }
+
+                        var userAccounts = _context.Accounts.Where(r => r.AppUserId == user.Id);
+                        if (userAccounts.Count() == 0 && roles.Contains("user"))
                         {
                             return RedirectToAction("Create", "Account");
                         }
+
                         return RedirectToAction("Balance", "AppUsers");
                     }
                 }
@@ -155,6 +177,10 @@ namespace myBankApplication.Controllers
         }
 
         // Add admin 
+
+       
+            
+
 
         
         

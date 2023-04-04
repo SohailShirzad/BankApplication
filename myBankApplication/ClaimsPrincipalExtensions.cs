@@ -8,5 +8,8 @@ namespace myBankApplication
         {
             return user.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
+
+
+
     }
 }

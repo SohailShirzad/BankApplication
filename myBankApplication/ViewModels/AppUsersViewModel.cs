@@ -45,7 +45,13 @@ namespace myBankApplication.ViewModels
         public string bankcardNumber { get; set; }
 
 
-        
+
+
+        //[Required(ErrorMessage = "Please Upload profile picture")]
+        public string? Profile_Picture { get; set; }
+        //[Required(ErrorMessage = "Please upload proof of Id")]
+        public string? Proof_Id { get; set; }
+
 
 
         [DataType(DataType.Date)]
@@ -58,6 +64,8 @@ namespace myBankApplication.ViewModels
         public ICollection<BankCardModel> BankCards { get; set; }
 
         public ICollection<StatementModel> Statements { get; set; }
+
+        public ICollection<DepositChequeModel> DepositCheque { get; set; }
 
         public ICollection<TransactionModel> Transactions { get; set; }
     }

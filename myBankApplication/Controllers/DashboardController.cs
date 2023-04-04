@@ -20,7 +20,9 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             var userAccounts = await _dashboardRepository.GetAllUserAccounts();
+
             var dashboardViewModel = new DashboardViewModel()
             {
                 Accounts = userAccounts
@@ -39,6 +41,13 @@ namespace myBankApplication.Controllers
             };
 
             return View(dashboardViewModel);
+
+        }
+
+        public IActionResult Admin()
+        {
+
+            return View();
 
         }
 

@@ -38,6 +38,10 @@ namespace myBankApplication.Models
         [Display(Name = "Distination Account")]
         public int? DestAccount { get; set; }
 
+        //[DisplayFormat(NullDisplayText = "N/A")]
+        //[Display(Name = "Distination UserId")]
+        //public string? DestId { get; set; }
+
         [ForeignKey("AppUserModel")]
         public string? AppUserId { get; set; }
         public AppUsersModel? AppUsers { get; set; }

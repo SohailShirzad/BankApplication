@@ -1,7 +1,7 @@
 ﻿.sidebar {
-    margin-left:0px;
+    margin-left:-15px;
     padding: 0;
-    width: 200px;
+    width: 300px;
     background-color: #171238;
     position: fixed;
     height: 100%;
@@ -61,13 +61,31 @@ color: black;
 }
 
 div.content {
-margin-left: 200px;
+margin-left: 300px;
 padding: 1px 16px;
 height: 1000px;
 }
 
+.img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
+#sidebar .logo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+    #sidebar .logo span {
+    display: block;
+    }
 
+#sidebar ul li.active > a {
+    background: transparent;
+    color: #f8b739;
+}
 @media screen and (max-width: 700px) {
 .sidebar {
 width: 100%;

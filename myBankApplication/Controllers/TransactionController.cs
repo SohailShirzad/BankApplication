@@ -65,7 +65,11 @@ namespace myBankApplication.Controllers
             var acc = await _applicationDbContext.Accounts.ToListAsync();
             var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
 
-            account.Balance += transactionVM.Amount;
+            if (account.AccountType.Equals(AccountType.Savings))
+            {
+                account.Balance = +(transactionVM.Amount + account.Balance) * 2.5;
+
+            }
 
             if (ModelState.IsValid)
             {
@@ -141,10 +145,6 @@ namespace myBankApplication.Controllers
             TransactionFrom.TransactionType = TransactionType.Transfer;
             TransactionTo.TransactionType = TransactionType.Transfer;
 
-
-            TransactionFrom.AppUserId = curUserId;
-            TransactionTo.AppUserId = curUserId;
-
             TransactionFrom.AccountNo = transactionVM.AccountNo;
             TransactionTo.AccountNo = transactionVM.DestAccount;
 
@@ -155,6 +155,12 @@ namespace myBankApplication.Controllers
             var accountFrom = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
             var accountTo = acc.Where(a => a.AccountNo == TransactionTo.AccountNo).SingleOrDefault();
 
+            //var accountNumber = accountFrom.AccountNo;
+
+            TransactionFrom.AppUserId = curUserId;
+            TransactionTo.AppUserId = accountTo.AppUserId;
+
+         
             if (accountFrom == accountTo)
             {
                 return RedirectToAction("TransactionFail");
@@ -165,7 +171,7 @@ namespace myBankApplication.Controllers
                 {
                     if (accountFrom.Balance >= transactionVM.Amount)
                     {
-                        accountFrom.Balance = -(transactionVM.Amount - accountFrom.Balance) * 1.05;
+                        accountFrom.Balance = -(transactionVM.Amount - accountFrom.Balance) * 0.5;
                     }
 
                     accountTo.Balance += transactionVM.Amount;
@@ -187,7 +193,7 @@ namespace myBankApplication.Controllers
                         TransactionType = TransactionType.Transfer,
                         Amount = transactionVM.Amount,
                         Reference = transactionVM.Reference,
-                        AccountNo = transactionVM.AccountNo,
+                        AccountNo = accountFrom.AccountNo,
                         DestAccount = transactionVM.DestAccount,
                         AppUserId = transactionVM.AppUserId,
 

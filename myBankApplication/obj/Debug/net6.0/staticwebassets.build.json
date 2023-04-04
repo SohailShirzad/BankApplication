@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JsNbBu6ifrSohFVHRYC4r7IWt5mhF6KztvSX26DSBHE=",
+  "Hash": "KNz4H3L/jcSYNZxa0nhhT8rNbsjLBpoWPz48ScNuqDQ=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\css\\theme.css"
     },
     {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\TwoColumn.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/TwoColumn.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\TwoColumn.css"
+    },
+    {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\favicon.ico",
       "SourceId": "myBankApplication",
       "SourceType": "Discovered",
@@ -321,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo1.png"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\images\\UsingPhone.jpg",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "images/UsingPhone.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\UsingPhone.jpg"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\images\\visaLogo.png",

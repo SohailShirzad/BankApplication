@@ -21,6 +21,12 @@ namespace myBankApplication.ViewModels
 
         public string LName { get; set; }
 
+           public string FullName
+        {
+            get { return FName+" " +MName+" " + LName; }
+        }
+
+
         public string PhoneNumber { get; set;  }
 
         [DataType(DataType.Date)]
@@ -46,6 +52,13 @@ namespace myBankApplication.ViewModels
         public string Post_Code { get; set; }
 
         public string Email { get; set; }
+
+        //[Required(ErrorMessage = "Please Upload profile picture")]
+        public string? Profile_Picture { get; set; }
+        //[Required(ErrorMessage = "Please upload proof of Id")]
+        public string? Proof_Id { get; set; }
+
+
 
 
         [DataType(DataType.Date)]

@@ -5,8 +5,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/sideNav.css">
-       <link rel="stylesheet" href="~/css/home.css">
-    <link rel="stylesheet" href="~/css/header.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/Table.css">
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
 
 
@@ -51,47 +51,77 @@
         else
         {
             <!-- Balance-->
+            <a style="text-align:center;"><img class="img logo rounded-circle mb-5" = src="@Model.Profile_Picture" width="70%" height="70%" alt="User profile picture" /></a>
             <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
 
             <!-- Move Money-->
             <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
                 <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
-                <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
             </div>
 
             <!-- Card-->
             <a asp-area="" asp-controller="Dashboard" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
-            <!-- Transaction-->
 
-            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Dashboard" asp-action="Home"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
-            </div>
-
-            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
         }
     
     </div>
 
     <div class="content">
-        <p class="text-muted">Welcome: @Model.Title @Model.FullName</p>
+
+        <!--User Details-->
+        <div>
+            <p class="text-muted">Welcome: @Model.FullName</p>
+
+        </div>
 
 
-        
+        <!--Accounts-->
 
-        <a asp-controller="Account" asp-action="Create"><i class="fa-solid fa-piggy-bank"></i> To get started please create an account now. </a>
+        <div>
+            
+            @foreach (var item in Model.Accounts)
+            {
+                <p class="text-muted">Balance: £@item.Balance.Value.ToString("0.00"); <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i></a></p>
+                <p class="text-muted">Account: @item.AccountNo</p>
+
+            }
+        </div>
 
 
+        <!--Transactions-->
+        <div>
+        <div style="overflow-x: auto;">
+            <table id="tableStyle">
+                <tr>
+                    <th>Transaction Type</th>
+                    <th>Date</th>
+                    <th>Amoount</th>
+                    <th></th>
 
-        
-        
+
+                </tr>
+
+                @foreach (var transactions in Model.Transactions)
+                {
+                <tr>
+                    <td>@transactions.TransactionType</td>
+                    <td> @transactions.Date.ToString("f") </td>
+                    <td class="currency-code">£@transactions.Amount </td>
+                     <td><a asp-area="" asp-controller="Dashboard" asp-action="Home"><i class="fa-solid fa-money-check"></i> More Details</a></td>
+
+                </tr>
+
+                }
+            </table>
+        </div>       
     </div>
+</div>
     <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
 
