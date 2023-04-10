@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CloudinaryDotNet;
+using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
@@ -24,7 +25,8 @@ namespace myBankApplication.Repository
 
         public bool Delete(AppUsersModel customer)
         {
-            throw new NotImplementedException();
+            _context.Remove(customer);
+            return Save();
         }
         
         public async Task<IEnumerable<AppUsersModel>> GetAll()
@@ -92,6 +94,11 @@ namespace myBankApplication.Repository
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
             return await _context.Users.FindAsync(curUser);
+        }
+
+        public async Task<AppUsersModel> GetUserByIdNoTracking(string id)
+        {
+            return await _context.Users.Where(u => u.Id == id).AsNoTracking().FirstOrDefaultAsync();
         }
 
         public bool Save()

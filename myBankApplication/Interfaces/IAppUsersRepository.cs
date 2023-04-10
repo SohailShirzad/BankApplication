@@ -10,6 +10,8 @@ namespace myBankApplication.Interfaces
 
         Task<AppUsersModel> GetUserById(string id);
 
+        Task<AppUsersModel> GetUserByIdNoTracking(string id);
+
         Task<AppUsersModel> GetByEmailAsync(string email);
 
         // Accounts

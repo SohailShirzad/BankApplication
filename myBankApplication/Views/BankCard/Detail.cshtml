@@ -1,5 +1,5 @@
 ﻿@using myBankApplication.ViewModels
-@model DashboardViewModel
+@model List<IndexBankCardsViewModel>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,47 +77,38 @@
     
     </div>
 
-    <div class="content">
+<div class="content">
+<div style="overflow-x: auto;">
+    <table id="tableStyle">
+        <tr>
+            <th>Crard Number</th>
+            <th>Account Number</th>
+            <th>Valid From</th>
+            <th>Expiry Date</th>
+            <th>Contacless limit</th>
+            <th>Card Pin</th>
+            <th>CVV</th>
 
-        <div style="overflow-x: auto;">
-            <table id="tableStyle">
-                <tr>
-                    <th>Transaction ID</th>
-                    <th>From Account</th>
-                    <th>Recipient</th>
-                    <th>Amount</th>
-                    <th>Date</th>
-                    <th>Transaction Tyoe</th>
-                    <th>Reference</th>
-
-
-                </tr>
-                @foreach (var transactions in Model.Transactions)
-                {
-
-
-                    <tr>
-                        <td>@transactions.Id</td>
-                        <td> @transactions.AccountNo </td>
-                        <td> @transactions.RecipientName </td>
-                        <td class="currency-code">£@transactions.Amount </td>
-                        <td> @transactions.Date </td>
-                        <td> @transactions.TransactionType </td>
-                        <td> @transactions.Reference </td>
-                    </tr>
+        </tr>
+    @foreach (var bankCards in Model)
+    {
+        <tr>
+                        
+            <td> @bankCards.CardNumber </td>
+            <td>@bankCards.Account_Id</td>
+            <td>@bankCards.ValidFrom</td>
+            <td>@bankCards.ExpiryDate</td>
+            <td>@bankCards.ContaclessLimit</td>
+            <td>@bankCards.CardPin</td>
+            <td>@bankCards.CVVNumber</td>
+        </tr>
 
 
-                }
-            </table>
-        </div>
-
-        <a asp-controller="Account" asp-action="Create"><i class="fa-solid fa-piggy-bank"></i> To get started please create an account now. </a>
-       
-
-
-        
-        
-    </div>
+    }
+         
+    </table>
+</div>
+</div>
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
         var dropdown = document.getElementsByClassName("dropdown-btn");

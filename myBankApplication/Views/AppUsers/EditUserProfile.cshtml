@@ -1,0 +1,144 @@
+﻿@using myBankApplication.ViewModels
+@model EditUserProfileViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <link rel="stylesheet" href="~/css/sideNav.css">
+        <link rel="stylesheet" href="~/css/home.css">
+        <link rel="stylesheet" href="~/css/header.css">
+        <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
+        <link rel="stylesheet" href="~/css/TwoColumn.css">
+        <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+    </head>
+</head>
+<body>
+
+
+<div class="content">
+<div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+<div class="loginbackground box-background--white padding-top--64">
+    <div class="loginbackground-gridContainer">
+        <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+            <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+            <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+            <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+            <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+            <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+            <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+        </div>
+        <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+            <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+        </div>
+    </div>
+</div>
+<div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+    <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+        <h1><a asp-controller="Home" asp-action="Home">Serena Bank</a></h1>
+
+
+    </div>
+
+
+
+<div class="formbg-outer">
+    <div class="formbg">
+        <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15">Please select your account type</span>
+
+                <form method="post" asp-action="EditUserProfile" enctype="multipart/form-data">
+                 <input type="hidden" id="Id" name="Id" asp-for="Id" />
+
+                <div class="col">
+                        <label>
+                            Title:
+                            <select id="title" asp-for="Title">
+                                <span class="text-danger" asp-validation-for="Title"></span>
+                                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                                <option value="Mr."> Mr.</option>
+                                <option value="Mrs."> Mrs.</option>
+                                <option value="Miss"> Miss</option>
+                                <option value="Ms."> Ms.</option>
+                                <option value="Dr."> Dr.</option>
+                                <option value="Professor."> Professor.</option>
+                                <option value="Captain."> Captain.</option>
+                                <option value="Colonel."> Colonel.</option>
+                                <option value="Hon."> Hon.</option>
+                                <option value="Lady."> Lady.</option>
+                                <option value="Lord."> Lord.</option>
+                                <option value="Major."> Major.</option>
+                                <option value="Master."> Master.</option>
+                                <option value="Rev."> Rev.</option>
+                                <option value="Sir."> Sir.</option>
+                                <option value="Sister."> Sister.</option>
+                            </select>
+                        </label>
+                </div>
+
+                <div class="col">
+                    <label>Enter Your First Name: <input type="text" asp-for="FName" /></label>
+                    <span class="text-danger" asp-validation-for="FName"></span>
+                </div>
+
+                <div class="col">
+                    <label>Enter Your Middle Name: <input type="text" asp-for="MName" /></label>
+                    <span class="text-danger" asp-validation-for="MName"></span>
+                </div>
+
+                    <label>Enter Your Last Name: <input type="text" asp-for="LName" /></label>
+                    <span class="text-danger" asp-validation-for="LName"></span>
+
+                <div class="col">
+
+                    <label>Mobile Number: <input type="text" asp-for="PhoneNumber" /></label>
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                </div>
+
+                <div class="col">
+                    <label> Address: <input type="text" asp-for="Address" /></label>
+                    <span class="text-danger" asp-validation-for="Address"></span>
+
+                </div>
+                    <label> Post_Code: <input type="text" asp-for="Post_Code" placeholder="SG15BJ" /></label>
+                    <span class="text-danger" asp-validation-for="Post_Code"></span>
+
+                <div class="col">
+                    <label>Enter Your Email: <input type="email" asp-for="EmailAddress" /></label>
+                    <span class="text-danger" asp-validation-for="EmailAddress"></span>
+
+                </div>
+                <div class="col">
+                    <label>Please upload a profile picture </label>
+                    <input asp-for="Image" type="file" class="form-control form-control-lg" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+
+            </form>
+
+
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

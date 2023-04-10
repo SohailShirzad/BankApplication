@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KNz4H3L/jcSYNZxa0nhhT8rNbsjLBpoWPz48ScNuqDQ=",
+  "Hash": "eqQfeU5r7e5RQy15HkZFoe6qt3fEsKA7qNg7E/1gXx0=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\DepositTransactionAccount.css"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\Error.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/Error.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Error.css"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\footerStyle.css",
@@ -236,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\theme.css"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\ThreeColoumn.css",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "css/ThreeColoumn.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ThreeColoumn.css"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\wwwroot\\css\\TwoColumn.css",

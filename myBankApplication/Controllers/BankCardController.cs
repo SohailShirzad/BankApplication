@@ -18,10 +18,29 @@ namespace myBankApplication.Controllers
             _applicationDbContext = applicationDbContext;
         }
 
+        [HttpGet("bankCards")]
         public async Task<IActionResult> Detail()
         {
-            IEnumerable<BankCardModel> bankCards = await _bankCardRepository.GetAll();
-            return View(bankCards);
+            var bankCards = await _bankCardRepository.GetAll();
+            List<IndexBankCardsViewModel> result = new List<IndexBankCardsViewModel>();
+            foreach (var bankCard in bankCards)
+            {
+                var indexBankCardsVM = new IndexBankCardsViewModel()
+                {
+                    CardNumber = bankCard.CardNumber,
+                    CVVNumber = bankCard.CVVNumber,
+                    ValidFrom = bankCard.ValidFrom,
+                    ExpiryDate = bankCard.ExpiryDate,
+                    Account_Id = bankCard.Account_Id,
+                    AppUserId = bankCard.AppUserId,
+                    ContaclessLimit = bankCard.ContaclessLimit,
+                    CardPin = bankCard.CardPin,
+                };
+
+                result.Add(indexBankCardsVM);
+            }
+
+            return View(result);
         }
 
         public async Task<IActionResult> Index()
@@ -46,7 +65,7 @@ namespace myBankApplication.Controllers
                     AppUserId = BankCardVM.AppUserId,
                 };
                 _bankCardRepository.Add(bankCard);
-                return RedirectToAction("Balance", "AppUsers");
+                return RedirectToAction("Admin", "Dashboard");
 
             }
             else

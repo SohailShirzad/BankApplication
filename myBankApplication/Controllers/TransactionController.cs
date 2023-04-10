@@ -5,6 +5,7 @@ using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
+using myBankApplication.Repository;
 using myBankApplication.ViewModels;
 using System.Transactions;
 
@@ -24,12 +25,33 @@ namespace myBankApplication.Controllers
             _accountRepository = accountRepository;
         }
 
+        [HttpGet("transactions")]
         public async Task<IActionResult> Index()
         {
-            IEnumerable<TransactionModel> transactions = await _transactionRepository.GetAll();
-            return View(transactions);
-        }
+            var AllTransactions = await _transactionRepository.GetAll();
+            List<IndexTransactionsViewModel> result = new List<IndexTransactionsViewModel>();
+            foreach (var transactions in AllTransactions)
+            {
+                var indexTransactionsViewModel = new IndexTransactionsViewModel()
+                {
+                    Id = transactions.Id,
+                    TransactionType = transactions.TransactionType,
+                    AccountNo = transactions.AccountNo,
+                    RecipientName = transactions.RecipientName,
+                    DestAccount = transactions.DestAccount,
+                    Amount = transactions.Amount,
+                    Date = transactions.Date,
+                    Reference = transactions.Reference,
 
+
+
+                };
+
+                result.Add(indexTransactionsViewModel);
+            }
+
+            return View(result);
+        }
 
         public async Task<IActionResult> Detail(int id)
         {
@@ -97,31 +119,26 @@ namespace myBankApplication.Controllers
             }
 
             return View(transactionVM);
-
-
-
-
-
         }
 
 
+
         [HttpGet]
-        public async Task<IActionResult> Transfer()
+        public async Task<IActionResult> DepositCheque()
         {
             var curUserId = HttpContext.User.GetUserId();
 
             //var cust = await _applicationDbContext.Users.ToListAsync();
             //var cuurentCust = cust.Where(c => c.Id == curUserId).SingleOrDefault();
 
-           var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
-           ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
-            
+            //var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
+            //ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
+
 
             var createTransaction = new TransactionModel
             {
                 AppUserId = curUserId,
-                AccountNo = account[0].AccountNo,
-                
+
             };
             createTransaction.AppUserId = curUserId;
 
@@ -130,6 +147,101 @@ namespace myBankApplication.Controllers
 
         }
 
+
+
+        [HttpPost]
+        public async Task<IActionResult> DepositCheque(TransactionModel transactionVM)
+        {
+            TransactionModel TransactionFrom = new TransactionModel();
+
+            TransactionModel TransactionTo = new TransactionModel();
+
+            var curUserId = HttpContext.User.GetUserId();
+
+
+            TransactionFrom.TransactionType = TransactionType.Transfer;
+            TransactionTo.TransactionType = TransactionType.Deposit;
+
+            TransactionTo.AccountNo = transactionVM.DestAccount;
+            TransactionTo.Amount = transactionVM.Amount;
+
+            var acc = await _applicationDbContext.Accounts.ToListAsync();
+            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.AccountNo).SingleOrDefault();
+
+            
+
+
+            TransactionFrom.AppUserId = curUserId;
+            TransactionTo.AppUserId = accountTo.AppUserId;
+
+            var cheque = await _applicationDbContext.DepositCheque.ToListAsync();
+            var chequeTo = cheque.Where(a => a.AppUserId == TransactionTo.AppUserId && a.Status == Status.Active).FirstOrDefault();
+
+            if (chequeTo == null)
+            {
+                TempData["Message"] = "The user does not have any pending cheque, please check and try again";
+                return View(transactionVM);
+            }
+
+            chequeTo.Status = Status.Inactive;
+
+         
+            accountTo.Balance += transactionVM.Amount;
+                if (ModelState.IsValid)
+                {
+                    var transaction = new TransactionModel
+                    {
+                        Id = transactionVM.Id,
+                        TransactionType = TransactionType.Deposit,
+                        Amount = transactionVM.Amount,
+                        Reference = transactionVM.Reference,
+                        //AccountNo = accountFrom.AccountNo,
+                        DestAccount = transactionVM.DestAccount,
+                        AppUserId = transactionVM.AppUserId,
+
+
+                    };
+
+                    _transactionRepository.Add(transaction);
+                    return RedirectToAction("Index", "DepositChequeController");
+
+                }
+
+                else
+                {
+                    ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
+                }
+
+                return View(transactionVM);
+
+
+            }
+
+
+            [HttpGet]
+            public async Task<IActionResult> Transfer()
+            {
+                var curUserId = HttpContext.User.GetUserId();
+
+                //var cust = await _applicationDbContext.Users.ToListAsync();
+                //var cuurentCust = cust.Where(c => c.Id == curUserId).SingleOrDefault();
+
+                var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
+                ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
+
+
+                var createTransaction = new TransactionModel
+                {
+                    AppUserId = curUserId,
+                    AccountNo = account[0].AccountNo,
+
+                };
+                createTransaction.AppUserId = curUserId;
+
+
+                return View(createTransaction);
+
+            }
 
 
         [HttpPost]
@@ -163,7 +275,8 @@ namespace myBankApplication.Controllers
          
             if (accountFrom == accountTo)
             {
-                return RedirectToAction("TransactionFail");
+                TempData["Message"] = "Account from and account to must not much, please try again";
+                return View(transactionVM);
             }
             else
             {

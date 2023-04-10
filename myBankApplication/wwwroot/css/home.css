@@ -76,6 +76,8 @@
       padding: 0.8125em 1.875em;
           
     }
+
+
 .buttonColor {
     background: #9c5ee3;
     color: white;
@@ -141,6 +143,13 @@ a:active {
         -webkit-transition-duration: .2s;
         -o-transition-duration: .2s;
     }
+
+        a:hover {
+            color: bisque;
+            background: #171238;
+            text-decoration: underline;
+            font-size:20px;
+        }
 
 ul {
     margin: 0;

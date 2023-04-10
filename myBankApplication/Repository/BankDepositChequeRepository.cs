@@ -36,7 +36,7 @@ namespace myBankApplication.Repository
 
         public async Task<DepositChequeModel> GetByIdAsync(int id)
         {
-            return await _context.DepositCheque.FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.DepositCheque.FindAsync(id);
         }
 
         public Task<DepositChequeModel> GetChequeDepositByReference(string reference)

@@ -1,0 +1,154 @@
+﻿@using myBankApplication.Models
+@model TransactionModel
+
+
+
+<h1>Deposit</h1>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/header.css">
+    <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
+    <link rel="stylesheet" href="~/css/Error.css">
+    <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+    <style>
+        .currency-wrap {
+            position: relative;
+        }
+
+        .currency-code {
+            position: absolute;
+            left: 2px;
+            top: 25px;
+        }
+
+        .text-currency {
+            padding: 10px 20px;
+            border: solid 1px #ccc;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+    
+    @if (TempData["Message"] != null)
+    {
+        <div class="alertAuthentication">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Sorry!- @TempData["Message"]</strong>
+        </div>
+    }
+
+
+    <div class="content">
+        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+            <div class="loginbackground box-background--white padding-top--64">
+                <div class="loginbackground-gridContainer">
+                    <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                        <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                        <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                        <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                        <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                        <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                        <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                        <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                    <h1>Serena Bank</h1>
+                </div>
+                <div class="formbg-outer">
+                    <div class="formbg">
+                        <div class="formbg-inner padding-horizontal--48">
+                            <span class="padding-bottom--15">Deposit Cheque</span>
+                            <form method="post" asp-action="DepositCheque">
+                                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+                                <div class="currency-wrap">
+                                    <label>
+                                        Amount
+                                        <span class="currency-code">£</span>
+                                        <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control">
+                                        <span class="text-danger" asp-validation-for="Amount"></span>
+                                    </label>
+
+
+                                </div>
+
+                                @*    <div class="currency-wrap">
+                                <label>
+                                Please enter your 8 digit account number:
+                                <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
+                                <span class="text-danger" asp-validation-for="AccountNo"></span>
+                                </label>
+
+                                </div>*@
+
+                                <div class="currency-wrap">
+                                    <label>
+                                        Please enter your 8 digit of recipient account number:
+                                        <input asp-for="DestAccount" type="text" class="form-control" placeholder="e.g. 12345678" required>
+                                        <span class="text-danger" asp-validation-for="DestAccount"></span>
+                                    </label>
+
+                                </div>
+
+                                <div class="currency-wrap">
+                                    <label>
+                                        Description
+                                        <input asp-for="Reference" type="text" class="form-control">
+                                        <span class="text-danger" asp-validation-for="Reference"></span>
+                                    </label>
+
+                                </div>
+                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+
+
+</body>
+</html>

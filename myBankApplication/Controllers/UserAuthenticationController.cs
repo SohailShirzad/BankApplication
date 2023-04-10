@@ -69,7 +69,7 @@ namespace myBankApplication.Controllers
                 if (checkPassword)
                 {
                     // sign in, password is correct 
-                    var result = await _signInManager.PasswordSignInAsync(user, appUsersLoginModel.Password, false, false);
+                    var result = await _signInManager.PasswordSignInAsync(user, appUsersLoginModel.Password, false,  false);
                     if (result.Succeeded)
                     {
                         
@@ -80,7 +80,7 @@ namespace myBankApplication.Controllers
 
                         if (roles.Contains("admin"))
                         {
-                           return RedirectToAction("Admin", "Dashboard");
+                           return RedirectToAction("Index", "AppUsers");
                         }
 
                         var userAccounts = _context.Accounts.Where(r => r.AppUserId == user.Id);

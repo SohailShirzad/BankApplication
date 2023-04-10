@@ -31,7 +31,7 @@ namespace myBankApplication.Services
                 var uploadParams = new ImageUploadParams()
                 {
                     File = new FileDescription(file.FileName, stream),
-                    Transformation = new Transformation().Height(450).Width(450).Crop("fill")
+                    //Transformation = new Transformation().Height(450).Width(450).Crop("fill")
                 };
                 uploadResult  = await _cloudinary.UploadAsync(uploadParams);
             }

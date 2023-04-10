@@ -1,0 +1,125 @@
+﻿@using myBankApplication.ViewModels
+@model UserDetailViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/header.css">
+    <link rel="stylesheet" href="~/css/BankCardPage.css">
+    <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="sidebar">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+        {
+            <!-- Balance-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+
+            <!-- Move Money-->
+            <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+            </div>
+
+            <!-- Card-->
+            <button class="dropdown-btn"> <i class="fa-solid fa-credit-card"></i> Card <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
+                <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+                <a asp-area="" asp-controller="BankCard" asp-action="Edit"><i class="fa-solid fa-square-pen fa-flip"></i> Edit</a>
+            </div>
+            <!-- Transaction-->
+
+            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="AppUserTransaction"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="AppUserPayment"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+            </div>
+
+            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+
+
+
+        }
+
+        else
+        {
+            <!-- Balance-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+
+            <!-- Move Money-->
+            <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+            </div>
+
+            <!-- Card-->
+            <a asp-area="" asp-controller="BankCard" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
+            <!-- Transaction-->
+
+            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
+                <a asp-area="" asp-controller="Detail" asp-action="Deposit"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
+            </div>
+
+            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+        }
+
+    </div>
+
+    <div class="content">
+        @foreach (var bankcards in Model.BankCards)
+        {
+            <div class="circles">
+                <div class="circle circle-1"></div>
+                <div class="circle circle-2"></div>
+            </div>
+            <div class="card-group">
+            <div class="card">
+                <div class="logo"><img src="~/images/visaLogo.png" alt="Visa"></div>
+                <div class="chip"><img src="~/images/chipImage.png" alt="chip"></div>
+                <div class="number">@bankcards.CardNumber</div>
+                    <div class="name">@Model.FName[0].ToString().ToUpper() @if (Model.MName != null)
+                        {
+                            @Model.MName[0].ToString().ToUpper()
+                        }
+                        @Model.LName @bankcards.Account_Id</div>
+                    <div class="from">EXP @bankcards.ExpiryDate.ToString("MM/yyyy")</div>
+                <div class="to"> @bankcards.CVVNumber</div>
+                <div class="pin"> Pin: @bankcards.CardPin <a asp-controller="AppUsers" asp-action="EditCardPin" style=" color: skyblue">Change Pin?</a></div>
+                <div class="ring"></div>
+            </div>
+
+        </div>
+
+
+        }
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

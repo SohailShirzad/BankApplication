@@ -10,5 +10,6 @@ th, td {
 }
 
 tr:hover {
-    background-color: coral;
+    background-color: #192851;
+    color:white;
 }
