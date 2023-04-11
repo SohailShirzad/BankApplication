@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="~/css/sideNav.css">
     <link rel="stylesheet" href="~/css/home.css">
     <link rel="stylesheet" href="~/css/Table.css">
+    <style>
+        <style >
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+            height: fit-content;
+        }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    </style>
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
 
 
@@ -16,13 +35,13 @@
         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
         {
             <!-- Balance-->
-            <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
 
             <!-- Move Money-->
             <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
-                <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Index"><i class="fa-solid fa-arrow-right-arrow-left"></i> View All Cheques</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="DepositCheque"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
                 <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
             </div>
 
@@ -31,17 +50,15 @@
             <div class="dropdown-container">
                 <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
                 <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
-                <a asp-area="" asp-controller="BankCard" asp-action="Edit"><i class="fa-solid fa-square-pen fa-flip"></i> Edit</a>
             </div>
             <!-- Transaction-->
 
             <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserTransaction"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserPayment"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Index"><i class="fa-solid fa-eye fa-bounce"></i> View all transactions</a>
             </div>
 
-            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
 
             
@@ -51,8 +68,7 @@
         else
         {
             <!-- Balance-->
-            <a style="text-align:center;"><img class="img logo rounded-circle mb-5" = src="@Model.Profile_Picture" width="70%" height="70%" alt="User profile picture" /></a>
-            <a style="color:white;">@Model.FullName</a>
+            <a style="text-align:center;"><img class="img logo rounded-circle mb-5" = src="@Model.Profile_Picture" width="100%" height="70%" alt="User profile picture" /></a>
             
             <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
 
@@ -78,24 +94,47 @@
 
     <div class="content">
 
+
         <!--User Details-->
         <div>
-            <p class="text-muted">Welcome: @Model.FullName</p>
-
+            <h1 class="text-muted">Welcome: @Model.FullName <i class="fa-regular fa-face-smile"></i></h1>
         </div>
 
+        <div class="row">
+            <div class="column" style="background-color:#19d3c5;">
+                <div>
+                    <h2>Total Transactions:</h2>
+                    <h5> @Model.totalTransactions</h5>
 
-        <!--Accounts-->
+                </div>
+            </div>
+            <div class="column" style="background:linear-gradient(45deg,#081e21,#572fbe 40%,#5636a7 60%,#9c5ee3);">
+                <!--Accounts-->
 
-        <div>
-            
-            @foreach (var item in Model.Accounts)
-            {
-                <p class="text-muted">Balance: £@item.Balance.Value.ToString("0.00") <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i></a></p>
-                <p class="text-muted">Account: @item.AccountNo</p>
+                <div>
 
-            }
-        </div>
+                    @foreach (var item in Model.Accounts)
+                    {
+                        <h2 style="color:white;">Balance:</h2>
+                        <h5 style="color:white";>£@item.Balance.Value.ToString("0.00") <a asp-area="" asp-controller="Transaction"
+                        asp-action="Deposit"><i class="fa-solid fa-plus" style="color: #e3e7ed;"></i></a></h5>
+
+                    }
+                </div>
+            </div>
+            <div class="column" style="background-color:#171238;">
+                <div>
+
+                    @foreach (var item in Model.Accounts)
+                    {
+                        <h2 style="color:white" ;>Account Number:</h2>
+                        <h5 style="color:white";>@item.AccountNo </h5>
+
+                    }
+
+                </div>
+                </div>
+            </div>
 
 
         <!--Transactions-->
@@ -105,7 +144,7 @@
                 <tr>
                     <th>Transaction Type</th>
                     <th>Date</th>
-                    <th>Amoount</th>
+                    <th>Amount</th>
                     <th></th>
 
 
@@ -117,7 +156,10 @@
                     <td>@transactions.TransactionType</td>
                     <td> @transactions.Date.ToString("f") </td>
                     <td class="currency-code">£@transactions.Amount </td>
-                     <td><a asp-area="" asp-controller="Dashboard" asp-action="Home"><i class="fa-solid fa-money-check"></i> More Details</a></td>
+                            <td>
+                            <a asp-controller="Transaction" asp-action="Detail" asp-route-id="@transactions.Id"><i class="fa-solid fa-money-check">
+                                </i>More Details</a >
+                            </td>
 
                 </tr>
 

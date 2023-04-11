@@ -1,10 +1,5 @@
-﻿using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
@@ -13,7 +8,7 @@ using myBankApplication.ViewModels;
 
 namespace myBankApplication.Controllers
 {
- 
+
     public class AppUsersController : Controller
     {
         private readonly IBankCardRepository _bankCardRepository;
@@ -68,7 +63,7 @@ namespace myBankApplication.Controllers
                         Accounts = user.Accounts,
                         Gender = user.Gender,
                         Email = user.Email,
-                        Profile_Picture = user.Profile_Picture
+                        Profile_Picture = user.Profile_Picture,
                         
                         
                     };
@@ -196,6 +191,16 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Balance(string id)
         {
+
+
+
+            // Total Expense
+
+
+            //
+
+
+
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
@@ -206,8 +211,12 @@ namespace myBankApplication.Controllers
             {
                 return View("Error");
             }
-            
+
+
+            //Total Incoming
             var appUsersViewModel = new AppUsersViewModel()
+
+
             {
                 Accounts = userAccounts,
                 BankCards = userBankCards,
@@ -235,8 +244,13 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> EditUserProfile(string id)
         {
-            var user = await _customerRepository.GetUserById(id);
-            if (user == null) return View("Error");
+            //var user = await _customerRepository.GetUserById(id);
+            //if (user == null) return View("Error");
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return RedirectToAction("Index", "AppUsers");
+            }
             var editUserProfilVM = new EditUserProfileViewModel()
             {
                 Id = user.Id,
@@ -346,23 +360,27 @@ namespace myBankApplication.Controllers
             return RedirectToAction("CustomerCardDetails", "AppUsers");
             }
 
-        [HttpPost]
-        public async Task<IActionResult> DeleteCustomerProfile(UserDetailViewModel model)
+        [HttpGet]
+        public async Task<IActionResult> DeleteCustomerProfile(string id)
         {
-            var user = await _customerRepository.GetUserById(model.Id);
-      
+            var userDetails = await _customerRepository.GetUserById(id);
+            if (userDetails == null) return View("Error");
+            return View(userDetails);
 
-            if(user != null)
-            {
-                _customerRepository.Delete(user);
-                _customerRepository.Save();
-                return RedirectToAction("Index", "Home");
-            }
+        }
 
+
+        [HttpPost, ActionName("DeleteCustomerProfile")]
+        public async Task<IActionResult> DeleteCustomer(string id)
+        {
+            var userDetails = await _customerRepository.GetUserById(id);
+            if (userDetails == null) return View("Error");
+
+            _customerRepository.Delete(userDetails);
             return RedirectToAction("Index", "Home");
         }
 
-        
+
 
 
         public IActionResult AppUserPayment()

@@ -42,7 +42,7 @@ text-align:center;
         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
         {
             <!-- Balance-->
-            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-sterling-sign"></i> Home</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
 
             <!-- Move Money-->
             <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
@@ -57,7 +57,6 @@ text-align:center;
             <div class="dropdown-container">
                 <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
                 <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
-                <a asp-area="" asp-controller="BankCard" asp-action="Edit"><i class="fa-solid fa-square-pen fa-flip"></i> Edit</a>
             </div>
             <!-- Transaction-->
 
@@ -69,6 +68,7 @@ text-align:center;
             <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
         }
+
     </div>
     
     

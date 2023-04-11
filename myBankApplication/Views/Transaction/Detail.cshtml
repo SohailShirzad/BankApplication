@@ -1,5 +1,5 @@
 ﻿@using myBankApplication.ViewModels
-@model DashboardViewModel
+@model IndexTransactionsViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,6 +85,7 @@
                     <th>Transaction ID</th>
                     <th>From Account</th>
                     <th>Recipient</th>
+                    <th>Destination Account</th>
                     <th>Amount</th>
                     <th>Date</th>
                     <th>Transaction Tyoe</th>
@@ -92,32 +93,20 @@
 
 
                 </tr>
-                @foreach (var transactions in Model.Transactions)
-                {
+                <tr>
+                    <td>@Model.Id</td>
+                    <td> @Model.AccountNo </td>
+                    <td> @Model.RecipientName</td>
+                    <td>@Model.DestAccount</td>
+                    <td class="currency-code">£@Model.Amount </td>
+                    <td> @Model.Date </td>
+                    <td> @Model.TransactionType </td>
+                    <td> @Model.Reference </td>
 
+                </tr>
 
-                    <tr>
-                        <td>@transactions.Id</td>
-                        <td> @transactions.AccountNo </td>
-                        <td> @transactions.RecipientName </td>
-                        <td class="currency-code">£@transactions.Amount </td>
-                        <td> @transactions.Date </td>
-                        <td> @transactions.TransactionType </td>
-                        <td> @transactions.Reference </td>
-
-                    </tr>
-
-
-                }
             </table>
         </div>
-
-        <a asp-controller="Account" asp-action="Create"><i class="fa-solid fa-piggy-bank"></i> To get started please create an account now. </a>
-
-
-
-
-
     </div>
     <script>
         /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */

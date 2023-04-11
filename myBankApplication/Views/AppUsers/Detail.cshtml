@@ -102,11 +102,10 @@ else
                 <br />
 
                  <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Balance </label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6>£@accounts.Balance.Value.ToString("0.00")</h6></div>
+                <div style="border: 1px solid #ccc; background-color:white"> <h6>£@accounts.Balance.Value.ToString("0.00")</h6></div><br>
 
-                    <button type="submit" asp-controller="AppUsers" asp-action="DeleteCustomerProfile" style="background: #800000;border-radius: 1.875em; color: #fff; cursor: pointer;
-                    font-size: 1rem; font-weight: 700; letter-spacing: 1px; line-height: normal; margin: 15px auto;
-                    padding: 0.8125em 1.875em" >Close your account</button>
+                    <a style="background-color:red; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem; border-radius: 1.875em; font-weight: 700; 
+                    padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="DeleteCustomerProfile" asp-route-id="@Model.Id">Close your account</a>
                 
 
             }
@@ -129,7 +128,7 @@ else
 
             <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
             <div style="border: 1px solid #ccc; background-color:white"> <h6>@Model.DateOfBirth.ToString("d")</h6></div><br>
-                <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile">Change Personal Details:</a>
+                <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
             
         </div>
     </div>

@@ -50,7 +50,7 @@ body {
     height: 270px;
     width: 450px;
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #171238; 
     backdrop-filter: blur(30px);
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);

@@ -131,7 +131,7 @@
 
                 <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h6>@Model.DateOfBirth.ToString("d")</h6></div><br>
-                <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile">Change Personal Details:</a>
+                <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
 
             </div>
         </div>

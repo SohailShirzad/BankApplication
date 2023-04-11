@@ -53,7 +53,7 @@ namespace myBankApplication.Controllers
             var cheques = await _depositChequeRepository.GetByIdAsync(id);
             if (cheques == null)
             {
-                return RedirectToAction("Admin", "Dashboard");
+                return RedirectToAction("Index", "AppUsers");
             }
             var acc = await _context.Accounts.ToListAsync();
             var account = acc.Where(a => a.AppUserId == cheques.AppUserId).SingleOrDefault();

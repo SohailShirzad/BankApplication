@@ -55,9 +55,38 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            TransactionModel transactionModel = await _transactionRepository.GetByIdAsync(id);
-            return View(transactionModel);
+            var transactionDetails = await _transactionRepository.GetByIdAsync(id);
+            if (transactionDetails == null)
+            {
+                return View("Error");
+
+            }
+
+            var acc = await _applicationDbContext.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == transactionDetails.AppUserId).SingleOrDefault();
+            var indexTransactionsViewModel = new IndexTransactionsViewModel()
+            {
+                Id = transactionDetails.Id,
+                AccountNo = transactionDetails.AccountNo,
+                Amount = transactionDetails.Amount,
+                DestAccount = transactionDetails.DestAccount,
+                Reference = transactionDetails.Reference,
+                Date = transactionDetails.Date,
+                TransactionType = transactionDetails.TransactionType,
+                RecipientName = transactionDetails.RecipientName,
+                AppUserId = transactionDetails.AppUserId,
+
+            };
+
+            return View(indexTransactionsViewModel);
+
+
         }
+
+
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> Deposit()
@@ -108,7 +137,7 @@ namespace myBankApplication.Controllers
                 };
 
                 _transactionRepository.Add(transaction);
-                return RedirectToAction("Balance", "AppUsers");
+                return RedirectToAction("Detail", "AppUsers");
 
 
             }
@@ -148,7 +177,7 @@ namespace myBankApplication.Controllers
         }
 
 
-
+        //Used by admin 
         [HttpPost]
         public async Task<IActionResult> DepositCheque(TransactionModel transactionVM)
         {

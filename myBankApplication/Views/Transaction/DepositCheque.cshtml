@@ -1,7 +1,7 @@
 ﻿@using myBankApplication.Models
 @model TransactionModel
 
-
+<!--This page will be used by admin to deposit cash to the user who deposited cheque-->
 
 <h1>Deposit</h1>
 
@@ -96,15 +96,6 @@
 
                                 </div>
 
-                                @*    <div class="currency-wrap">
-                                <label>
-                                Please enter your 8 digit account number:
-                                <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
-                                <span class="text-danger" asp-validation-for="AccountNo"></span>
-                                </label>
-
-                                </div>*@
-
                                 <div class="currency-wrap">
                                     <label>
                                         Please enter your 8 digit of recipient account number:
@@ -123,6 +114,8 @@
 
                                 </div>
                                 <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+                                <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
                             </form>
                         </div>
                     </div>

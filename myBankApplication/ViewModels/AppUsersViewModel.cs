@@ -44,6 +44,8 @@ namespace myBankApplication.ViewModels
 
         public string bankcardNumber { get; set; }
 
+        public int? totalTransactions { get { return Transactions.Count(); } }
+
 
 
 
