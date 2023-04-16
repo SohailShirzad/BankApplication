@@ -22,12 +22,6 @@ namespace myBankApplication.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Index()
-        {
-
-            return View();
-        }
-
 
         public IActionResult Detail()
         {

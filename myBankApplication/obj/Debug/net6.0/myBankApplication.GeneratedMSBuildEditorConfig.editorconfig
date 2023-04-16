@@ -19,10 +19,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Account/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/Balance.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQmFsYW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -89,6 +85,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Shared/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Shared/Error.cshtml]
