@@ -1,6 +1,9 @@
 ﻿@using myBankApplication.ViewModels
 @model UserDetailViewModel
 
+@{
+    Layout = "~/Views/Shared/SideNav.cshtml";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,64 +16,6 @@
 
 </head>
 <body>
-<div class="sidebar">
-@if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-    {
-        <!-- Balance-->
-        <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
-
-        <!-- Move Money-->
-        <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a asp-area="" asp-controller="DepositCheque" asp-action="Index"><i class="fa-solid fa-arrow-right-arrow-left"></i> View All Cheques</a>
-            <a asp-area="" asp-controller="Transaction" asp-action="DepositCheque"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
-            <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
-        </div>
-
-        <!-- Card-->
-        <button class="dropdown-btn"> <i class="fa-solid fa-credit-card"></i> Card <i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
-            <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
-        </div>
-        <!-- Transaction-->
-
-        <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a asp-area="" asp-controller="Transaction" asp-action="Index"><i class="fa-solid fa-eye fa-bounce"></i> View all transactions</a>
-        </div>
-
-        <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
-        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
-
-
-    }
-
-else
-    {
-
-
-        <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
-
-
-
-
-        <!-- Move Money-->
-        <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a asp-area="" asp-controller="Transaction" asp-action="Transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
-            <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
-            <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
-        </div>
-
-        <!-- Card-->
-        <a asp-area="" asp-controller="AppUsers" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
-
-        <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
-        <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
-    }
-
-</div>
 
 <div class="content">
 
@@ -80,29 +25,29 @@ else
             <h2>Account Details:</h2>
             @foreach (var accounts  in Model.Accounts)
             {
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-user"></i> Account Number</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.AccountNo</h6></div>
+                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-user"></i> Account Number</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountNo</h3></div>
 
                 <br />
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Sort Code</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.Sort_Code</h6></div>
+                <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Sort Code</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Sort_Code</h3></div>
 
                 <br />
 
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-phone"></i> Type </label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.AccountType</h6></div>
+                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-phone"></i> Type </label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountType</h3></div>
 
                 <br />
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-house"></i> Status</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.Status</h6></div>
+                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-house"></i> Status</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Status</h3></div>
 
                 <br />
 
-                 <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Balance </label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6>£@accounts.Balance.Value.ToString("0.00")</h6></div><br>
+                 <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Balance </label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3>£@accounts.Balance.Value.ToString("0.00")</h3></div><br>
 
                     <a style="background-color:red; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem; border-radius: 1.875em; font-weight: 700; 
                     padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="DeleteCustomerProfile" asp-route-id="@Model.Id">Close your account</a>
@@ -113,21 +58,21 @@ else
         </div>
             <div class="column" style="background-color:#edecf9;">
              <h2 style="color:#192851;">Personal Details</h2>
-             <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
-             <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Title @Model.FullName</h6></div><br />
+             <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
+             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Title @Model.FullName</h3></div><br />
 
-             <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
-             <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Email</h6></div><br />
+             <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
+             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Email</h3></div><br />
 
 
-            <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.PhoneNumber</h6></div><br />
+            <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
+            <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.PhoneNumber</h3></div><br />
 
-            <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Address, @Model.Post_Code</h6></div><br />
+            <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
+            <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Address, @Model.Post_Code</h3></div><br />
 
-            <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h6>@Model.DateOfBirth.ToString("d")</h6></div><br>
+            <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+            <div style="border: 1px solid #ccc; background-color:white"> <h3>@Model.DateOfBirth.ToString("d")</h6></div><br>
                 <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
             
         </div>
@@ -140,21 +85,5 @@ else
 <!--Transactions-->
 
 </div>
-<script>
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    });
-}
-</script>
 </body>
 </html>

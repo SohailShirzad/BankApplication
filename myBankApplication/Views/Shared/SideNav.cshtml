@@ -1,0 +1,81 @@
+﻿<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+</head>
+    <div class="sidebar">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+        {
+            <!-- Balance-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
+
+            <!-- Move Money-->
+            <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Index"><i class="fa-solid fa-arrow-right-arrow-left"></i> View All Cheques</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="DepositCheque"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+            </div>
+
+            <!-- Card-->
+            <button class="dropdown-btn"> <i class="fa-solid fa-credit-card"></i> Card <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
+                <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+            </div>
+            <!-- Transaction-->
+
+            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Index"><i class="fa-solid fa-eye fa-bounce"></i> View all transactions</a>
+            </div>
+
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+
+
+        }
+
+        else
+        {
+
+
+            <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+
+
+
+
+            <!-- Move Money-->
+            <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+            </div>
+
+            <!-- Card-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
+
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+        }
+
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
