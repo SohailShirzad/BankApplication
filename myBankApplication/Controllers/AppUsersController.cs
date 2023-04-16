@@ -18,7 +18,7 @@ namespace myBankApplication.Controllers
         private readonly IPhotoService _photoService;
 
         public AppUsersController(IAppUsersRepository customerRepository, IHttpContextAccessor httpContextAccessor,
-            IPhotoService photoService, IBankCardRepository bankCardRepository, ApplicationDbContext context )
+            IPhotoService photoService, IBankCardRepository bankCardRepository, ApplicationDbContext context)
         {
             _customerRepository = customerRepository;
             _httpContextAccessor = httpContextAccessor;
@@ -28,7 +28,7 @@ namespace myBankApplication.Controllers
         }
 
         //Mapper
-        private void MapEditUserProfile (AppUsersModel user, EditUserProfileViewModel editUserVM, ImageUploadResult photoResult)
+        private void MapEditUserProfile(AppUsersModel user, EditUserProfileViewModel editUserVM, ImageUploadResult photoResult)
         {
             user.Id = editUserVM.Id;
             user.Title = editUserVM.Title;
@@ -39,18 +39,21 @@ namespace myBankApplication.Controllers
             user.Post_Code = editUserVM.Post_Code;
             user.PhoneNumber = editUserVM.PhoneNumber;
             user.Email = editUserVM.EmailAddress;
-            
+
             user.Profile_Picture = photoResult.Url.ToString();
-           
+
         }
 
 
         //admin
+        
         public async Task<IActionResult> Index(string searchString)
         {
 
-            //var users = await _customerRepository.GetAll();
-            //List<AppUsersViewModel> result = new List<AppUsersViewModel>();
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
 
             var users = from m in _context.Users
                         select m;
@@ -89,13 +92,19 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
 
             if (userAccounts == null)
             {
                 return RedirectToAction("Index", "AppUsers");
             }
-           
+
+         
+
             var user = await _customerRepository.GetUserById(id);
             var userDetailViewModel = new UserDetailViewModel()
             {
@@ -118,7 +127,7 @@ namespace myBankApplication.Controllers
                 Email = user.Email,
                 Profile_Picture = user.Profile_Picture,
                 Proof_Id = user.Proof_Id
-                
+
             };
 
             return View(userDetailViewModel);
@@ -131,6 +140,10 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> UserDetail(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
@@ -149,6 +162,7 @@ namespace myBankApplication.Controllers
 
             var userDetailViewModel = new UserDetailViewModel()
             {
+
                 Accounts = userAccounts.ToList(),
                 Id = user.Id,
                 Title = user.Title,
@@ -182,19 +196,29 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Balance(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
+
+            var user = await _customerRepository.GetUserById(id);
+            if (user == null)
+            {
+               return RedirectToAction("Registration", "UserAuthentication");
+            }
+
+            if(User.IsInRole("admin"))
+            {
+                return RedirectToAction("Index", "AppUsers");
+            }
 
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
             var userCheques = await _customerRepository.GetAllUsersCheques();
 
-            var user = await _customerRepository.GetUserById(id);
-            if (user == null)
-            {
-                return View("Error");
-            }
+        
 
-            //Total Incoming
             var appUsersViewModel = new AppUsersViewModel()
 
 
@@ -207,7 +231,7 @@ namespace myBankApplication.Controllers
                 Title = user.Title,
                 LName = user.LName,
                 FName = user.FName,
-                MName= user.MName,
+                MName = user.MName,
                 Email = user.Email,
                 Nationality = user.Nationality,
                 Profile_Picture = user.Profile_Picture,
@@ -225,6 +249,10 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> EditUserProfile(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             //var user = await _customerRepository.GetUserById(id);
             //if (user == null) return View("Error");
             var user = await _context.Users.FindAsync(id);
@@ -244,17 +272,21 @@ namespace myBankApplication.Controllers
                 Post_Code = user.Post_Code,
                 EmailAddress = user.Email,
                 Profile_PictureURL = user.Profile_Picture,
-                
+
 
             };
-            return View(editUserProfilVM); 
+            return View(editUserProfilVM);
         }
 
         [HttpPost]
 
-        public async Task<IActionResult> EditUserProfile (EditUserProfileViewModel editProfileVM)
+        public async Task<IActionResult> EditUserProfile(EditUserProfileViewModel editProfileVM)
         {
-            if(!ModelState.IsValid)
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
+            if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Failed to edit profile");
                 return View("EditUserProfile", editProfileVM);
@@ -299,6 +331,10 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> EditCardPin(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var user = await _customerRepository.GetUserById(id);
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
             var bankcard = userBankCards.Where(a => a.AppUserId == user.Id).FirstOrDefault();
@@ -319,6 +355,10 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> EditCardPin(CardChangePinViewModel cardpinVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Failed to edit profile");
@@ -339,11 +379,15 @@ namespace myBankApplication.Controllers
 
             _bankCardRepository.Update(bankcard);
             return RedirectToAction("CustomerCardDetails", "AppUsers");
-            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> DeleteCustomerProfile(string id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var userDetails = await _customerRepository.GetUserById(id);
             if (userDetails == null) return View("Error");
             return View(userDetails);
@@ -361,40 +405,43 @@ namespace myBankApplication.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
-
-        public IActionResult AppUserPayment()
-        {
-            return isUserAuthenticated();
-        }
-
-        public IActionResult AppUserTransaction()
-        {
-            return isUserAuthenticated();
-        }
-
-        public IActionResult AppUserDepositCash()
-        {
-            return isUserAuthenticated();
-        }
-        
-        
-        public IActionResult AppUserCard()
-        {
-            return isUserAuthenticated();
-        }
-        public IActionResult AppUserDetail()
-        {
-            return isUserAuthenticated();
-        }
-
-        // Check if the user is authenicated 
-        public IActionResult isUserAuthenticated()
+        public Boolean isUserAuthenticated()
         {
             if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "UserAuthentication");
-            return View();
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
+
+
+
+
+        //public IActionResult AppUserPayment()
+        //{
+        //    return isUserAuthenticated();
+        //}
+
+        //public IActionResult AppUserTransaction()
+        //{
+        //    return isUserAuthenticated();
+        //}
+
+        //public IActionResult AppUserDepositCash()
+        //{
+        //    return isUserAuthenticated();
+        //}
+
+
+        //public IActionResult AppUserCard()
+        //{
+        //    return isUserAuthenticated();
+        //}
+        //public IActionResult AppUserDetail()
+        //{
+        //    return isUserAuthenticated();
+        //}
+
+        // Check if the user is authenicated 

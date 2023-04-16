@@ -8,133 +8,129 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = myBankApplication
 build_property.RootNamespace = myBankApplication
-build_property.ProjectDir = C:\Users\sohai\Desktop\myProjectApp\myBankApplication\
+build_property.ProjectDir = C:\Users\sohai\Desktop\myProjectApp - Copy\myBankApplication\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\sohai\Desktop\myProjectApp\myBankApplication
+build_property.MSBuildProjectDirectory = C:\Users\sohai\Desktop\myProjectApp - Copy\myBankApplication
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Account/Create.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Account/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/Balance.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/Balance.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQmFsYW5jZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/CustomerCardDetails.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/CustomerCardDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcQ3VzdG9tZXJDYXJkRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/DeleteCustomerProfile.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/DeleteCustomerProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcRGVsZXRlQ3VzdG9tZXJQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/Detail.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/EditCardPin.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/EditCardPin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcRWRpdENhcmRQaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/EditUserProfile.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/EditUserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcRWRpdFVzZXJQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/AppUsers/UserDetail.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/AppUsers/UserDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlcnNcVXNlckRldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/BankCard/Detail.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/BankCard/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0NhcmRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/BankCard/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/BankCard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0NhcmRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/BankCard/ViewCustomerWithNoBankCard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua0NhcmRcVmlld0N1c3RvbWVyV2l0aE5vQmFua0NhcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Bank/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Bank/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFua1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/DepositCheque/Create.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/DepositCheque/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdENoZXF1ZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/DepositCheque/Detail.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/DepositCheque/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdENoZXF1ZVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/DepositCheque/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/DepositCheque/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwb3NpdENoZXF1ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Home/About.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Home/Help.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Home/Help.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIZWxwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Home/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Shared/Error.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Transaction/Deposit.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Transaction/Deposit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGVwb3NpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Transaction/DepositCheque.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Transaction/DepositCheque.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGVwb3NpdENoZXF1ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Transaction/Detail.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Transaction/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Transaction/Index.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Transaction/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Transaction/Transfer.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Transaction/Transfer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNhY3Rpb25cVHJhbnNmZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/UserAuthentication/Login.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/UserAuthentication/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/UserAuthentication/Registration.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/UserAuthentication/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXFJlZ2lzdHJhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/_ViewImports.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/_ViewStart.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/sohai/Desktop/myProjectApp/myBankApplication/Views/Shared/_Layout.cshtml]
+[C:/Users/sohai/Desktop/myProjectApp - Copy/myBankApplication/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-amacyge94v

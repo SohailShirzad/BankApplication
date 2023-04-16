@@ -22,12 +22,6 @@ namespace myBankApplication.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            IEnumerable<AccountModel> accounts = await _accountRepository.GetAll();
-            return View(accounts);
-        }
-
         public IActionResult Detail()
         {
 
@@ -38,6 +32,7 @@ namespace myBankApplication.Controllers
 
         public IActionResult Create()
         {
+          
             var curUserId = HttpContext.User.GetUserId();
             var createAccountViewModel = new CreateAccountViewModel { AppUserId = curUserId };
 
@@ -48,6 +43,10 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Create(CreateAccountViewModel accountVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             if (ModelState.IsValid)
             {
                 var account = new AccountModel
@@ -76,7 +75,17 @@ namespace myBankApplication.Controllers
 
         }
 
-     
+
+        public Boolean isUserAuthenticated()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
 
     }
 }

@@ -28,6 +28,12 @@ namespace myBankApplication.Controllers
         //admin
         public async Task<IActionResult> Index(string reference, int? accountNumber)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
+
+
             var transactions = from m in _applicationDbContext.Transactions
                                select m;
 
@@ -50,6 +56,10 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var transactionDetails = await _transactionRepository.GetByIdAsync(id);
             if (transactionDetails == null)
             {
@@ -107,6 +117,10 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Deposit(TransactionModel transactionVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var curUserId = HttpContext.User.GetUserId();
             var acc = await _applicationDbContext.Accounts.ToListAsync();
             var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
@@ -176,6 +190,10 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> DepositCheque(TransactionModel transactionVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             TransactionModel TransactionFrom = new TransactionModel();
 
             TransactionModel TransactionTo = new TransactionModel();
@@ -271,6 +289,10 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Transfer(TransactionModel transactionVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             TransactionModel TransactionFrom = new TransactionModel();
 
             TransactionModel TransactionTo = new TransactionModel();
@@ -352,6 +374,15 @@ namespace myBankApplication.Controllers
 
             }
 
+        }
+
+        public Boolean isUserAuthenticated()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

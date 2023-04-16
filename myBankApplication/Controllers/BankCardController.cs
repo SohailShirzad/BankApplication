@@ -23,6 +23,10 @@ namespace myBankApplication.Controllers
         [HttpGet("bankCards")]
         public async Task<IActionResult> Detail()
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             var bankCards = await _bankCardRepository.GetAll();
             List<IndexBankCardsViewModel> result = new List<IndexBankCardsViewModel>();
             foreach (var bankCard in bankCards)
@@ -47,6 +51,10 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             return View();
         }
 
@@ -55,6 +63,10 @@ namespace myBankApplication.Controllers
 
         public async Task<IActionResult> Create(CreateBankCardViewModel BankCardVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             if (ModelState.IsValid)
             {
                 var bankCard = new BankCardModel
@@ -78,6 +90,15 @@ namespace myBankApplication.Controllers
             return View(BankCardVM);
 
 
+        }
+
+        public Boolean isUserAuthenticated()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

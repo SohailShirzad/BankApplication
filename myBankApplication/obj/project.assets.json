@@ -10815,11 +10815,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj",
+      "projectUniqueName": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\myBankApplication.csproj",
       "projectName": "myBankApplication",
-      "projectPath": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\myBankApplication.csproj",
+      "projectPath": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\myBankApplication.csproj",
       "packagesPath": "C:\\Users\\sohai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sohai\\Desktop\\myProjectApp\\myBankApplication\\obj\\",
+      "outputPath": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

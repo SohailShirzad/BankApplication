@@ -90,6 +90,10 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DepositChequeViewModel ChequeVM)
         {
+            if (isUserAuthenticated())
+            {
+                return RedirectToAction("Login", "UserAuthentication");
+            }
             if (ModelState.IsValid)
             {
                 var result = await _photoService.AddPhotoAsync(ChequeVM.FrontChequeImage);
@@ -114,6 +118,15 @@ namespace myBankApplication.Controllers
             }
 
             return View(ChequeVM);
+        }
+
+        public Boolean isUserAuthenticated()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
