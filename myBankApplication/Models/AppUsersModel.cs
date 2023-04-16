@@ -81,8 +81,6 @@ namespace myBankApplication.Models
         
         public ICollection<BankCardModel> BankCards { get; set; }
 
-        public ICollection <StatementModel> Statements { get; set; }  
-
         public ICollection <TransactionModel> Transactions { get; set; }   
     }
 }

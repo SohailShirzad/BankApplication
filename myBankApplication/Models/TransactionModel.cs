@@ -1,4 +1,4 @@
-﻿using Microsoft.Identity.Client;
+﻿  using Microsoft.Identity.Client;
 using myBankApplication.Data.Enum;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

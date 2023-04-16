@@ -35,7 +35,7 @@ namespace myBankApplication.Models
         public AccountModel? AccountNumber;
 
  
-        [ForeignKey("AppUserModel")]
+        [ForeignKey("AppUsersModel")]
         public string? AppUserId { get; set; }
         public AppUsersModel? AppUsers { get; set; }
 

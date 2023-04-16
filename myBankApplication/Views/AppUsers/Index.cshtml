@@ -1,5 +1,7 @@
-﻿@using myBankApplication.ViewModels
-@model List<AppUsersViewModel>
+﻿@*@using myBankApplication.ViewModels
+@model List<AppUsersViewModel>*@
+
+@model IEnumerable<myBankApplication.Models.AppUsersModel>
 
 <!DOCTYPE html>
 <html>
@@ -76,6 +78,13 @@ text-align:center;
 <div class="container">
 <div class="row">
 <div class="col">
+    <form asp-controller="AppUsers" asp-action="Index">
+    
+        <p>
+            Seach by name or email: <input type="text" name="searchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
     @foreach (var user in Model)
     {
             <div class=" column">

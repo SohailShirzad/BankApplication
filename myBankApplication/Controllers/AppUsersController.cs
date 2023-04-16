@@ -45,33 +45,24 @@ namespace myBankApplication.Controllers
         }
 
 
-
-        public async Task<IActionResult> Index()
+        //admin
+        public async Task<IActionResult> Index(string searchString)
         {
-            
-            var users = await _customerRepository.GetAll();
-            List<AppUsersViewModel> result = new List<AppUsersViewModel>();
-            foreach (var user in users)
+
+            //var users = await _customerRepository.GetAll();
+            //List<AppUsersViewModel> result = new List<AppUsersViewModel>();
+
+            var users = from m in _context.Users
+                        select m;
+
+
+            if (searchString != "" && searchString != null)
             {
-                {
-                    var appUserViewModel = new AppUsersViewModel()
-                    {
-                        Id = user.Id,
-                        FName = user.FName,
-                        MName = user.MName,
-                        LName = user.LName,
-                        Accounts = user.Accounts,
-                        Gender = user.Gender,
-                        Email = user.Email,
-                        Profile_Picture = user.Profile_Picture,
-                        
-                        
-                    };
-                    result.Add(appUserViewModel);
-                }
-                
+                users = users.Where(s => s.FName!.Contains(searchString) || s.LName.Contains(searchString)
+                || s.Email.Contains(searchString));
             }
-            return View(result);
+
+            return View(users);
         }
 
         //User Bank Cards
@@ -192,15 +183,6 @@ namespace myBankApplication.Controllers
         public async Task<IActionResult> Balance(string id)
         {
 
-
-
-            // Total Expense
-
-
-            //
-
-
-
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
@@ -211,7 +193,6 @@ namespace myBankApplication.Controllers
             {
                 return View("Error");
             }
-
 
             //Total Incoming
             var appUsersViewModel = new AppUsersViewModel()

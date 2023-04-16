@@ -25,33 +25,28 @@ namespace myBankApplication.Controllers
             _accountRepository = accountRepository;
         }
 
-        [HttpGet("transactions")]
-        public async Task<IActionResult> Index()
+        //admin
+        public async Task<IActionResult> Index(string reference, int? accountNumber)
         {
-            var AllTransactions = await _transactionRepository.GetAll();
-            List<IndexTransactionsViewModel> result = new List<IndexTransactionsViewModel>();
-            foreach (var transactions in AllTransactions)
+            var transactions = from m in _applicationDbContext.Transactions
+                               select m;
+
+
+            if (reference != "" && reference != null)
             {
-                var indexTransactionsViewModel = new IndexTransactionsViewModel()
-                {
-                    Id = transactions.Id,
-                    TransactionType = transactions.TransactionType,
-                    AccountNo = transactions.AccountNo,
-                    RecipientName = transactions.RecipientName,
-                    DestAccount = transactions.DestAccount,
-                    Amount = transactions.Amount,
-                    Date = transactions.Date,
-                    Reference = transactions.Reference,
-
-
-
-                };
-
-                result.Add(indexTransactionsViewModel);
+                transactions = transactions.Where(t => t.Reference!.Contains(reference));
             }
 
-            return View(result);
+            if (transactions.Any())
+            {
+                transactions = transactions.Where( t => t.AccountNo == accountNumber
+                || t.DestAccount == accountNumber );
+            }
+
+            return View(transactions);
         }
+
+
 
         public async Task<IActionResult> Detail(int id)
         {

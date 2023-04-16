@@ -16,13 +16,13 @@
         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
         {
             <!-- Balance-->
-            <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
 
             <!-- Move Money-->
             <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
-                <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Index"><i class="fa-solid fa-arrow-right-arrow-left"></i> View All Cheques</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="DepositCheque"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
                 <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
             </div>
 
@@ -31,47 +31,41 @@
             <div class="dropdown-container">
                 <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
                 <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
-                <a asp-area="" asp-controller="BankCard" asp-action="Edit"><i class="fa-solid fa-square-pen fa-flip"></i> Edit</a>
             </div>
             <!-- Transaction-->
 
             <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserTransaction"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Transaction" asp-action="AppUserPayment"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Index"><i class="fa-solid fa-eye fa-bounce"></i> View all transactions</a>
             </div>
 
-            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
 
-            
 
         }
 
         else
         {
-            <!-- Balance-->
+
+
             <a asp-area="" asp-controller="AppUsers" asp-action="Balance"><i class="fa-solid fa-sterling-sign"></i> Balance</a>
+
+
+
 
             <!-- Move Money-->
             <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Create"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Transfer"><i class="fa-solid fa-arrow-right-arrow-left"></i> Transfer</a>
                 <a asp-area="" asp-controller="DepositCheque" asp-action="Create"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
-                <a asp-area="" asp-controller="AppUsers" asp-action="AppUserPayment"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
             </div>
 
             <!-- Card-->
-            <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-credit-card"></i> Card </a>
-            <!-- Transaction-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="CustomerCardDetails"><i class="fa-solid fa-credit-card"></i> Card </a>
 
-            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-container">
-                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-plus fa-fade"></i> New Transaction</a>
-                <a asp-area="" asp-controller="Detail" asp-action="Deposit"><i class="fa-solid fa-eye fa-bounce"></i> View Transactions</a>
-            </div>
-
-            <a asp-area="" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
         }
     

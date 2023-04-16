@@ -1,0 +1,116 @@
+﻿@using myBankApplication.ViewModels
+@model List<AppUsersViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/header.css">
+    <link rel="stylesheet" href="~/css/ThreeColoumn.css">
+
+    <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        img {
+            border-radius: 50%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            padding: 2px 16px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="sidebar">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+        {
+            <!-- Balance-->
+            <a asp-area="" asp-controller="AppUsers" asp-action="Index"><i class="fa-solid fa-house"></i>  Home </a>
+
+            <!-- Move Money-->
+            <button class="dropdown-btn"><i class="fa-solid fa-arrow-right-arrow-left"></i>  Move Money <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="DepositCheque" asp-action="Index"><i class="fa-solid fa-arrow-right-arrow-left"></i> View All Cheques</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="DepositCheque"><i class="fa-solid fa-money-bill-transfer"></i> Deposit Cheque</a>
+                <a asp-area="" asp-controller="Transaction" asp-action="Deposit"><i class="fa-solid fa-money-check"></i> Deposit Cash</a>
+            </div>
+
+            <!-- Card-->
+            <button class="dropdown-btn"> <i class="fa-solid fa-credit-card"></i> Card <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="BankCard" asp-action="Index"><i class="fa-solid fa-plus fa-fade"></i>Create a new card</a>
+                <a asp-area="" asp-controller="BankCard" asp-action="Detail"><i class="fa-solid fa-eye fa-bounce"></i> View all cards</a>
+                <a asp-area="" asp-controller="BankCard" asp-action="ViewCustomerWithNoBankCard"><i class="fa-solid fa-eye fa-bounce"></i> View all customer without a card</a>
+            </div>
+            <!-- Transaction-->
+
+            <button class="dropdown-btn"> <i class="fa-solid fa-money-bill-transfer"></i> Transaction <i class="fa fa-caret-down"></i></button>
+            <div class="dropdown-container">
+                <a asp-area="" asp-controller="Transaction" asp-action="Index"><i class="fa-solid fa-eye fa-bounce"></i> View all transactions</a>
+            </div>
+
+            <a asp-area="" asp-controller="AppUsers" asp-action="Detail"><i class="fa fa-fw fa-user"></i> Profile</a>
+            <a asp-area="" asp-controller="UserAuthentication" asp-action="Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a>
+        }
+
+    </div>
+
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    @foreach (var user in Model)
+                    {
+                        <div class=" column">
+                            <div class="card">
+                                <img alt="Image profile avatar" src="@user.Profile_Picture" style="width:30%; height:50%;">
+                                <div class="container">
+                                    <h4><b>@user.FName @user.LName</b></h4>
+                                    <h5>@user.Email</h5><br>
+                                    <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="UserDetail" asp-route-id="@user.Id">
+                                        View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

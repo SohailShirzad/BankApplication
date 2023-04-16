@@ -11,11 +11,13 @@ namespace myBankApplication.Controllers
     {
         private readonly IBankCardRepository _bankCardRepository;
         private readonly ApplicationDbContext _applicationDbContext;
+        private readonly IAppUsersRepository _appUsersRepository;
 
-        public BankCardController(IBankCardRepository bankCardRepository, ApplicationDbContext applicationDbContext)
+        public BankCardController(IBankCardRepository bankCardRepository, ApplicationDbContext applicationDbContext, IAppUsersRepository appUsersRepository)
         {
             _bankCardRepository = bankCardRepository;
             _applicationDbContext = applicationDbContext;
+            _appUsersRepository = appUsersRepository;
         }
 
         [HttpGet("bankCards")]
@@ -70,12 +72,13 @@ namespace myBankApplication.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Failed to create an account, please try again later.");
+                ModelState.AddModelError("", "Failed to create a bank card, please try again later.");
             }
 
             return View(BankCardVM);
 
 
         }
+
     }
 }

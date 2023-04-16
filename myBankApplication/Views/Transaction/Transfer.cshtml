@@ -2,7 +2,6 @@
 @model TransactionModel
 
 
-<h1>Deposit</h1>
 
 
 <!DOCTYPE html>
@@ -70,7 +69,7 @@
                 <div class="formbg-outer">
                     <div class="formbg">
                         <div class="formbg-inner padding-horizontal--48">
-                            <span class="padding-bottom--15">Deposit Cheque</span>
+                            <span class="padding-bottom--15">Transfer</span>
                             <form method="post" asp-action="Transfer">
                                 <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
                                 <div class="currency-wrap">
@@ -122,6 +121,19 @@
 
                                 </div>
                                 <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                {
+                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                                    border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+                                }
+                                else
+                                {
+                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
+
+                                }
+                               
                             </form>
                         </div>
                     </div>
