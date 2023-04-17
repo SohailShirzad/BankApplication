@@ -1,13 +1,15 @@
 ﻿@using myBankApplication.Models
 @model TransactionModel
 
+@{
+    Layout = "~/Views/Shared/Create.cshtml";
+}
 
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="~/css/sideNav.css">
     <link rel="stylesheet" href="~/css/home.css">
     <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
@@ -31,107 +33,78 @@
     </style>
 
 </head>
-<body>
-
-    <div class="content">
-        @{
-            Layout = "~/Views/Shared/Create.cshtml";
-        }
-
-        <div class="formbg-outer">
-                    <div class="formbg">
-                        <div class="formbg-inner padding-horizontal--48">
-                            <span class="padding-bottom--15">Transfer</span>
-                            <form method="post" asp-action="Transfer">
-                                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
-                                <div class="currency-wrap">
-                                    <label>
-                                        Amount
-                                        <span class="currency-code">£</span>
-                                        <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control">
-                                        <span class="text-danger" asp-validation-for="Amount"></span>
-                                    </label>
+  
+<div class="formbg-outer">
+    <div class="formbg">
+        <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15">Transfer</span>
+            <form method="post" asp-action="Transfer">
+                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+                <div class="currency-wrap">
+                    <label>
+                        Amount
+                        <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control">
+                        <span class="text-danger" asp-validation-for="Amount"></span>
+                    </label>
 
 
-                                </div>
-
-                                <div class="currency-wrap">
-                                    <label>
-                                        Recipient name:
-                                        <span class="currency-code">£</span>
-                                        <input asp-for="RecipientName" type="text" class="form-control" required>
-                                        <span class="text-danger" asp-validation-for="RecipientName"></span>
-                                    </label>
-
-
-                                </div>
-
-                            @*    <div class="currency-wrap">
-                                    <label>
-                                        Please enter your 8 digit account number:
-                                        <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
-                                        <span class="text-danger" asp-validation-for="AccountNo"></span>
-                                    </label>
-
-                                </div>*@
-
-                                <div class="currency-wrap">
-                                    <label>
-                                        Please enter your 8 digit of recipient account number:
-                                        <input asp-for="DestAccount" type="text" class="form-control" placeholder="e.g. 12345678" required>
-                                        <span class="text-danger" asp-validation-for="DestAccount"></span>
-                                    </label>
-
-                                </div>
-
-                                <div class="currency-wrap">
-                                    <label>
-                                        Description
-                                        <input asp-for="Reference" type="text" class="form-control">
-                                        <span class="text-danger" asp-validation-for="Reference"></span>
-                                    </label>
-
-                                </div>
-                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
-
-                                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-                                {
-                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-                                    border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
-                                }
-                                else
-                                {
-                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-                border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
-
-                                }
-                               
-                            </form>
-                        </div>
-                    </div>
                 </div>
-            </div>
+
+                <div class="currency-wrap">
+                    <label>
+                        Recipient name:
+                        <input asp-for="RecipientName" type="text" class="form-control" required>
+                        <span class="text-danger" asp-validation-for="RecipientName"></span>
+                    </label>
+
+
+                </div>
+
+            @*    <div class="currency-wrap">
+                    <label>
+                        Please enter your 8 digit account number:
+                        <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
+                        <span class="text-danger" asp-validation-for="AccountNo"></span>
+                    </label>
+
+                </div>*@
+
+                <div class="currency-wrap">
+                    <label>
+                        Recipient account number:
+                        <input asp-for="DestAccount" type="text" class="form-control" placeholder="e.g. 12345678" required>
+                        <span class="text-danger" asp-validation-for="DestAccount"></span>
+                    </label>
+
+                </div>
+
+                <div class="currency-wrap">
+                    <label>
+                        Description
+                        <input asp-for="Reference" type="text" class="form-control">
+                        <span class="text-danger" asp-validation-for="Reference"></span>
+                    </label>
+
+                </div>
+                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                {
+                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                    border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+                }
+                else
+                {
+                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
+
+                }
+                               
+            </form>
         </div>
     </div>
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
-
-
-
-</body>
+</div>
+</div>
+</div>
+</div>
 </html>

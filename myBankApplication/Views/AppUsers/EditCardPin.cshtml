@@ -1,6 +1,10 @@
 ﻿@using myBankApplication.ViewModels
 @model CardChangePinViewModel
 
+@{
+    Layout = "~/Views/Shared/Create.cshtml";
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,63 +17,52 @@
         <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
     </head>
 </head>
-<body>
 
 
-    <div class="content">
-        @{
-            Layout = "~/Views/Shared/Create.cshtml";
-        }
+<div class="formbg-outer">
+<div class="formbg">
+    <div class="formbg-inner padding-horizontal--48">
+        <span class="padding-bottom--15">Please select a pin number that is not easy to guess but easy for you to remember</span>
+
+        <form method="post" asp-action="EditCardPin">
+            <input type="hidden" id="AppUserId" name="Id" asp-for="AppUserId" />
+            <div class="col">
+                <label>Please enter your new pin: <input type="text" asp-for="CardPin" /></label>
+                <span class="text-danger" asp-validation-for="CardPin"></span>
+
+            </div>
+
+            <div class="col">
+                <label>Please confirm your new pin: <input type="text" asp-for="ConfrimPin" /></label>
+                <span class="text-danger" asp-validation-for="ConfrimPin"></span>
+
+            </div>
+
+            <div class="col">
+                <label>Please select contactless limit: <input type="number" asp-for="ContaclessLimit" /></label>
+                <span class="text-danger" asp-validation-for="ContaclessLimit"></span>
+
+            </div>
+            <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+            {
+                <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+    border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+            }
+            else
+            {
+                <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+    border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
+            }
+
+        </form>
 
 
-
-                <div class="formbg-outer">
-                    <div class="formbg">
-                        <div class="formbg-inner padding-horizontal--48">
-                            <span class="padding-bottom--15">Please select a pin number that is not easy to guess but easy for you to remember</span>
-
-                            <form method="post" asp-action="EditCardPin">
-                                <input type="hidden" id="AppUserId" name="Id" asp-for="AppUserId" />
-                                <div class="col">
-                                    <label>Please enter your new pin: <input type="text" asp-for="CardPin" /></label>
-                                    <span class="text-danger" asp-validation-for="CardPin"></span>
-
-                                </div>
-
-                                <div class="col">
-                                    <label>Please confirm your new pin: <input type="text" asp-for="ConfrimPin" /></label>
-                                    <span class="text-danger" asp-validation-for="ConfrimPin"></span>
-
-                                </div>
-
-                                <div class="col">
-                                    <label>Please select contactless limit: <input type="number" asp-for="ContaclessLimit" /></label>
-                                    <span class="text-danger" asp-validation-for="ContaclessLimit"></span>
-
-                                </div>
-                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
-                                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
-                                {
-                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
-                                }
-                                else
-                                {
-                                    <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
-                                }
-
-                            </form>
-
-
-                        </div>
-                    </div>
-                </div>
-        </div>
     </div>
-    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-
-
-</body>
 </html>

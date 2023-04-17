@@ -2,11 +2,14 @@
 @using myBankApplication.ViewModels
 @model CreateAccountViewModel
 
+@{
+    Layout = "~/Views/Shared/Create.cshtml";
+}
+
 <!DOCTYPE html>
 <html>
 <head>
     <head>
-        <link rel="stylesheet" href="~/css/sideNav.css">
         <link rel="stylesheet" href="~/css/home.css">
         <link rel="stylesheet" href="~/css/header.css">
         <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
@@ -14,59 +17,47 @@
         <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
     </head>
 </head>
-<body>
-
-
-<div class="content">
-        @{
-            Layout = "~/Views/Shared/Create.cshtml";
-        }
-
      
-        <div class="formbg-outer">
-            <div class="formbg">
-                <div class="formbg-inner padding-horizontal--48">
-                    <span class="padding-bottom--15">Please select your account type</span>
+<div class="formbg-outer">
+    <div class="formbg">
+        <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15">Please select your account type</span>
 
-                    <form asp-action="Create">
-                        <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
+            <form asp-action="Create">
+                <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
 
-                        <div class="col">
-                            <select asp-for="AccountType" asp-items="@Html.GetEnumSelectList<AccountType>()" class="form-control form-control-lg">
-                                <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                            </select>
-                            <span asp-validation-for="AccountType" class="text-danger"></span>
+                <div class="col">
+                    <select asp-for="AccountType" asp-items="@Html.GetEnumSelectList<AccountType>()" class="form-control form-control-lg">
+                        <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                    </select>
+                    <span asp-validation-for="AccountType" class="text-danger"></span>
 
-
-                        </div>
-
-                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
-
-                    </form>
-                 
 
                 </div>
-            </div>
+
+                        <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+
+            </form>
+                 
+
         </div>
-        <br />
-        <div class="row">
-             <div class="column" style="background-color:#e7f9f7; padding: 70px 0;">
-             <h2 style="color:#192851; font-size:70px;">Earn 2.5% interest on your savings</h2>
-            <h5>Plan for the future with confidence. Set money aside and earn 2.5% each time you deposit money into your saving account. </h5>
-            <br />
-            <p style=" font-size:12;">Only pay 0.5% when widrawing money from your saving account. </p>
-            </div>
-            <div class="column">
-                 <img src="~/images/UsingPhone.jpg" width="100%" height="100%">
-            </div>
-        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+        <div class="column" style="background-color:#e7f9f7; padding: 70px 0;">
+        <h2 style="color:#192851; font-size:70px;">Earn 2.5% interest on your savings</h2>
+    <h5>Plan for the future with confidence. Set money aside and earn 2.5% each time you deposit money into your saving account. </h5>
+    <br />
+    <p style=" font-size:12;">Only pay 0.5% when widrawing money from your saving account. </p>
+    </div>
+    <div class="column">
+            <img src="~/images/UsingPhone.jpg" width="100%" height="100%">
+    </div>
+</div>
 
 </div>
 </div>
 </div>
 </div>
-
-
-
-</body>
 </html>

@@ -1,17 +1,19 @@
 ﻿@using myBankApplication.Models
 @model TransactionModel
 
+@{
+    Layout = "~/Views/Shared/Create.cshtml";
+}
+
+
 <!--This page will be used by admin to deposit cash to the user who deposited cheque-->
 
-<h1>Deposit</h1>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="~/css/sideNav.css">
     <link rel="stylesheet" href="~/css/home.css">
-    <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
     <link rel="stylesheet" href="~/css/Error.css">
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
@@ -33,10 +35,7 @@
         }
     </style>
 
-</head>
-<body>
-
-    
+</head>    
     @if (TempData["Message"] != null)
     {
         <div class="alertAuthentication">
@@ -44,12 +43,6 @@
             <strong>Sorry!- @TempData["Message"]</strong>
         </div>
     }
-
-
-    <div class="content">
-        @{
-            Layout = "~/Views/Shared/Create.cshtml";
-        }
 
         <div class="formbg-outer">
                     <div class="formbg">
@@ -60,7 +53,6 @@
                                 <div class="currency-wrap">
                                     <label>
                                         Amount
-                                        <span class="currency-code">£</span>
                                         <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control">
                                         <span class="text-danger" asp-validation-for="Amount"></span>
                                     </label>
@@ -103,25 +95,5 @@
             </div>
         </div>
     </div>
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
 
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
-
-
-
-</body>
 </html>

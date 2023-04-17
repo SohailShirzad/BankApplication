@@ -1,35 +1,5 @@
-﻿@*<head>
-    <link rel="stylesheet" href="~/css/sideNav.css">
-    <link rel="stylesheet" href="~/css/home.css">
-    <link rel="stylesheet" href="~/css/header.css">
-    <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
-    <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
-    <style>
-        .currency-wrap {
-            position: relative;
-        }
-
-        .currency-code {
-            position: absolute;
-            left: 2px;
-            top: 25px;
-        }
-
-        .text-currency {
-            padding: 10px 20px;
-            border: solid 1px #ccc;
-            border-radius: 5px;
-        }
-    </style>
-
-</head>*@
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
-<div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+﻿
+<body>
     <div class="loginbackground box-background--white padding-top--64">
         <div class="loginbackground-gridContainer">
             <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
@@ -58,12 +28,31 @@
         </div>
 
     </div>
+        
+
     <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
             <h1><a href="#" rel="dofollow">Serena Bank</a></h1>
         </div>
-    </div>
 
     </div>
+        <div class="content">
+            @RenderBody()
+
+        </div>
+
+
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
 
   
