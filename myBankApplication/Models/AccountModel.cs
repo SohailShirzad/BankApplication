@@ -21,8 +21,10 @@ namespace myBankApplication.Models
         [Required(ErrorMessage = "Please select Account Type")]
         public AccountType AccountType { get; set; }
 
-       
-        public double? Balance { get; set; } 
+
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
+        public decimal? Balance { get; set; } 
 
 
         public DateTime? Date_Opened { get; set; } = DateTime.Now;

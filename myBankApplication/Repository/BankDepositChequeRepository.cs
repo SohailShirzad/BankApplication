@@ -44,11 +44,7 @@ namespace myBankApplication.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<DepositChequeModel>> GetChequeDepositByUserIdAsync(string id)
-        {
-            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            return await _context.DepositCheque.Where(x => x.AppUsers.Id == id).ToListAsync();
-        }
+
 
 
 
@@ -64,6 +60,14 @@ namespace myBankApplication.Repository
             return Save();
         }
 
-     
+        public async Task<IEnumerable<DepositChequeModel>> GetChequeDepositByUserAccount(int accountNumber)
+        {
+            var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == curUser).SingleOrDefault();
+            var userCheques = _context.DepositCheque.Where(r => r.AccountNum == account.AccountNo);
+            return userCheques.ToList();
+
+        }
     }
 }

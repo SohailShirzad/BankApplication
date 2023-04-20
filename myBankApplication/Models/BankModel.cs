@@ -20,8 +20,6 @@ namespace myBankApplication.Models
 
         public ICollection<AccountModel> Accounts { get; set; }
 
-        public ICollection<AppUsersModel> Users { get; set; }
-
 
     }
 

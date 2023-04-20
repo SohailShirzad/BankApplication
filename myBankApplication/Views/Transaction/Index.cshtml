@@ -51,10 +51,10 @@
 
             <tr>
                 <td>@transactions.Id</td>
-                <td> @transactions.AccountNo </td>
+                <td> @transactions.ToAccount </td>
                 <td> @transactions.DestAccount </td>
                 <td> @transactions.RecipientName </td>
-                <td class="currency-code">£@transactions.Amount </td>
+                <td class="currency-code">£@transactions.Amount.ToString("0.00") </td>
                 <td> @transactions.Date </td>
                 <td> @transactions.TransactionType </td>
                 <td> @transactions.Reference </td>

@@ -19,7 +19,9 @@ namespace myBankApplication.Models
         public TransactionType TransactionType { get; set; }
 
         [Required]
-        public double Amount { get; set; }
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
+        public decimal Amount { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -31,16 +33,12 @@ namespace myBankApplication.Models
         public string? Reference { get; set; }
 
         [ForeignKey("AccountModel")]
-        public int? AccountNo { get; set; }
+        public int? ToAccount { get; set; }
         public AccountModel? Account { get; set; }
 
         [DisplayFormat(NullDisplayText = "N/A")]
         [Display(Name = "Distination Account")]
         public int? DestAccount { get; set; }
-
-        //[DisplayFormat(NullDisplayText = "N/A")]
-        //[Display(Name = "Distination UserId")]
-        //public string? DestId { get; set; }
 
         [ForeignKey("AppUserModel")]
         public string? AppUserId { get; set; }

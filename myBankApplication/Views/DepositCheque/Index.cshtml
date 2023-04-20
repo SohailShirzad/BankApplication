@@ -37,7 +37,7 @@
                     <tr>
                         <td>@cheques.Id</td>
                         <td> @cheques.AppUserId </td>
-                        <td class="currency-code">£@cheques.Amount </td>
+                        <td class="currency-code">£@cheques.Amount.ToString("0.00") </td>
                         <td> @cheques.Description </td>
                         <td> @cheques.Date </td>
                         <td>@cheques.Status</td>

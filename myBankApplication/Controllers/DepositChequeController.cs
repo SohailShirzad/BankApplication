@@ -34,7 +34,7 @@ namespace myBankApplication.Controllers
                 var indexChequeViewModel = new IndexChequeViewModel()
                 {
                     Id = cheques.Id,
-                    AppUserId = cheques.AppUserId,
+                   accountNumbber = cheques.AccountNum,
                     Amount = cheques.Amount,
                     Description = cheques.Description,
                     Status = cheques.Status,
@@ -56,12 +56,11 @@ namespace myBankApplication.Controllers
                 return RedirectToAction("Index", "AppUsers");
             }
             var acc = await _context.Accounts.ToListAsync();
-            var account = acc.Where(a => a.AppUserId == cheques.AppUserId).SingleOrDefault();
+            var account = acc.Where(a => a.AccountNo == cheques.AccountNum).SingleOrDefault();
             var indexChequeViewModel = new IndexChequeViewModel()
             {
                 
                 Id = cheques.Id,
-                AppUserId = cheques.AppUserId,
                 Amount = cheques.Amount,
                 Description = cheques.Description,
                 Status = cheques.Status,
@@ -78,10 +77,14 @@ namespace myBankApplication.Controllers
 
         [HttpGet]
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var curUserId = HttpContext.User.GetUserId();
-            var DepositChequeViewModel = new DepositChequeViewModel { AppUserId = curUserId };
+            var DepositChequeViewModel = new DepositChequeViewModel 
+            { 
+                AppUserId = curUserId,
+                
+            };
 
             return View(DepositChequeViewModel);
         }
@@ -90,10 +93,16 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DepositChequeViewModel ChequeVM)
         {
+
             if (isUserAuthenticated())
             {
                 return RedirectToAction("Login", "UserAuthentication");
             }
+            var curUserId = HttpContext.User.GetUserId();
+
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
+
             if (ModelState.IsValid)
             {
                 var result = await _photoService.AddPhotoAsync(ChequeVM.FrontChequeImage);
@@ -106,7 +115,8 @@ namespace myBankApplication.Controllers
                     Description = ChequeVM.Description,
                     FrontChequeImage = result.Url.ToString(),
                     BackChequeImage = backChequeResult.Url.ToString(),
-                    AppUserId = ChequeVM.AppUserId,
+                    AccountNum = account.AccountNo,
+                    
 
                 };
                 _depositChequeRepository.Add(depositChequeModel);

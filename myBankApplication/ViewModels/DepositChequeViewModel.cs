@@ -7,12 +7,14 @@ namespace myBankApplication.ViewModels
     public class DepositChequeViewModel
     {
   
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
 
         public string Description { get; set; }
 
-        public string AppUserId { get; set; }
+        public int AccountNum { get; set; }
+
+        public string? AppUserId { get; set; }
 
         public IFormFile FrontChequeImage { get; set; }
 

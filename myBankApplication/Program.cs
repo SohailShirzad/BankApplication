@@ -22,6 +22,8 @@ builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 
 //builder.Services.AddScoped<IUserAuthenticationRepository, BankUserAuthenticationRepository >();
+
+
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -37,7 +39,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var app = builder.Build();
 
-if (args.Length == 1 && args[0].ToLower() == "roledata")
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
 {
     await Seed.UsersAndRolesAsync(app);
 }

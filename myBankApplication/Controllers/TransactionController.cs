@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CloudinaryDotNet;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using myBankApplication.Data;
 using myBankApplication.Data.Enum;
 using myBankApplication.Interfaces;
@@ -45,7 +47,7 @@ namespace myBankApplication.Controllers
 
             if (transactions.Any())
             {
-                transactions = transactions.Where( t => t.AccountNo == accountNumber
+                transactions = transactions.Where( t => t.ToAccount == accountNumber
                 || t.DestAccount == accountNumber );
             }
 
@@ -72,7 +74,7 @@ namespace myBankApplication.Controllers
             var indexTransactionsViewModel = new IndexTransactionsViewModel()
             {
                 Id = transactionDetails.Id,
-                AccountNo = transactionDetails.AccountNo,
+                AccountNo = transactionDetails.ToAccount,
                 Amount = transactionDetails.Amount,
                 DestAccount = transactionDetails.DestAccount,
                 Reference = transactionDetails.Reference,
@@ -125,10 +127,16 @@ namespace myBankApplication.Controllers
             var acc = await _applicationDbContext.Accounts.ToListAsync();
             var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
 
+            decimal intrestRate = (decimal) 0.025 * transactionVM.Amount;
+
             if (account.AccountType.Equals(AccountType.Savings))
             {
-                account.Balance = +(transactionVM.Amount + account.Balance) * 2.5;
+                account.Balance = +(intrestRate + transactionVM.Amount + account.Balance);
 
+            }
+            else
+            {
+                account.Balance += transactionVM.Amount;
             }
 
             if (ModelState.IsValid)
@@ -140,7 +148,7 @@ namespace myBankApplication.Controllers
                     TransactionType = TransactionType.Deposit,
                     Amount = transactionVM.Amount,
                     Reference = transactionVM.Reference,
-                    AccountNo = account.AccountNo,
+                    ToAccount = account.AccountNo,
                     AppUserId = transactionVM.AppUserId,
 
                 };
@@ -166,17 +174,17 @@ namespace myBankApplication.Controllers
         {
             var curUserId = HttpContext.User.GetUserId();
 
-            //var cust = await _applicationDbContext.Users.ToListAsync();
-            //var cuurentCust = cust.Where(c => c.Id == curUserId).SingleOrDefault();
+            var cust = await _applicationDbContext.Users.ToListAsync();
+            var cuurentCust = cust.Where(c => c.Id == curUserId).SingleOrDefault();
 
-            //var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
-            //ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
+            var account = await _applicationDbContext.Accounts.Where(a => a.AppUserId == curUserId).ToListAsync();
+            ViewBag.Accounts = new SelectList(account, "AccountNo", "Tag");
 
 
             var createTransaction = new TransactionModel
             {
                 AppUserId = curUserId,
-
+                
             };
             createTransaction.AppUserId = curUserId;
 
@@ -204,11 +212,11 @@ namespace myBankApplication.Controllers
             TransactionFrom.TransactionType = TransactionType.Transfer;
             TransactionTo.TransactionType = TransactionType.Deposit;
 
-            TransactionTo.AccountNo = transactionVM.DestAccount;
+            TransactionTo.ToAccount = transactionVM.DestAccount;
             TransactionTo.Amount = transactionVM.Amount;
 
             var acc = await _applicationDbContext.Accounts.ToListAsync();
-            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.AccountNo).SingleOrDefault();
+            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.ToAccount).SingleOrDefault();
 
             
 
@@ -216,8 +224,11 @@ namespace myBankApplication.Controllers
             TransactionFrom.AppUserId = curUserId;
             TransactionTo.AppUserId = accountTo.AppUserId;
 
+        
+        
+
             var cheque = await _applicationDbContext.DepositCheque.ToListAsync();
-            var chequeTo = cheque.Where(a => a.AppUserId == TransactionTo.AppUserId && a.Status == Status.Active).FirstOrDefault();
+            var chequeTo = cheque.Where(a => a.AccountNum == TransactionTo.ToAccount && a.Status == Status.Active).FirstOrDefault();
 
             if (chequeTo == null)
             {
@@ -227,34 +238,45 @@ namespace myBankApplication.Controllers
 
             chequeTo.Status = Status.Inactive;
 
-         
-            accountTo.Balance += transactionVM.Amount;
-                if (ModelState.IsValid)
+            decimal intrestRate = (decimal)0.025 * transactionVM.Amount;
+
+            if (accountTo.AccountType.Equals(AccountType.Savings))
+            {
+                accountTo.Balance = +(intrestRate + transactionVM.Amount + accountTo.Balance);
+
+            }
+
+            else
+            {
+                accountTo.Balance += transactionVM.Amount;
+            }
+
+            if (ModelState.IsValid)
+            {
+                var transaction = new TransactionModel
                 {
-                    var transaction = new TransactionModel
-                    {
-                        Id = transactionVM.Id,
-                        TransactionType = TransactionType.Deposit,
-                        Amount = transactionVM.Amount,
-                        Reference = transactionVM.Reference,
-                        //AccountNo = accountFrom.AccountNo,
-                        DestAccount = transactionVM.DestAccount,
-                        AppUserId = transactionVM.AppUserId,
+                    Id = transactionVM.Id,
+                    TransactionType = TransactionType.DepositCheque,
+                    Amount = transactionVM.Amount,
+                    Reference = transactionVM.Reference,
+                    //AccountNo = accountFrom.AccountNo,
+                    DestAccount = transactionVM.DestAccount,
+                    AppUserId = transactionVM.AppUserId,
 
 
-                    };
+                };
 
-                    _transactionRepository.Add(transaction);
-                    return RedirectToAction("Index", "DepositChequeController");
+                _transactionRepository.Add(transaction);
+                return RedirectToAction("Index", "DepositCheque");
 
-                }
+            }
 
-                else
-                {
-                    ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
-                }
+            else
+            {
+                ModelState.AddModelError("", "Failed to create a transaction, please try again later.");
+            }
 
-                return View(transactionVM);
+            return View(transactionVM);
 
 
             }
@@ -275,7 +297,7 @@ namespace myBankApplication.Controllers
                 var createTransaction = new TransactionModel
                 {
                     AppUserId = curUserId,
-                    AccountNo = account[0].AccountNo,
+                    ToAccount = account[0].AccountNo,
 
                 };
                 createTransaction.AppUserId = curUserId;
@@ -303,16 +325,20 @@ namespace myBankApplication.Controllers
             TransactionFrom.TransactionType = TransactionType.Transfer;
             TransactionTo.TransactionType = TransactionType.Transfer;
 
-            TransactionFrom.AccountNo = transactionVM.AccountNo;
-            TransactionTo.AccountNo = transactionVM.DestAccount;
+            TransactionFrom.ToAccount = transactionVM.ToAccount;
+            TransactionTo.ToAccount = transactionVM.DestAccount;
 
             TransactionFrom.Amount = transactionVM.Amount;
             TransactionTo.Amount = transactionVM.Amount;
 
             var acc = await _applicationDbContext.Accounts.ToListAsync();
             var accountFrom = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
-            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.AccountNo).SingleOrDefault();
+            var accountTo = acc.Where(a => a.AccountNo == TransactionTo.ToAccount).SingleOrDefault();
 
+
+            decimal chargeRate = (decimal)0.05 * transactionVM.Amount;
+
+            decimal interestRate = (decimal)0.05 * transactionVM.Amount;
             //var accountNumber = accountFrom.AccountNo;
 
             TransactionFrom.AppUserId = curUserId;
@@ -330,10 +356,20 @@ namespace myBankApplication.Controllers
                 {
                     if (accountFrom.Balance >= transactionVM.Amount)
                     {
-                        accountFrom.Balance = -(transactionVM.Amount - accountFrom.Balance) * 0.5;
+                        accountFrom.Balance = -(chargeRate - transactionVM.Amount - accountFrom.Balance);
                     }
 
-                    accountTo.Balance += transactionVM.Amount;
+                    if (accountTo.AccountType.Equals(AccountType.Savings))
+                    {
+                        accountTo.Balance = +(interestRate + transactionVM.Amount);
+                    }
+
+                    else
+                    {
+                        accountTo.Balance =+ transactionVM.Amount;
+                    }
+
+                   
 
                 }
 
@@ -352,7 +388,7 @@ namespace myBankApplication.Controllers
                         TransactionType = TransactionType.Transfer,
                         Amount = transactionVM.Amount,
                         Reference = transactionVM.Reference,
-                        AccountNo = accountFrom.AccountNo,
+                        ToAccount = accountFrom.AccountNo,
                         DestAccount = transactionVM.DestAccount,
                         AppUserId = transactionVM.AppUserId,
 

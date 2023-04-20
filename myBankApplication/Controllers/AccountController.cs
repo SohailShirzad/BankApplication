@@ -60,6 +60,7 @@ namespace myBankApplication.Controllers
                     Status = accountVM.Status = Data.Enum.Status.Active,
                     Close_Date = accountVM.Close_Date,
                     AppUserId = accountVM.AppUserId,
+                    
         
                 };
                 _accountRepository.Add(account);

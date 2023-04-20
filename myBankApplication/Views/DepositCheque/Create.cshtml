@@ -1,9 +1,7 @@
 ﻿@using myBankApplication.ViewModels
 @model DepositChequeViewModel
 
-@{
-    Layout = "~/Views/Shared/Create.cshtml";
-}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,15 +31,9 @@
      <div class="formbg-outer">
         <div class="formbg">
         <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15">Deposit Cheque</span>
+            <span class="padding-bottom--15">Create a new bank card</span>
             <form method="post" asp-action="Create" enctype="multipart/form-data">
                 <input type="hidden" id="AppUserId" name="AppUserId" asp-for="AppUserId" />
-              @*  <div class="field padding-bottom--24">
-                    <label> Amount
-                    <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Amount">
-                    <span class="text-danger" asp-validation-for="Amount"></span>
-                     </label>
-                </div>*@
 
                 <div class = "currency-wrap">
                     <label>Amount

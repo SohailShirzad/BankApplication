@@ -11,7 +11,7 @@ namespace myBankApplication.ViewModels
 
         public AccountType AccountType { get; set; }
 
-        public double Balance { get; set; }
+        public decimal Balance { get; set; }
 
 
         public DateTime Date_Opened { get; set; }

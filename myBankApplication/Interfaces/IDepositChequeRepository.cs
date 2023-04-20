@@ -8,7 +8,7 @@ namespace myBankApplication.Interfaces
 
         Task<DepositChequeModel> GetByIdAsync(int id);
 
-        Task <IEnumerable<DepositChequeModel>> GetChequeDepositByUserIdAsync(string id);
+        Task <IEnumerable<DepositChequeModel>> GetChequeDepositByUserAccount(int accountNumber);
 
         Task<DepositChequeModel> GetChequeDepositByReference(string reference);
 

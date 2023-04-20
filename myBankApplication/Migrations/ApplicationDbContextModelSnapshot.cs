@@ -173,8 +173,8 @@ namespace myBankApplication.Migrations
                     b.Property<string>("AppUsersId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<double?>("Balance")
-                        .HasColumnType("float");
+                    b.Property<decimal?>("Balance")
+                        .HasColumnType("money");
 
                     b.Property<string>("BankModelBankName")
                         .HasColumnType("nvarchar(80)");
@@ -214,9 +214,6 @@ namespace myBankApplication.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("BankModelBankName")
-                        .HasColumnType("nvarchar(80)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -326,8 +323,6 @@ namespace myBankApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BankModelBankName");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -347,14 +342,11 @@ namespace myBankApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("CardNumber"));
 
-                    b.Property<int>("Account_Id")
+                    b.Property<int?>("AccountNumberAccountNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AppUsersId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("Account_Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("CVVNumber")
                         .HasColumnType("int");
@@ -373,7 +365,7 @@ namespace myBankApplication.Migrations
 
                     b.HasKey("CardNumber");
 
-                    b.HasIndex("AppUsersId");
+                    b.HasIndex("AccountNumberAccountNo");
 
                     b.ToTable("BankCards");
                 });
@@ -403,14 +395,11 @@ namespace myBankApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
+                    b.Property<int?>("AccountNum")
+                        .HasColumnType("int");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AppUsersId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
 
                     b.Property<string>("BackChequeImage")
                         .IsRequired()
@@ -433,38 +422,9 @@ namespace myBankApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUsersId");
+                    b.HasIndex("AccountNum");
 
                     b.ToTable("DepositCheque");
-                });
-
-            modelBuilder.Entity("myBankApplication.Models.StatementModel", b =>
-                {
-                    b.Property<int>("StatementID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StatementID"));
-
-                    b.Property<int?>("AccountNo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AccountNo1")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AppUsersModelId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime?>("StatementDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("StatementID");
-
-                    b.HasIndex("AccountNo1");
-
-                    b.HasIndex("AppUsersModelId");
-
-                    b.ToTable("Statements");
                 });
 
             modelBuilder.Entity("myBankApplication.Models.TransactionModel", b =>
@@ -478,11 +438,8 @@ namespace myBankApplication.Migrations
                     b.Property<int?>("AccountNo")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AccountNo1")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
 
                     b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(max)");
@@ -496,9 +453,6 @@ namespace myBankApplication.Migrations
                     b.Property<int?>("DestAccount")
                         .HasColumnType("int");
 
-                    b.Property<string>("DestId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("RecipientName")
                         .HasColumnType("nvarchar(150)");
 
@@ -507,12 +461,15 @@ namespace myBankApplication.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int?>("ToAccount")
+                        .HasColumnType("int");
+
                     b.Property<int>("TransactionType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNo1");
+                    b.HasIndex("AccountNo");
 
                     b.HasIndex("AppUsersId");
 
@@ -583,51 +540,29 @@ namespace myBankApplication.Migrations
                     b.Navigation("AppUsers");
                 });
 
-            modelBuilder.Entity("myBankApplication.Models.AppUsersModel", b =>
-                {
-                    b.HasOne("myBankApplication.Models.BankModel", null)
-                        .WithMany("Users")
-                        .HasForeignKey("BankModelBankName");
-                });
-
             modelBuilder.Entity("myBankApplication.Models.BankCardModel", b =>
                 {
-                    b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
-                        .WithMany("BankCards")
-                        .HasForeignKey("AppUsersId");
+                    b.HasOne("myBankApplication.Models.AccountModel", "AccountNumber")
+                        .WithMany()
+                        .HasForeignKey("AccountNumberAccountNo");
 
-                    b.Navigation("AppUsers");
+                    b.Navigation("AccountNumber");
                 });
 
             modelBuilder.Entity("myBankApplication.Models.DepositChequeModel", b =>
                 {
-                    b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
+                    b.HasOne("myBankApplication.Models.AccountModel", "AccountModel")
                         .WithMany()
-                        .HasForeignKey("AppUsersId");
+                        .HasForeignKey("AccountNum");
 
-                    b.Navigation("AppUsers");
-                });
-
-            modelBuilder.Entity("myBankApplication.Models.StatementModel", b =>
-                {
-                    b.HasOne("myBankApplication.Models.AccountModel", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountNo1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("myBankApplication.Models.AppUsersModel", null)
-                        .WithMany("Statements")
-                        .HasForeignKey("AppUsersModelId");
-
-                    b.Navigation("Account");
+                    b.Navigation("AccountModel");
                 });
 
             modelBuilder.Entity("myBankApplication.Models.TransactionModel", b =>
                 {
                     b.HasOne("myBankApplication.Models.AccountModel", "Account")
                         .WithMany()
-                        .HasForeignKey("AccountNo1");
+                        .HasForeignKey("AccountNo");
 
                     b.HasOne("myBankApplication.Models.AppUsersModel", "AppUsers")
                         .WithMany("Transactions")
@@ -642,18 +577,12 @@ namespace myBankApplication.Migrations
                 {
                     b.Navigation("Accounts");
 
-                    b.Navigation("BankCards");
-
-                    b.Navigation("Statements");
-
                     b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("myBankApplication.Models.BankModel", b =>
                 {
                     b.Navigation("Accounts");
-
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

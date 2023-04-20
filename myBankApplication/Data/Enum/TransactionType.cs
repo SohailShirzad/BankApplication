@@ -4,7 +4,8 @@
     {
         Withdraw,
         Deposit,
-        Transfer
+        Transfer,
+        DepositCheque
         
     }
 }

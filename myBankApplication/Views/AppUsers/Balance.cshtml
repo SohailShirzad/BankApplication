@@ -160,7 +160,7 @@
                 <tr>
                     <td>@transactions.TransactionType</td>
                     <td> @transactions.Date.ToString("f") </td>
-                    <td class="currency-code">£@transactions.Amount </td>
+                    <td class="currency-code">£@transactions.Amount.ToString("0.00") </td>
                             <td>
                             <a asp-controller="Transaction" asp-action="Detail" asp-route-id="@transactions.Id"><i class="fa-solid fa-money-check">
                                 </i>More Details</a >

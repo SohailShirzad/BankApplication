@@ -14,7 +14,7 @@ namespace myBankApplication.ViewModels
 
         public TransactionType TransactionType { get; set; }
 
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public DateTime Date { get; set; } = DateTime.Now;
 
@@ -22,6 +22,7 @@ namespace myBankApplication.ViewModels
         public string? Reference { get; set; }
 
         public int? AccountNo { get; set; }
+
 
         public int? DestAccount { get; set; }
 

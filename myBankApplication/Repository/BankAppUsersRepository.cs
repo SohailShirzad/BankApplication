@@ -54,7 +54,9 @@ namespace myBankApplication.Repository
         public async Task<ICollection<BankCardModel>> GetAllUsersBankCards()
         {
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userBankCards = _context.BankCards.Include("AppUsers").Where(r => r.AppUserId == curUser);
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == curUser).SingleOrDefault();
+            var userBankCards = _context.BankCards.Where(r => r.Account_Id == account.AccountNo);
             return userBankCards.ToList();
         }
 
@@ -63,8 +65,13 @@ namespace myBankApplication.Repository
 
         public async  Task<ICollection<DepositChequeModel>> GetAllUsersCheques()
         {
+          
+
+
             var curUser = _httpContextAccessor.HttpContext?.User.GetUserId();
-            var userCheques = _context.DepositCheque.Where(r => r.AppUserId == curUser);
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == curUser).SingleOrDefault();
+            var userCheques = _context.DepositCheque.Where(r => r.AccountNum == account.AccountNo);
             return userCheques.ToList();
         }
 
@@ -78,7 +85,7 @@ namespace myBankApplication.Repository
             var acc = await _context.Accounts.ToListAsync();
             var accountFrom = acc.Where(a => a.AppUserId == curUser).SingleOrDefault();
 
-            var userTransactions = _context.Transactions.Where(t => t.DestAccount == accountFrom.AccountNo || t.AccountNo == accountFrom.AccountNo);
+            var userTransactions = _context.Transactions.Where(t => t.DestAccount == accountFrom.AccountNo || t.ToAccount == accountFrom.AccountNo);
             return userTransactions.ToList();
         }
 

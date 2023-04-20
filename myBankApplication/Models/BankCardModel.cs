@@ -29,15 +29,10 @@ namespace myBankApplication.Models
         [Required]
         public int CardPin { get; set; } = new Random().Next(1000,9999);
 
-      
         [ForeignKey("AccountModel")]
-        public int Account_Id { get; set; }
-        public AccountModel? AccountNumber;
+        public int? Account_Id { get; set; }
+        public AccountModel? AccountNumber { get; set; }
 
- 
-        [ForeignKey("AppUsersModel")]
-        public string? AppUserId { get; set; }
-        public AppUsersModel? AppUsers { get; set; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace myBankApplication.ViewModels
 
         public int Account_Id { get; set; }
 
-        public string AppUserId { get; set; }
+        //public string AppUserId { get; set; }
 
 
     }

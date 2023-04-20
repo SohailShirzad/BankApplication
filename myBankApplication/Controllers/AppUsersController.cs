@@ -214,7 +214,7 @@ namespace myBankApplication.Controllers
 
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
-            var userBankCards = await _customerRepository.GetAllUsersBankCards();
+            //var userBankCards = await _customerRepository.GetAllUsersBankCards();
             var userCheques = await _customerRepository.GetAllUsersCheques();
 
         
@@ -224,7 +224,7 @@ namespace myBankApplication.Controllers
 
             {
                 Accounts = userAccounts,
-                BankCards = userBankCards,
+                //BankCards = userBankCards,
                 Transactions = userTransactions,
                 DepositCheque = userCheques,
 
@@ -337,7 +337,11 @@ namespace myBankApplication.Controllers
             }
             var user = await _customerRepository.GetUserById(id);
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
-            var bankcard = userBankCards.Where(a => a.AppUserId == user.Id).FirstOrDefault();
+
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == user.Id).SingleOrDefault();
+
+            var bankcard = userBankCards.Where(a => a.Account_Id == account.AccountNo).FirstOrDefault();
             if (user == null) return View("Error");
             var EditCardPin = new CardChangePinViewModel()
             {
@@ -367,8 +371,13 @@ namespace myBankApplication.Controllers
 
             //var user = await _customerRepository.GetUserByIdNoTracking(cardpinVM.AppUserId);
             var user = await _customerRepository.GetUserById(cardpinVM.AppUserId);
+
+            var acc = await _context.Accounts.ToListAsync();
+            var account = acc.Where(a => a.AppUserId == user.Id).SingleOrDefault();
+
+
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
-            var bankcard = userBankCards.Where(a => a.AppUserId == user.Id).FirstOrDefault();
+            var bankcard = userBankCards.Where(a => a.Account_Id == account.AccountNo).FirstOrDefault();
 
             if (bankcard != null)
             {

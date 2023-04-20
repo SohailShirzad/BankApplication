@@ -12,7 +12,9 @@ namespace myBankApplication.Models
 
 
         [Required]
-        public double Amount { get; set; }
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "money")]
+        public decimal Amount { get; set; }
 
         [Required, MaxLength(20)]
         public string Description { get; set; }
@@ -20,9 +22,11 @@ namespace myBankApplication.Models
         public Status Status { get; set; } = Status.Active;
 
 
-        [ForeignKey("AppUserModel")]
-        public string? AppUserId { get; set; }
-        public AppUsersModel? AppUsers { get; set; }
+        [ForeignKey("AccountModel")]
+        public int? AccountNum { get; set; }
+        public AccountModel? AccountModel { get; set; }
+
+
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]

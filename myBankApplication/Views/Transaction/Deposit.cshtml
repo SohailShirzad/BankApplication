@@ -1,9 +1,6 @@
 ﻿@using myBankApplication.Models
 @model TransactionModel
 
-@{
-    Layout = "~/Views/Shared/Create.cshtml";
-}
 
 
 <!DOCTYPE html>
@@ -51,8 +48,8 @@
                     <div class="currency-wrap">
                         <label>
                             Please enter your 8 digit account number:
-                            <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
-                            <span class="text-danger" asp-validation-for="AccountNo"></span>
+                        <input asp-for="ToAccount" type="text" class="form-control" placeholder="e.g. 12345678">
+                        <span class="text-danger" asp-validation-for="ToAccount"></span>
                         </label>
 
                     </div>

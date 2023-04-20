@@ -2,23 +2,22 @@
 @model CreateBankCardViewModel
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="~/css/sideNav.css">
     <link rel="stylesheet" href="~/css/home.css">
     <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
 </head>
-</div>
+<div class="formbg-outer">
+    <div class="formbg">
+        <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--15">Deposit Cheque</span>
     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
-
-        <div class="content">
-            @{
-                Layout = "~/Views/Shared/Create.cshtml";
-            }
+     
             <div class="formbg-inner padding-horizontal--48">
                 <span class="padding-bottom--15">Create a new bank card</span>
                 <form method="post" asp-action="Create" enctype="multipart/form-data">
@@ -38,13 +37,28 @@
                         <span class="text-danger" asp-validation-for="Account_Id"></span>
                     </div>
 
-                    <div class="field padding-bottom--24">
+                  @*  <div class="field padding-bottom--24">
                         <input id="AppUserId" name="AppUserId" asp-for="AppUserId" type="text" class="form-control" placeholder="User Id Number">
                         <span class="text-danger" asp-validation-for="AppUserId"></span>
-                    </div>
+                    </div>*@
                     <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                        {
+                            <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+                        }
+                        else
+                        {
+                            <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
+                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
+                        }
                 </form>
-            </div>
-                </div>
-}
+
+         </div>
+
+    }
+        </div>
+    </div>
+    </div>
 </html>

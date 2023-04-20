@@ -67,9 +67,8 @@ namespace myBankApplication.Models
         public DateTime? Date_Joined { get; set; }
 
 
-        //[Required(ErrorMessage = "Please Upload profile picture")]
         public string? Profile_Picture { get; set; }
-        //[Required(ErrorMessage = "Please upload proof of Id")]
+
         public string? Proof_Id { get; set; }
 
         
@@ -78,9 +77,7 @@ namespace myBankApplication.Models
   
 
         public ICollection<AccountModel> Accounts { get; set; } = new List<AccountModel>();
-        
-        public ICollection<BankCardModel> BankCards { get; set; }
 
-        public ICollection <TransactionModel> Transactions { get; set; }   
+        public ICollection<TransactionModel> Transactions { get; set; } = new List<TransactionModel>();
     }
 }

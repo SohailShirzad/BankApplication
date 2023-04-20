@@ -37,7 +37,7 @@
                     <td> @Model.AccountNo </td>
                     <td> @Model.RecipientName</td>
                     <td>@Model.DestAccount</td>
-                    <td class="currency-code">£@Model.Amount </td>
+                    <td class="currency-code">£@Model.Amount.ToString("0.00") </td>
                     <td> @Model.Date </td>
                     <td> @Model.TransactionType </td>
                     <td> @Model.Reference </td>

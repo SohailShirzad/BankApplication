@@ -1,11 +1,6 @@
 ﻿@using myBankApplication.Data.Enum
 @using myBankApplication.ViewModels
 @model CreateAccountViewModel
-
-@{
-    Layout = "~/Views/Shared/Create.cshtml";
-}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +12,15 @@
         <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
     </head>
 </head>
-     
+
+
+<body class="content">
+<br>
+<h2 style="text-align:center;">Welcome to Serena Bank</h2>
 <div class="formbg-outer">
     <div class="formbg">
         <div class="formbg-inner padding-horizontal--48">
+           
             <span class="padding-bottom--15">Please select your account type</span>
 
             <form asp-action="Create">
@@ -56,8 +56,6 @@
     </div>
 </div>
 
-</div>
-</div>
-</div>
-</div>
+</body>
+
 </html>

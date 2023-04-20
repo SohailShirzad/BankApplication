@@ -38,7 +38,6 @@ namespace myBankApplication.Controllers
                     ValidFrom = bankCard.ValidFrom,
                     ExpiryDate = bankCard.ExpiryDate,
                     Account_Id = bankCard.Account_Id,
-                    AppUserId = bankCard.AppUserId,
                     ContaclessLimit = bankCard.ContaclessLimit,
                     CardPin = bankCard.CardPin,
                 };
@@ -76,10 +75,9 @@ namespace myBankApplication.Controllers
                     ExpiryDate = BankCardVM.ExpiryDate,
                     ContaclessLimit = BankCardVM.ContaclessLimit,
                     Account_Id = BankCardVM.Account_Id,
-                    AppUserId = BankCardVM.AppUserId,
                 };
                 _bankCardRepository.Add(bankCard);
-                return RedirectToAction("Admin", "Dashboard");
+                return RedirectToAction("Index", "AppUsers");
 
             }
             else
@@ -91,6 +89,7 @@ namespace myBankApplication.Controllers
 
 
         }
+
 
         public Boolean isUserAuthenticated()
         {
