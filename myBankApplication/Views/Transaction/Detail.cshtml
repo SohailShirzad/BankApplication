@@ -22,19 +22,23 @@
             <table id="tableStyle">
                 <tr>
                     <th>Transaction ID</th>
-                    <th>From Account</th>
+                    <th>From Account </th>
                     <th>Recipient</th>
                     <th>Destination Account</th>
                     <th>Amount</th>
                     <th>Date</th>
-                    <th>Transaction Tyoe</th>
+                    <th>Transaction Type</th>
                     <th>Reference</th>
 
 
                 </tr>
                 <tr>
                     <td>@Model.Id</td>
-                    <td> @Model.AccountNo </td>
+                    <td> @if (Model.AccountNo == null)
+                        {
+                            <p>Serena Bank</p>
+                        }  
+                        @Model.AccountNo </td>
                     <td> @Model.RecipientName</td>
                     <td>@Model.DestAccount</td>
                     <td class="currency-code">£@Model.Amount.ToString("0.00") </td>

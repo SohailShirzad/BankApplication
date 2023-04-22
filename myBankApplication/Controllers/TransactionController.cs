@@ -45,7 +45,7 @@ namespace myBankApplication.Controllers
                 transactions = transactions.Where(t => t.Reference!.Contains(reference));
             }
 
-            if (transactions.Any())
+            if (accountNumber != null)
             {
                 transactions = transactions.Where( t => t.ToAccount == accountNumber
                 || t.DestAccount == accountNumber );
@@ -131,7 +131,7 @@ namespace myBankApplication.Controllers
 
             if (account.AccountType.Equals(AccountType.Savings))
             {
-                account.Balance = +(intrestRate + transactionVM.Amount + account.Balance);
+                account.Balance +=(intrestRate + transactionVM.Amount);
 
             }
             else
@@ -210,7 +210,7 @@ namespace myBankApplication.Controllers
 
 
             TransactionFrom.TransactionType = TransactionType.Transfer;
-            TransactionTo.TransactionType = TransactionType.Deposit;
+            TransactionTo.TransactionType = TransactionType.Transfer;
 
             TransactionTo.ToAccount = transactionVM.DestAccount;
             TransactionTo.Amount = transactionVM.Amount;
@@ -232,7 +232,7 @@ namespace myBankApplication.Controllers
 
             if (chequeTo == null)
             {
-                TempData["Message"] = "The user does not have any pending cheque, please check and try again";
+                TempData["Error"] = "The user does not have any pending cheque, please check and try again";
                 return View(transactionVM);
             }
 
@@ -242,7 +242,7 @@ namespace myBankApplication.Controllers
 
             if (accountTo.AccountType.Equals(AccountType.Savings))
             {
-                accountTo.Balance = +(intrestRate + transactionVM.Amount + accountTo.Balance);
+                accountTo.Balance +=(intrestRate + transactionVM.Amount);
 
             }
 
@@ -259,7 +259,7 @@ namespace myBankApplication.Controllers
                     TransactionType = TransactionType.DepositCheque,
                     Amount = transactionVM.Amount,
                     Reference = transactionVM.Reference,
-                    //AccountNo = accountFrom.AccountNo,
+                    ToAccount = 1,
                     DestAccount = transactionVM.DestAccount,
                     AppUserId = transactionVM.AppUserId,
 
@@ -344,10 +344,10 @@ namespace myBankApplication.Controllers
             TransactionFrom.AppUserId = curUserId;
             TransactionTo.AppUserId = accountTo.AppUserId;
 
-         
+
             if (accountFrom == accountTo)
             {
-                TempData["Message"] = "Account from and account to must not much, please try again";
+                TempData["Error"] = "Account from and account to must not much, please try again";
                 return View(transactionVM);
             }
             else
@@ -356,28 +356,43 @@ namespace myBankApplication.Controllers
                 {
                     if (accountFrom.Balance >= transactionVM.Amount)
                     {
-                        accountFrom.Balance = -(chargeRate - transactionVM.Amount - accountFrom.Balance);
-                    }
+                        accountFrom.Balance -= (chargeRate + transactionVM.Amount);
 
-                    if (accountTo.AccountType.Equals(AccountType.Savings))
-                    {
-                        accountTo.Balance = +(interestRate + transactionVM.Amount);
                     }
-
-                    else
-                    {
-                        accountTo.Balance =+ transactionVM.Amount;
-                    }
-
-                   
 
                 }
 
-                else
+                if (accountTo.AccountType.Equals(AccountType.Savings))
                 {
-                    accountFrom.Balance -= transactionVM.Amount;
-                    accountTo.Balance += transactionVM.Amount;
+                    if (accountFrom.Balance >= transactionVM.Amount)
+                    {
+                        accountTo.Balance += (interestRate + transactionVM.Amount);
+                    }
                 }
+
+
+                if (accountFrom.AccountType != AccountType.Savings)
+                {
+                    if (accountFrom.Balance >= transactionVM.Amount)
+                    {
+                        accountFrom.Balance -= transactionVM.Amount;
+
+                    }
+
+                }
+
+                if (accountTo.AccountType != AccountType.Savings)
+                {
+                    if (accountFrom.Balance >= transactionVM.Amount)
+                    {
+                        accountTo.Balance += transactionVM.Amount;
+
+                    }
+                }
+            
+
+
+                
 
                 if(ModelState.IsValid)
                 {

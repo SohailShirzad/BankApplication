@@ -10,6 +10,11 @@ th, td {
 }
 
 tr:hover {
-    background-color: #192851;
-    color:white;
+    background-color: #19d3c5;
+}
+
+.incoming {
+    font-size: 15px; 
+     color:#3A1ECC;
+    font-weight: bold;
 }

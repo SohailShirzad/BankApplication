@@ -1,4 +1,5 @@
-﻿@using myBankApplication.ViewModels
+﻿@using myBankApplication.Data.Enum
+@using myBankApplication.ViewModels
 @model AppUsersViewModel
 @*
 @{
@@ -8,6 +9,9 @@
 
 <!DOCTYPE html>
 <html>
+ 
+    
+    
 <head>
     <link rel="stylesheet" href="~/css/sideNav.css">
     <link rel="stylesheet" href="~/css/home.css">
@@ -160,12 +164,35 @@
                 <tr>
                     <td>@transactions.TransactionType</td>
                     <td> @transactions.Date.ToString("f") </td>
-                    <td class="currency-code">£@transactions.Amount.ToString("0.00") </td>
+
+                    @if (transactions.RecipientName != null && transactions.RecipientName.Equals(Model.FName) || transactions.RecipientName != null && transactions.RecipientName.Equals(Model.LName))
+                    {
+                        @if (transactions.TransactionType == TransactionType.Deposit || transactions.TransactionType == TransactionType.Transfer ||
+                        transactions.TransactionType == TransactionType.DepositCheque) 
+                        {
+                                    <td class="incoming">+£@transactions.Amount.ToString("0.00") </td>
                             <td>
-                            <a asp-controller="Transaction" asp-action="Detail" asp-route-id="@transactions.Id"><i class="fa-solid fa-money-check">
-                                </i>More Details</a >
+                                <a asp-controller="Transaction" asp-action="Detail" asp-route-id="@transactions.Id">
+                                    <i class="fa-solid fa-money-check">
+                                    </i>More Details
+                                </a>
                             </td>
 
+                        }
+                    }
+
+                    else
+                    {
+                    <td>£@transactions.Amount.ToString("0.00") </td>
+                    <td>
+                        <a asp-controller="Transaction" asp-action="Detail" asp-route-id="@transactions.Id">
+                            <i class="fa-solid fa-money-check">
+                            </i>More Details
+                        </a>
+                    </td>
+
+                    }
+             
                 </tr>
 
                 }

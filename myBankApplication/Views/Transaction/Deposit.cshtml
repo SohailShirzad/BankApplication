@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/css/home.css">
     <link rel="stylesheet" href="~/css/header.css">
     <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
+    <link rel="stylesheet" href="~/css/Error.css">
     <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
     <style>
         .currency-wrap {
@@ -29,8 +30,16 @@
     </style>
 
 </head>
+@if (TempData["Error"] != null)
+{
+    <div class="alertAuthentication">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Sorry!- @TempData["Error"]</strong>
+    </div>
+}
 
-    <div class="formbg-outer">
+
+<div class="formbg-outer">
         <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
                 <span class="padding-bottom--15">Deposit Cash</span>

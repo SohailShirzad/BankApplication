@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q4nNMRUvdswfFXfV3qEau4clEkygsd56Bkr1RuhQBww=",
+  "Hash": "bHUERVcCOc6icdrnmRfvXI6GYQKfB4LSQNBJC5de4zQ=",
   "Source": "myBankApplication",
   "BasePath": "_content/myBankApplication",
   "Mode": "Default",
@@ -406,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\visaLogo.png"
+    },
+    {
+      "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\wwwroot\\js\\Registration.js",
+      "SourceId": "myBankApplication",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\wwwroot\\",
+      "BasePath": "_content/myBankApplication",
+      "RelativePath": "js/Registration.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Registration.js"
     },
     {
       "Identity": "C:\\Users\\sohai\\Desktop\\myProjectApp - Copy\\myBankApplication\\wwwroot\\js\\site.js",

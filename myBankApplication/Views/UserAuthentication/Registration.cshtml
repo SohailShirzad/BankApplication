@@ -10,13 +10,13 @@
 <body>
     <h1>Serena Bank</h1>
     <p>Please fill out this form with the required information</p>
-      @if (TempData["Error"] != null)
-        {
-            <div class="alertAuthentication">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong>Sorry!- @TempData["Error"]</strong>
-            </div>
-        }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alertAuthentication">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Sorry!- @TempData["Error"]</strong>
+        </div>
+    }
     <form method="post" asp-action="Registration" enctype="multipart/form-data">
         <label>
             Title:
@@ -40,171 +40,179 @@
                 <option value="Sir."> Sir.</option>
                 <option value="Sister."> Sister.</option>
             </select>
-            </label>
+        </label>
 
-            <label>Enter Your First Name: <input type="text" asp-for="FName"/></label>
-            <span class="text-danger" asp-validation-for="FName"></span>
-
-
-            <label>Enter Your Middle Name: <input type="text" asp-for="MName"/></label>
-            <span class="text-danger" asp-validation-for="MName"></span>
+        <label>Enter Your First Name: <input type="text" asp-for="FName" /></label>
+        <span class="text-danger" asp-validation-for="FName"></span>
 
 
-            <label>Enter Your Last Name: <input type="text" asp-for="LName"/></label>
-            <span class="text-danger" asp-validation-for="LName"></span>
+        <label>Enter Your Middle Name: <input type="text" asp-for="MName" /></label>
+        <span class="text-danger" asp-validation-for="MName"></span>
 
-            <label>Mobile Number: <input type="text" asp-for="PhoneNumber"/></label>
-            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
 
-            
+        <label>Enter Your Last Name: <input type="text" asp-for="LName" /></label>
+        <span class="text-danger" asp-validation-for="LName"></span>
 
-            <label> Education:
-                <select id="education" asp-for="Education">
-                    <span class="text-danger" asp-validation-for="Education"></span>
-                    <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                    <option value="No formal education">No formal education</option>
-                    <option value="Primary education">Primary education</option>
-                    <option value="Secondary education">Secondary education or high school</option>
-                    <option value="GED">GED</option>
-                    <option value="Vocational qualification">Vocational qualification</option>
-                    <option value="Bachelor's degree">Bachelor's degree</option>
-                    <option value="Master's degree">Master's degree</option>
-                    <option value="Doctorate or higher">Doctorate or higher</option>
-                </select>
-             </label>
+        <label>Mobile Number: <input type="text" asp-for="PhoneNumber" /></label>
+        <span class="text-danger" asp-validation-for="PhoneNumber"></span>
 
-            <label> Occupation:
-                <select asp-for="Occupation">
-                    <span class="text-danger" asp-validation-for="Occupation"></span>
-                    <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                    <optgroup label="Healthcare Practitioners and Technical Occupations:">
-                        <option value="Chiropractor">-  Chiropractor</option>
-                        <option value="Dentist">-  Dentist</option>
-                        <option value="Dietitian or Nutritionist">-  Dietitian or Nutritionist</option>
-                        <option value="Optometrist">-  Optometrist</option>
-                        <option value="Pharmacist">-  Pharmacist</option>
-                        <option value="Physician">-  Physician</option>
-                        <option value="Physician Assistant" >- Physician Assistant</option>
-                        <option value="Podiatrist">-  Podiatrist</option>
-                        <option value="Registered Nurse">-  Registered Nurse</option>
-                        <option value="Therapist">-  Therapist</option>
-                        <option value="Veterinarian">-  Veterinarian</option>
-                        <option value="Health Technologist or Technician">-  Health Technologist or Technician</option>
-                        <option value="Other Healthcare Practitioners and Technical Occupation">-  Other Healthcare Practitioners and Technical Occupation</option>
-                    </optgroup>
-                    <optgroup label="Healthcare Support Occupations:">
-                        <option value="Nursing, Psychiatric, or Home Health Aide">-  Nursing, Psychiatric, or Home Health Aide</option>
-                        <option value="Occupational and Physical Therapist Assistant or Aide">-  Occupational and Physical Therapist Assistant or Aide</option>
+
+
+        <label>
+            Education:
+            <select id="education" asp-for="Education">
+                <span class="text-danger" asp-validation-for="Education"></span>
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                <option value="No formal education">No formal education</option>
+                <option value="Primary education">Primary education</option>
+                <option value="Secondary education">Secondary education or high school</option>
+                <option value="GED">GED</option>
+                <option value="Vocational qualification">Vocational qualification</option>
+                <option value="Bachelor's degree">Bachelor's degree</option>
+                <option value="Master's degree">Master's degree</option>
+                <option value="Doctorate or higher">Doctorate or higher</option>
+            </select>
+        </label>
+
+        <label>
+            Occupation:
+            <select asp-for="Occupation">
+                <span class="text-danger" asp-validation-for="Occupation"></span>
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                <optgroup label="Healthcare Practitioners and Technical Occupations:">
+                    <option value="Chiropractor">-  Chiropractor</option>
+                    <option value="Dentist">-  Dentist</option>
+                    <option value="Dietitian or Nutritionist">-  Dietitian or Nutritionist</option>
+                    <option value="Optometrist">-  Optometrist</option>
+                    <option value="Pharmacist">-  Pharmacist</option>
+                    <option value="Physician">-  Physician</option>
+                    <option value="Physician Assistant">- Physician Assistant</option>
+                    <option value="Podiatrist">-  Podiatrist</option>
+                    <option value="Registered Nurse">-  Registered Nurse</option>
+                    <option value="Therapist">-  Therapist</option>
+                    <option value="Veterinarian">-  Veterinarian</option>
+                    <option value="Health Technologist or Technician">-  Health Technologist or Technician</option>
+                    <option value="Other Healthcare Practitioners and Technical Occupation">-  Other Healthcare Practitioners and Technical Occupation</option>
+                </optgroup>
+                <optgroup label="Healthcare Support Occupations:">
+                    <option value="Nursing, Psychiatric, or Home Health Aide">-  Nursing, Psychiatric, or Home Health Aide</option>
+                    <option value="Occupational and Physical Therapist Assistant or Aide">-  Occupational and Physical Therapist Assistant or Aide</option>
                     <option value="Other Healthcare Support Occupation">-  Other Healthcare Support Occupation</option>
-                    </optgroup>
-                    <optgroup label="Business, Executive, Management, and Financial Occupations:">
-                        <option value="Chief Executive">-  Chief Executive</option>
-                        <option value="General and Operations Manager">-  General and Operations Manager</option>
-                        <option value="Advertising, Marketing, Promotions, Public Relations, and Sales Manager">-  Advertising, Marketing, Promotions, Public Relations, and Sales Manager</option>
-                        <option value="Operations Specialties Manager (e.g., IT or HR Manager)">-  Operations Specialties Manager (e.g., IT or HR Manager)</option>
-                        <option value="Construction Manager">-  Construction Manager</option>
-                        <option value="Engineering Manager">-  Engineering Manager</option>
-                        <option value="Accountant, Auditor">-  Accountant, Auditor</option>
-                        <option value="Business Operations or Financial Specialist">-  Business Operations or Financial Specialist</option>
-                        <option value=" Business Owner">-  Business Owner</option>
-                        <option value="Other Business, Executive, Management, Financial Occupation">-  Other Business, Executive, Management, Financial Occupation</option>
-                    </optgroup>
-                    <optgroup label="Architecture and Engineering Occupations:">
-                        <option value="Architect, Surveyor, or Cartographer">-  Architect, Surveyor, or Cartographer</option>
-                        <option value=" Enginee">-  Engineer</option>
-                        <option value="Other Architecture and Engineering Occupation">-  Other Architecture and Engineering Occupation</option>
-                    </optgroup>
-                    <optgroup label="Education, Training, and Library Occupations:">
-                        <option value="Postsecondary Teacher (e.g., College Professor">-  Postsecondary Teacher (e.g., College Professor</option>
-                        <option value="Primary, Secondary, or Special Education School Teacher">-  Primary, Secondary, or Special Education School Teacher</option>
-                        <option value="Other Teacher or Instructor">-  Other Teacher or Instructor</option>
+                </optgroup>
+                <optgroup label="Business, Executive, Management, and Financial Occupations:">
+                    <option value="Chief Executive">-  Chief Executive</option>
+                    <option value="General and Operations Manager">-  General and Operations Manager</option>
+                    <option value="Advertising, Marketing, Promotions, Public Relations, and Sales Manager">-  Advertising, Marketing, Promotions, Public Relations, and Sales Manager</option>
+                    <option value="Operations Specialties Manager (e.g., IT or HR Manager)">-  Operations Specialties Manager (e.g., IT or HR Manager)</option>
+                    <option value="Construction Manager">-  Construction Manager</option>
+                    <option value="Engineering Manager">-  Engineering Manager</option>
+                    <option value="Accountant, Auditor">-  Accountant, Auditor</option>
+                    <option value="Business Operations or Financial Specialist">-  Business Operations or Financial Specialist</option>
+                    <option value=" Business Owner">-  Business Owner</option>
+                    <option value="Other Business, Executive, Management, Financial Occupation">-  Other Business, Executive, Management, Financial Occupation</option>
+                </optgroup>
+                <optgroup label="Architecture and Engineering Occupations:">
+                    <option value="Architect, Surveyor, or Cartographer">-  Architect, Surveyor, or Cartographer</option>
+                    <option value=" Enginee">-  Engineer</option>
+                    <option value="Other Architecture and Engineering Occupation">-  Other Architecture and Engineering Occupation</option>
+                </optgroup>
+                <optgroup label="Education, Training, and Library Occupations:">
+                    <option value="Postsecondary Teacher (e.g., College Professor">-  Postsecondary Teacher (e.g., College Professor</option>
+                    <option value="Primary, Secondary, or Special Education School Teacher">-  Primary, Secondary, or Special Education School Teacher</option>
+                    <option value="Other Teacher or Instructor">-  Other Teacher or Instructor</option>
                     <option value="Other Education, Training, and Library Occupation">-  Other Education, Training, and Library Occupation</option>
-                    </optgroup>
-                    <optgroup label="Other Professional Occupations:">
-                        <option value="Arts, Design, Entertainment, Sports, and Media Occupations">-  Arts, Design, Entertainment, Sports, and Media Occupations</option>
-                        <option value="Computer Specialist, Mathematical Science">-  Computer Specialist, Mathematical Science</option>
-                        <option value="Counselor, Social Worker, or Other Community and Social Service Specialist">-  Counselor, Social Worker, or Other Community and Social Service Specialist</option>
-                        <option value=" Lawyer, Judge">-  Lawyer, Judge</option>
-                        <option value="Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist">-  Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist</option>
-                        <option value="Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist">-  Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist</option>
-                        <option value="Religious Worker (e.g., Clergy, Director of Religious Activities or Education">-  Religious Worker (e.g., Clergy, Director of Religious Activities or Education</option>
-                        <option value="Social Scientist and Related Worker">-  Social Scientist and Related Worker</option>
-                        <option value="Other Professional Occupation">-  Other Professional Occupation</option>
-                    </optgroup>
-                    <optgroup label="Office and Administrative Support Occupations:">
-                        <option value="Supervisor of Administrative Support Workers">-  Supervisor of Administrative Support Workers</option>
-                        <option value="Financial Clerk">-  Financial Clerk</option>
-                        <option value="Secretary or Administrative Assistant">-  Secretary or Administrative Assistant</option>
-                        <option value="Material Recording, Scheduling, and Dispatching Worker">-  Material Recording, Scheduling, and Dispatching Worker</option>
-                        <option value="Other Office and Administrative Support Occupation">-  Other Office and Administrative Support Occupation</option>
-                    </optgroup>
-                    <optgroup label="Services Occupations:">
-                        <option value="Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)">-  Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)</option>
-                        <option value="Chef or Head Cook">-  Chef or Head Cook</option>
-                        <option value="Cook or Food Preparation Worker">-  Cook or Food Preparation Worker</option>
-                        <option value="Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress">-  Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress</option>
-                        <option value="Building and Grounds Cleaning and Maintenance">-  Building and Grounds Cleaning and Maintenance</option>
-                        <option value="Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge">-  Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge</option>
-                        <option value="Sales Supervisor, Retail Sales">-  Sales Supervisor, Retail Sales</option>
-                        <option value="Retail Sales Worker">-  Retail Sales Worker</option>
-                        <option value="Insurance Sales Agent">-  Insurance Sales Agent</option>
-                        <option value="Sales Representative">-  Sales Representative</option>
-                        <option value="Real Estate Sales Agent">-  Real Estate Sales Agent</option>
-                        <option value="Other Services Occupation">-  Other Services Occupation</option>
-                    </optgroup>
-                    <optgroup label="Agriculture, Maintenance, Repair, and Skilled Crafts Occupations:">
-                        <option value="Construction and Extraction (e.g., Construction Laborer, Electrician">-  Construction and Extraction (e.g., Construction Laborer, Electrician</option>
-                        <option value="Farming, Fishing, and Forestry">-  Farming, Fishing, and Forestry</option>
-                        <option value="Installation, Maintenance, and Repair">-  Installation, Maintenance, and Repair</option>
-                        <option value="Production Occupations">-  Production Occupations</option>
+                </optgroup>
+                <optgroup label="Other Professional Occupations:">
+                    <option value="Arts, Design, Entertainment, Sports, and Media Occupations">-  Arts, Design, Entertainment, Sports, and Media Occupations</option>
+                    <option value="Computer Specialist, Mathematical Science">-  Computer Specialist, Mathematical Science</option>
+                    <option value="Counselor, Social Worker, or Other Community and Social Service Specialist">-  Counselor, Social Worker, or Other Community and Social Service Specialist</option>
+                    <option value=" Lawyer, Judge">-  Lawyer, Judge</option>
+                    <option value="Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist">-  Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist</option>
+                    <option value="Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist">-  Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist</option>
+                    <option value="Religious Worker (e.g., Clergy, Director of Religious Activities or Education">-  Religious Worker (e.g., Clergy, Director of Religious Activities or Education</option>
+                    <option value="Social Scientist and Related Worker">-  Social Scientist and Related Worker</option>
+                    <option value="Other Professional Occupation">-  Other Professional Occupation</option>
+                </optgroup>
+                <optgroup label="Office and Administrative Support Occupations:">
+                    <option value="Supervisor of Administrative Support Workers">-  Supervisor of Administrative Support Workers</option>
+                    <option value="Financial Clerk">-  Financial Clerk</option>
+                    <option value="Secretary or Administrative Assistant">-  Secretary or Administrative Assistant</option>
+                    <option value="Material Recording, Scheduling, and Dispatching Worker">-  Material Recording, Scheduling, and Dispatching Worker</option>
+                    <option value="Other Office and Administrative Support Occupation">-  Other Office and Administrative Support Occupation</option>
+                </optgroup>
+                <optgroup label="Services Occupations:">
+                    <option value="Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)">-  Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)</option>
+                    <option value="Chef or Head Cook">-  Chef or Head Cook</option>
+                    <option value="Cook or Food Preparation Worker">-  Cook or Food Preparation Worker</option>
+                    <option value="Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress">-  Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress</option>
+                    <option value="Building and Grounds Cleaning and Maintenance">-  Building and Grounds Cleaning and Maintenance</option>
+                    <option value="Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge">-  Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge</option>
+                    <option value="Sales Supervisor, Retail Sales">-  Sales Supervisor, Retail Sales</option>
+                    <option value="Retail Sales Worker">-  Retail Sales Worker</option>
+                    <option value="Insurance Sales Agent">-  Insurance Sales Agent</option>
+                    <option value="Sales Representative">-  Sales Representative</option>
+                    <option value="Real Estate Sales Agent">-  Real Estate Sales Agent</option>
+                    <option value="Other Services Occupation">-  Other Services Occupation</option>
+                </optgroup>
+                <optgroup label="Agriculture, Maintenance, Repair, and Skilled Crafts Occupations:">
+                    <option value="Construction and Extraction (e.g., Construction Laborer, Electrician">-  Construction and Extraction (e.g., Construction Laborer, Electrician</option>
+                    <option value="Farming, Fishing, and Forestry">-  Farming, Fishing, and Forestry</option>
+                    <option value="Installation, Maintenance, and Repair">-  Installation, Maintenance, and Repair</option>
+                    <option value="Production Occupations">-  Production Occupations</option>
                     <option value="Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation">-  Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation</option>
-                    </optgroup>
-                    <optgroup label="Transportation Occupations:">
-                        <option value="Aircraft Pilot or Flight Engineer">-  Aircraft Pilot or Flight Engineer</option>
-                        <option value="Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver">-  Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver</option>
-                        <option value="Other Transportation Occupation">-  Other Transportation Occupation</option>
-                    </optgroup>
-                    <optgroup label="Other Occupations:">
-                        <option value="Military">-  Military</option>
-                        <option value="Homemaker">-  Homemaker</option>
-                        <option value="Other Occupation">-  Other Occupation</option>
-                        <option value="Don't Know">-  Don't Know</option>
-                        <option value="Not Applicable">-  Not Applicable</option>
-                    </optgroup>
-                </select>
-            </label>
+                </optgroup>
+                <optgroup label="Transportation Occupations:">
+                    <option value="Aircraft Pilot or Flight Engineer">-  Aircraft Pilot or Flight Engineer</option>
+                    <option value="Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver">-  Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver</option>
+                    <option value="Other Transportation Occupation">-  Other Transportation Occupation</option>
+                </optgroup>
+                <optgroup label="Other Occupations:">
+                    <option value="Military">-  Military</option>
+                    <option value="Homemaker">-  Homemaker</option>
+                    <option value="Other Occupation">-  Other Occupation</option>
+                    <option value="Don't Know">-  Don't Know</option>
+                    <option value="Not Applicable">-  Not Applicable</option>
+                </optgroup>
+            </select>
+        </label>
 
-            <lable> Gender:
-            <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()">  
+
+
+
+        <lable>
+            Gender:
+            <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()">
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
             </select>
-            
+
             <span asp-validation-for="Gender" class="text-danger"></span>
-            </lable>
+        </lable>
 
-            <label>
-                Date of Birth:
-                <input type="date" asp-for="DateOfBirth">
-                <span class="text-danger" asp-validation-for="DateOfBirth"></span>
-            </label>
+        <label>
+            Date of Birth:
+            <input type="date" asp-for="DateOfBirth">
+            <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+        </label>
 
-            <label>Income:
-                    <select asp-for="Income">
-                    <span class="text-danger" asp-validation-for="Income"></span>
-                        <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                        <option value="10000"> £10,000</option>
-                        <option value="20000"> £20,000</option>
-                        <option value="40000"> £40,000</option>
-                        <option value= "60000"> £60,000</option>
-                        <option value="80000"> £80,000</option>
-                        <option value="100000"> £100,000</option>
-                        <option value="100000"> £1,000,000</option>
-                    </select>
-            </label>
+        <label>
+            Income:
+            <select asp-for="Income">
+                <span class="text-danger" asp-validation-for="Income"></span>
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                <option value="10000"> £10,000</option>
+                <option value="20000"> £20,000</option>
+                <option value="40000"> £40,000</option>
+                <option value="60000"> £60,000</option>
+                <option value="80000"> £80,000</option>
+                <option value="100000"> £100,000</option>
+                <option value="100000"> £1,000,000</option>
+            </select>
+        </label>
 
-            <label> Country Of Birth:
-                 <select asp-for="CountryOfBirth">
-                 <span class="text-danger" asp-validation-for="CountryOfBirth"></span>
+        <label>
+            Country Of Birth:
+            <select asp-for="CountryOfBirth">
+                <span class="text-danger" asp-validation-for="CountryOfBirth"></span>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -451,236 +459,239 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
-            </label> 
-            
-            <label> Nationality:
-                <select asp-for="Nationality">
-                  <span class="text-danger" asp-validation-for="Nationality"></span>
-                  <option value="" selected="selected" disabled="disabled">-- select one --</option>
-                  <option value="afghan">Afghan</option>
-                  <option value="albanian">Albanian</option>
-                  <option value="algerian">Algerian</option>
-                  <option value="american">American</option>
-                  <option value="andorran">Andorran</option>
-                  <option value="angolan">Angolan</option>
-                  <option value="antiguans">Antiguans</option>
-                  <option value="argentinean">Argentinean</option>
-                  <option value="armenian">Armenian</option>
-                  <option value="australian">Australian</option>
-                  <option value="austrian">Austrian</option>
-                  <option value="azerbaijani">Azerbaijani</option>
-                  <option value="bahamian">Bahamian</option>
-                  <option value="bahraini">Bahraini</option>
-                  <option value="bangladeshi">Bangladeshi</option>
-                  <option value="barbadian">Barbadian</option>
-                  <option value="barbudans">Barbudans</option>
-                  <option value="batswana">Batswana</option>
-                  <option value="belarusian">Belarusian</option>
-                  <option value="belgian">Belgian</option>
-                  <option value="belizean">Belizean</option>
-                  <option value="beninese">Beninese</option>
-                  <option value="bhutanese">Bhutanese</option>
-                  <option value="bolivian">Bolivian</option>
-                  <option value="bosnian">Bosnian</option>
-                  <option value="brazilian">Brazilian</option>
-                  <option value="british">British</option>
-                  <option value="bruneian">Bruneian</option>
-                  <option value="bulgarian">Bulgarian</option>
-                  <option value="burkinabe">Burkinabe</option>
-                  <option value="burmese">Burmese</option>
-                  <option value="burundian">Burundian</option>
-                  <option value="cambodian">Cambodian</option>
-                  <option value="cameroonian">Cameroonian</option>
-                  <option value="canadian">Canadian</option>
-                  <option value="cape verdean">Cape Verdean</option>
-                  <option value="central african">Central African</option>
-                  <option value="chadian">Chadian</option>
-                  <option value="chilean">Chilean</option>
-                  <option value="chinese">Chinese</option>
-                  <option value="colombian">Colombian</option>
-                  <option value="comoran">Comoran</option>
-                  <option value="congolese">Congolese</option>
-                  <option value="costa rican">Costa Rican</option>
-                  <option value="croatian">Croatian</option>
-                  <option value="cuban">Cuban</option>
-                  <option value="cypriot">Cypriot</option>
-                  <option value="czech">Czech</option>
-                  <option value="danish">Danish</option>
-                  <option value="djibouti">Djibouti</option>
-                  <option value="dominican">Dominican</option>
-                  <option value="dutch">Dutch</option>
-                  <option value="east timorese">East Timorese</option>
-                  <option value="ecuadorean">Ecuadorean</option>
-                  <option value="egyptian">Egyptian</option>
-                  <option value="emirian">Emirian</option>
-                  <option value="equatorial guinean">Equatorial Guinean</option>
-                  <option value="eritrean">Eritrean</option>
-                  <option value="estonian">Estonian</option>
-                  <option value="ethiopian">Ethiopian</option>
-                  <option value="fijian">Fijian</option>
-                  <option value="filipino">Filipino</option>
-                  <option value="finnish">Finnish</option>
-                  <option value="french">French</option>
-                  <option value="gabonese">Gabonese</option>
-                  <option value="gambian">Gambian</option>
-                  <option value="georgian">Georgian</option>
-                  <option value="german">German</option>
-                  <option value="ghanaian">Ghanaian</option>
-                  <option value="greek">Greek</option>
-                  <option value="grenadian">Grenadian</option>
-                  <option value="guatemalan">Guatemalan</option>
-                  <option value="guinea-bissauan">Guinea-Bissauan</option>
-                  <option value="guinean">Guinean</option>
-                  <option value="guyanese">Guyanese</option>
-                  <option value="haitian">Haitian</option>
-                  <option value="herzegovinian">Herzegovinian</option>
-                  <option value="honduran">Honduran</option>
-                  <option value="hungarian">Hungarian</option>
-                  <option value="icelander">Icelander</option>
-                  <option value="indian">Indian</option>
-                  <option value="indonesian">Indonesian</option>
-                  <option value="iranian">Iranian</option>
-                  <option value="iraqi">Iraqi</option>
-                  <option value="irish">Irish</option>
-                  <option value="israeli">Israeli</option>
-                  <option value="italian">Italian</option>
-                  <option value="ivorian">Ivorian</option>
-                  <option value="jamaican">Jamaican</option>
-                  <option value="japanese">Japanese</option>
-                  <option value="jordanian">Jordanian</option>
-                  <option value="kazakhstani">Kazakhstani</option>
-                  <option value="kenyan">Kenyan</option>
-                  <option value="kittian and nevisian">Kittian and Nevisian</option>
-                  <option value="kuwaiti">Kuwaiti</option>
-                  <option value="kyrgyz">Kyrgyz</option>
-                  <option value="laotian">Laotian</option>
-                  <option value="latvian">Latvian</option>
-                  <option value="lebanese">Lebanese</option>
-                  <option value="liberian">Liberian</option>
-                  <option value="libyan">Libyan</option>
-                  <option value="liechtensteiner">Liechtensteiner</option>
-                  <option value="lithuanian">Lithuanian</option>
-                  <option value="luxembourger">Luxembourger</option>
-                  <option value="macedonian">Macedonian</option>
-                  <option value="malagasy">Malagasy</option>
-                  <option value="malawian">Malawian</option>
-                  <option value="malaysian">Malaysian</option>
-                  <option value="maldivan">Maldivan</option>
-                  <option value="malian">Malian</option>
-                  <option value="maltese">Maltese</option>
-                  <option value="marshallese">Marshallese</option>
-                  <option value="mauritanian">Mauritanian</option>
-                  <option value="mauritian">Mauritian</option>
-                  <option value="mexican">Mexican</option>
-                  <option value="micronesian">Micronesian</option>
-                  <option value="moldovan">Moldovan</option>
-                  <option value="monacan">Monacan</option>
-                  <option value="mongolian">Mongolian</option>
-                  <option value="moroccan">Moroccan</option>
-                  <option value="mosotho">Mosotho</option>
-                  <option value="motswana">Motswana</option>
-                  <option value="mozambican">Mozambican</option>
-                  <option value="namibian">Namibian</option>
-                  <option value="nauruan">Nauruan</option>
-                  <option value="nepalese">Nepalese</option>
-                  <option value="new zealander">New Zealander</option>
-                  <option value="ni-vanuatu">Ni-Vanuatu</option>
-                  <option value="nicaraguan">Nicaraguan</option>
-                  <option value="nigerien">Nigerien</option>
-                  <option value="north korean">North Korean</option>
-                  <option value="northern irish">Northern Irish</option>
-                  <option value="norwegian">Norwegian</option>
-                  <option value="omani">Omani</option>
-                  <option value="pakistani">Pakistani</option>
-                  <option value="palauan">Palauan</option>
-                  <option value="panamanian">Panamanian</option>
-                  <option value="papua new guinean">Papua New Guinean</option>
-                  <option value="paraguayan">Paraguayan</option>
-                  <option value="peruvian">Peruvian</option>
-                  <option value="polish">Polish</option>
-                  <option value="portuguese">Portuguese</option>
-                  <option value="qatari">Qatari</option>
-                  <option value="romanian">Romanian</option>
-                  <option value="russian">Russian</option>
-                  <option value="rwandan">Rwandan</option>
-                  <option value="saint lucian">Saint Lucian</option>
-                  <option value="salvadoran">Salvadoran</option>
-                  <option value="samoan">Samoan</option>
-                  <option value="san marinese">San Marinese</option>
-                  <option value="sao tomean">Sao Tomean</option>
-                  <option value="saudi">Saudi</option>
-                  <option value="scottish">Scottish</option>
-                  <option value="senegalese">Senegalese</option>
-                  <option value="serbian">Serbian</option>
-                  <option value="seychellois">Seychellois</option>
-                  <option value="sierra leonean">Sierra Leonean</option>
-                  <option value="singaporean">Singaporean</option>
-                  <option value="slovakian">Slovakian</option>
-                  <option value="slovenian">Slovenian</option>
-                  <option value="solomon islander">Solomon Islander</option>
-                  <option value="somali">Somali</option>
-                  <option value="south african">South African</option>
-                  <option value="south korean">South Korean</option>
-                  <option value="spanish">Spanish</option>
-                  <option value="sri lankan">Sri Lankan</option>
-                  <option value="sudanese">Sudanese</option>
-                  <option value="surinamer">Surinamer</option>
-                  <option value="swazi">Swazi</option>
-                  <option value="swedish">Swedish</option>
-                  <option value="swiss">Swiss</option>
-                  <option value="syrian">Syrian</option>
-                  <option value="taiwanese">Taiwanese</option>
-                  <option value="tajik">Tajik</option>
-                  <option value="tanzanian">Tanzanian</option>
-                  <option value="thai">Thai</option>
-                  <option value="togolese">Togolese</option>
-                  <option value="tongan">Tongan</option>
-                  <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                  <option value="tunisian">Tunisian</option>
-                  <option value="turkish">Turkish</option>
-                  <option value="tuvaluan">Tuvaluan</option>
-                  <option value="ugandan">Ugandan</option>
-                  <option value="ukrainian">Ukrainian</option>
-                  <option value="uruguayan">Uruguayan</option>
-                  <option value="uzbekistani">Uzbekistani</option>
-                  <option value="venezuelan">Venezuelan</option>
-                  <option value="vietnamese">Vietnamese</option>
-                  <option value="welsh">Welsh</option>
-                  <option value="yemenite">Yemenite</option>
-                  <option value="zambian">Zambian</option>
-                  <option value="zimbabwean">Zimbabwean</option>
-                </select>
+        </label>
 
-            </label>
 
-               <label> Address: <input type="text" asp-for="Address" /></label>
-               <span class="text-danger" asp-validation-for="Address"></span>
+        <label>
+            Nationality:
+            <select asp-for="Nationality">
+                <span class="text-danger" asp-validation-for="Nationality"></span>
+                <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                <option value="afghan">Afghan</option>
+                <option value="albanian">Albanian</option>
+                <option value="algerian">Algerian</option>
+                <option value="american">American</option>
+                <option value="andorran">Andorran</option>
+                <option value="angolan">Angolan</option>
+                <option value="antiguans">Antiguans</option>
+                <option value="argentinean">Argentinean</option>
+                <option value="armenian">Armenian</option>
+                <option value="australian">Australian</option>
+                <option value="austrian">Austrian</option>
+                <option value="azerbaijani">Azerbaijani</option>
+                <option value="bahamian">Bahamian</option>
+                <option value="bahraini">Bahraini</option>
+                <option value="bangladeshi">Bangladeshi</option>
+                <option value="barbadian">Barbadian</option>
+                <option value="barbudans">Barbudans</option>
+                <option value="batswana">Batswana</option>
+                <option value="belarusian">Belarusian</option>
+                <option value="belgian">Belgian</option>
+                <option value="belizean">Belizean</option>
+                <option value="beninese">Beninese</option>
+                <option value="bhutanese">Bhutanese</option>
+                <option value="bolivian">Bolivian</option>
+                <option value="bosnian">Bosnian</option>
+                <option value="brazilian">Brazilian</option>
+                <option value="british">British</option>
+                <option value="bruneian">Bruneian</option>
+                <option value="bulgarian">Bulgarian</option>
+                <option value="burkinabe">Burkinabe</option>
+                <option value="burmese">Burmese</option>
+                <option value="burundian">Burundian</option>
+                <option value="cambodian">Cambodian</option>
+                <option value="cameroonian">Cameroonian</option>
+                <option value="canadian">Canadian</option>
+                <option value="cape verdean">Cape Verdean</option>
+                <option value="central african">Central African</option>
+                <option value="chadian">Chadian</option>
+                <option value="chilean">Chilean</option>
+                <option value="chinese">Chinese</option>
+                <option value="colombian">Colombian</option>
+                <option value="comoran">Comoran</option>
+                <option value="congolese">Congolese</option>
+                <option value="costa rican">Costa Rican</option>
+                <option value="croatian">Croatian</option>
+                <option value="cuban">Cuban</option>
+                <option value="cypriot">Cypriot</option>
+                <option value="czech">Czech</option>
+                <option value="danish">Danish</option>
+                <option value="djibouti">Djibouti</option>
+                <option value="dominican">Dominican</option>
+                <option value="dutch">Dutch</option>
+                <option value="east timorese">East Timorese</option>
+                <option value="ecuadorean">Ecuadorean</option>
+                <option value="egyptian">Egyptian</option>
+                <option value="emirian">Emirian</option>
+                <option value="equatorial guinean">Equatorial Guinean</option>
+                <option value="eritrean">Eritrean</option>
+                <option value="estonian">Estonian</option>
+                <option value="ethiopian">Ethiopian</option>
+                <option value="fijian">Fijian</option>
+                <option value="filipino">Filipino</option>
+                <option value="finnish">Finnish</option>
+                <option value="french">French</option>
+                <option value="gabonese">Gabonese</option>
+                <option value="gambian">Gambian</option>
+                <option value="georgian">Georgian</option>
+                <option value="german">German</option>
+                <option value="ghanaian">Ghanaian</option>
+                <option value="greek">Greek</option>
+                <option value="grenadian">Grenadian</option>
+                <option value="guatemalan">Guatemalan</option>
+                <option value="guinea-bissauan">Guinea-Bissauan</option>
+                <option value="guinean">Guinean</option>
+                <option value="guyanese">Guyanese</option>
+                <option value="haitian">Haitian</option>
+                <option value="herzegovinian">Herzegovinian</option>
+                <option value="honduran">Honduran</option>
+                <option value="hungarian">Hungarian</option>
+                <option value="icelander">Icelander</option>
+                <option value="indian">Indian</option>
+                <option value="indonesian">Indonesian</option>
+                <option value="iranian">Iranian</option>
+                <option value="iraqi">Iraqi</option>
+                <option value="irish">Irish</option>
+                <option value="israeli">Israeli</option>
+                <option value="italian">Italian</option>
+                <option value="ivorian">Ivorian</option>
+                <option value="jamaican">Jamaican</option>
+                <option value="japanese">Japanese</option>
+                <option value="jordanian">Jordanian</option>
+                <option value="kazakhstani">Kazakhstani</option>
+                <option value="kenyan">Kenyan</option>
+                <option value="kittian and nevisian">Kittian and Nevisian</option>
+                <option value="kuwaiti">Kuwaiti</option>
+                <option value="kyrgyz">Kyrgyz</option>
+                <option value="laotian">Laotian</option>
+                <option value="latvian">Latvian</option>
+                <option value="lebanese">Lebanese</option>
+                <option value="liberian">Liberian</option>
+                <option value="libyan">Libyan</option>
+                <option value="liechtensteiner">Liechtensteiner</option>
+                <option value="lithuanian">Lithuanian</option>
+                <option value="luxembourger">Luxembourger</option>
+                <option value="macedonian">Macedonian</option>
+                <option value="malagasy">Malagasy</option>
+                <option value="malawian">Malawian</option>
+                <option value="malaysian">Malaysian</option>
+                <option value="maldivan">Maldivan</option>
+                <option value="malian">Malian</option>
+                <option value="maltese">Maltese</option>
+                <option value="marshallese">Marshallese</option>
+                <option value="mauritanian">Mauritanian</option>
+                <option value="mauritian">Mauritian</option>
+                <option value="mexican">Mexican</option>
+                <option value="micronesian">Micronesian</option>
+                <option value="moldovan">Moldovan</option>
+                <option value="monacan">Monacan</option>
+                <option value="mongolian">Mongolian</option>
+                <option value="moroccan">Moroccan</option>
+                <option value="mosotho">Mosotho</option>
+                <option value="motswana">Motswana</option>
+                <option value="mozambican">Mozambican</option>
+                <option value="namibian">Namibian</option>
+                <option value="nauruan">Nauruan</option>
+                <option value="nepalese">Nepalese</option>
+                <option value="new zealander">New Zealander</option>
+                <option value="ni-vanuatu">Ni-Vanuatu</option>
+                <option value="nicaraguan">Nicaraguan</option>
+                <option value="nigerien">Nigerien</option>
+                <option value="north korean">North Korean</option>
+                <option value="northern irish">Northern Irish</option>
+                <option value="norwegian">Norwegian</option>
+                <option value="omani">Omani</option>
+                <option value="pakistani">Pakistani</option>
+                <option value="palauan">Palauan</option>
+                <option value="panamanian">Panamanian</option>
+                <option value="papua new guinean">Papua New Guinean</option>
+                <option value="paraguayan">Paraguayan</option>
+                <option value="peruvian">Peruvian</option>
+                <option value="polish">Polish</option>
+                <option value="portuguese">Portuguese</option>
+                <option value="qatari">Qatari</option>
+                <option value="romanian">Romanian</option>
+                <option value="russian">Russian</option>
+                <option value="rwandan">Rwandan</option>
+                <option value="saint lucian">Saint Lucian</option>
+                <option value="salvadoran">Salvadoran</option>
+                <option value="samoan">Samoan</option>
+                <option value="san marinese">San Marinese</option>
+                <option value="sao tomean">Sao Tomean</option>
+                <option value="saudi">Saudi</option>
+                <option value="scottish">Scottish</option>
+                <option value="senegalese">Senegalese</option>
+                <option value="serbian">Serbian</option>
+                <option value="seychellois">Seychellois</option>
+                <option value="sierra leonean">Sierra Leonean</option>
+                <option value="singaporean">Singaporean</option>
+                <option value="slovakian">Slovakian</option>
+                <option value="slovenian">Slovenian</option>
+                <option value="solomon islander">Solomon Islander</option>
+                <option value="somali">Somali</option>
+                <option value="south african">South African</option>
+                <option value="south korean">South Korean</option>
+                <option value="spanish">Spanish</option>
+                <option value="sri lankan">Sri Lankan</option>
+                <option value="sudanese">Sudanese</option>
+                <option value="surinamer">Surinamer</option>
+                <option value="swazi">Swazi</option>
+                <option value="swedish">Swedish</option>
+                <option value="swiss">Swiss</option>
+                <option value="syrian">Syrian</option>
+                <option value="taiwanese">Taiwanese</option>
+                <option value="tajik">Tajik</option>
+                <option value="tanzanian">Tanzanian</option>
+                <option value="thai">Thai</option>
+                <option value="togolese">Togolese</option>
+                <option value="tongan">Tongan</option>
+                <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+                <option value="tunisian">Tunisian</option>
+                <option value="turkish">Turkish</option>
+                <option value="tuvaluan">Tuvaluan</option>
+                <option value="ugandan">Ugandan</option>
+                <option value="ukrainian">Ukrainian</option>
+                <option value="uruguayan">Uruguayan</option>
+                <option value="uzbekistani">Uzbekistani</option>
+                <option value="venezuelan">Venezuelan</option>
+                <option value="vietnamese">Vietnamese</option>
+                <option value="welsh">Welsh</option>
+                <option value="yemenite">Yemenite</option>
+                <option value="zambian">Zambian</option>
+                <option value="zimbabwean">Zimbabwean</option>
+            </select>
 
-               <label> Post_Code: <input type="text" asp-for="Post_Code" placeholder="SG15BJ"/></label>
-               <span class="text-danger" asp-validation-for="Post_Code"></span>
-               
-    
-              <label>Enter Your Email: <input type="email" asp-for="EmailAddress"/></label>
-              <span class="text-danger" asp-validation-for="EmailAddress"></span>
+        </label>
 
-              <label>Create a New Password: <input type="password" asp-for="Password" /></label>
-              <span class="text-danger" asp-validation-for="Password"></span>
+        <label> Address: <input type="text" asp-for="Address" /></label>
+        <span class="text-danger" asp-validation-for="Address"></span>
 
-              <label>Re-type Password: <input type="password"  asp-for="ConfirmPassword"/></label>
-              <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+        <label> Post_Code: <input type="text" asp-for="Post_Code" placeholder="SG15BJ" /></label>
+        <span class="text-danger" asp-validation-for="Post_Code"></span>
 
-              <label>Please upload a proof of Id (Passport or Driving License) </label>
-              <input asp-for="Proof_Id" type="file" class="form-control form-control-lg" placeholder="Image" />
-              <span asp-validation-for="Proof_Id" class="text-danger"></span>
-              <label>Please upload a profile picture </label>
-              <input asp-for="Profile_Picture" type="file" class="form-control form-control-lg" />
-              <span asp-validation-for="Profile_Picture" class="text-danger"></span>
 
-            
-   
-              <button class="btn btn-info" type="submit" value="Sgin up">Next</button>
-              <a class="btn btn-info" href="/UserAuthentication/AppUserLogin">Cancel</a>
-       
+        <label>Enter Your Email: <input type="email" asp-for="EmailAddress" /></label>
+        <span class="text-danger" asp-validation-for="EmailAddress"></span>
+
+        <label>Create a New Password: <input type="password" asp-for="Password" /></label>
+        <span class="text-danger" asp-validation-for="Password"></span>
+
+        <label>Re-type Password: <input type="password" asp-for="ConfirmPassword" /></label>
+        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+
+        <label>Please upload a proof of Id (Passport or Driving License) </label>
+        <input asp-for="Proof_Id" type="file" class="form-control form-control-lg" placeholder="Image" />
+        <span asp-validation-for="Proof_Id" class="text-danger"></span>
+        <label>Please upload a profile picture </label>
+        <input asp-for="Profile_Picture" type="file" class="form-control form-control-lg" />
+        <span asp-validation-for="Profile_Picture" class="text-danger"></span>
+
+
+
+        <button class="btn btn-info" type="submit" value="Sgin up">Submit</button>
+        <a class="btn btn-info" href="/UserAuthentication/AppUserLogin">Login</a>
+
     </form>
+
 </body>
 </html>

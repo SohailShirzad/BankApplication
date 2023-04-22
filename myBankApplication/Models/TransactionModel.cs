@@ -13,6 +13,7 @@ namespace myBankApplication.Models
 
         [Column(TypeName = "nvarchar(150)")]
         [DisplayFormat(NullDisplayText = "No recipient")]
+
         public string? RecipientName { get; set; }
 
         [Required]

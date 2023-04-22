@@ -2,6 +2,7 @@
 @model List<IndexTransactionsViewModel>*@
 
 @model IEnumerable<myBankApplication.Models.TransactionModel>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,7 @@
             <th>Recipient</th>
             <th>Amount</th>
             <th>Date</th>
-            <th>Transaction Tyoe</th>
+            <th>Transaction Type</th>
             <th>Reference</th>
 
 
@@ -51,9 +52,14 @@
 
             <tr>
                 <td>@transactions.Id</td>
-                <td> @transactions.ToAccount </td>
-                <td> @transactions.DestAccount </td>
-                <td> @transactions.RecipientName </td>
+                <td> @if (transactions.ToAccount == null) {<p>Serena Bank</p> } 
+                    @transactions.ToAccount </td>
+                <td> @if (transactions.DestAccount == null) { <p>N/A</p>}
+                    @transactions.DestAccount </td>
+                <td>
+                @if (transactions.RecipientName == "" || transactions.RecipientName == null) {<p>N/A</p>}
+                @transactions.RecipientName
+                </td>
                 <td class="currency-code">£@transactions.Amount.ToString("0.00") </td>
                 <td> @transactions.Date </td>
                 <td> @transactions.TransactionType </td>

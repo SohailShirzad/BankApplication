@@ -10,6 +10,7 @@ namespace myBankApplication.ViewModels
     {
         public int Id { get; set; }
 
+        [DisplayFormat(NullDisplayText = "No recipient")]
         public string? RecipientName { get; set; }
 
         public TransactionType TransactionType { get; set; }

@@ -21,7 +21,7 @@
             <table id="tableStyle">
                 <tr>
                     <th>ID</th>
-                    <th>Account holder Id</th>
+                    <th>Account Number</th>
                     <th>Amount</th>
                     <th>Reference</th>
                     <th>Date</th>
@@ -36,7 +36,7 @@
 
                     <tr>
                         <td>@cheques.Id</td>
-                        <td> @cheques.AppUserId </td>
+                        <td> @cheques.accountNumbber </td>
                         <td class="currency-code">£@cheques.Amount.ToString("0.00") </td>
                         <td> @cheques.Description </td>
                         <td> @cheques.Date </td>
