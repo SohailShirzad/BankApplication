@@ -14,33 +14,18 @@
 <div class="formbg-outer">
     <div class="formbg">
         <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--15">Deposit Cheque</span>
     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
     {
      
             <div class="formbg-inner padding-horizontal--48">
                 <span class="padding-bottom--15">Create a new bank card</span>
                 <form method="post" asp-action="Create" enctype="multipart/form-data">
-                    <lable> Expiry date</lable>
-                    <div class="field padding-bottom--24">
-                        <input asp-for="ExpiryDate" type="date">
-                        <span class="text-danger" asp-validation-for="ExpiryDate"></span>
-
-                    </div>
-                    <div class="field padding-bottom--24">
-                        <input asp-for="ContaclessLimit" type="number" step="any" min="0" max="2000" class="form-control" placeholder="Contactless Limit">
-                        <span class="text-danger" asp-validation-for="ContaclessLimit"></span>
-                    </div>
 
                     <div class="field padding-bottom--24">
                         <input asp-for="Account_Id" name = "Account_Id" id="Account_Id" type="text" class="form-control" placeholder="User Account Number">
                         <span class="text-danger" asp-validation-for="Account_Id"></span>
                     </div>
 
-                  @*  <div class="field padding-bottom--24">
-                        <input id="AppUserId" name="AppUserId" asp-for="AppUserId" type="text" class="form-control" placeholder="User Id Number">
-                        <span class="text-danger" asp-validation-for="AppUserId"></span>
-                    </div>*@
                     <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
 
                         @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))

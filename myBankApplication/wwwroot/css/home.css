@@ -145,10 +145,7 @@ a:active {
     }
 
         a:hover {
-            color: bisque;
-            background: #171238;
             text-decoration: underline;
-            font-size:20px;
         }
 
 ul {

@@ -72,8 +72,8 @@ namespace myBankApplication.Controllers
                 {
                     CardNumber = BankCardVM.CardNumber,
                     CVVNumber = BankCardVM.CVVNumber,
-                    ExpiryDate = BankCardVM.ExpiryDate,
-                    ContaclessLimit = BankCardVM.ContaclessLimit,
+                    ExpiryDate = BankCardVM.ValidFrom.AddYears(4),
+                    ContaclessLimit = 100,
                     Account_Id = BankCardVM.Account_Id,
                 };
                 _bankCardRepository.Add(bankCard);

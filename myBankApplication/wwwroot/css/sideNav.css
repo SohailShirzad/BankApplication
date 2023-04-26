@@ -57,9 +57,8 @@ color: white;
 }
 
 .sidebar a:hover:not(.active) {
-background-color: #19d3c5;
-color: black;
-font-size:30px;
+    background-color: #dcd8f3;
+    color: black;
 }
 
 div.content {

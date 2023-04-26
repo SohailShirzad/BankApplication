@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using myBankApplication.Data;
 using myBankApplication.Interfaces;
@@ -51,6 +52,7 @@ namespace myBankApplication.Repository
         {
             var curUser = _httpcontextAccessor.HttpContext?.User.GetUserId();
             return await _context.Accounts.Where(x => x.AppUsers.Id == accountId).ToListAsync();
+            
         }
 
         public bool Save()
@@ -65,6 +67,5 @@ namespace myBankApplication.Repository
             return Save();
         }
 
-        
     }
 }

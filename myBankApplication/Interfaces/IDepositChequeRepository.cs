@@ -6,7 +6,7 @@ namespace myBankApplication.Interfaces
     {
         Task<IEnumerable<DepositChequeModel>> GetAll();
 
-        Task<DepositChequeModel> GetByIdAsync(int id);
+        Task<DepositChequeModel> GetById(int id);
 
         Task <IEnumerable<DepositChequeModel>> GetChequeDepositByUserAccount(int accountNumber);
 

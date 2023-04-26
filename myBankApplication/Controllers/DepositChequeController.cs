@@ -50,7 +50,8 @@ namespace myBankApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
-            var cheques = await _depositChequeRepository.GetByIdAsync(id);
+            
+            var cheques = await _depositChequeRepository.GetById(id);
             if (cheques == null)
             {
                 return RedirectToAction("Index", "AppUsers");
@@ -93,15 +94,20 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(DepositChequeViewModel ChequeVM)
         {
-
             if (isUserAuthenticated())
             {
                 return RedirectToAction("Login", "UserAuthentication");
             }
             var curUserId = HttpContext.User.GetUserId();
-
             var acc = await _context.Accounts.ToListAsync();
             var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
+
+            var amount = ChequeVM.Amount;
+            if (amount > 2000)
+            {
+                TempData["Error"] = "Amount must be 2000 or less per cheque per day";
+                return View(ChequeVM);
+            }
 
             if (ModelState.IsValid)
             {
@@ -110,17 +116,16 @@ namespace myBankApplication.Controllers
 
                 var depositChequeModel = new DepositChequeModel
                 {
-                    
+
                     Amount = ChequeVM.Amount,
                     Description = ChequeVM.Description,
                     FrontChequeImage = result.Url.ToString(),
                     BackChequeImage = backChequeResult.Url.ToString(),
                     AccountNum = account.AccountNo,
-                    
-
                 };
                 _depositChequeRepository.Add(depositChequeModel);
-                return RedirectToAction("Balance", "AppUsers");
+                ViewData["Success"] = "Transaction has been successful";
+                return View();
             }
             else
             {

@@ -6,6 +6,7 @@
 <head>
     <title>Registration Form</title>
     <link rel="stylesheet" href="~/css/registration.css">
+      <link rel="stylesheet" href="~/css/Error.css" />"
 </head>
 <body>
     <h1>Serena Bank</h1>
@@ -17,11 +18,21 @@
             <strong>Sorry!- @TempData["Error"]</strong>
         </div>
     }
+
+    @if (ViewData["Success"] != null)
+    {
+        <div class="successAlert">
+            <p><strong>Welcome!- @ViewData["Success"]... <a asp-action="Login" asp-controller="UserAuthentication">Please 
+                Login and select your account type by clicking this link..
+            </a>
+            </strong></p>
+        </div>
+
+    }
     <form method="post" asp-action="Registration" enctype="multipart/form-data">
         <label>
             Title:
             <select id="title" asp-for="Title">
-                <span class="text-danger" asp-validation-for="Title"></span>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="Mr."> Mr.</option>
                 <option value="Mrs."> Mrs.</option>
@@ -40,6 +51,7 @@
                 <option value="Sir."> Sir.</option>
                 <option value="Sister."> Sister.</option>
             </select>
+            <span class="text-danger" asp-validation-for="Title"></span>
         </label>
 
         <label>Enter Your First Name: <input type="text" asp-for="FName" /></label>
@@ -61,7 +73,6 @@
         <label>
             Education:
             <select id="education" asp-for="Education">
-                <span class="text-danger" asp-validation-for="Education"></span>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="No formal education">No formal education</option>
                 <option value="Primary education">Primary education</option>
@@ -72,12 +83,12 @@
                 <option value="Master's degree">Master's degree</option>
                 <option value="Doctorate or higher">Doctorate or higher</option>
             </select>
+             <span class="text-danger" asp-validation-for="Education"></span>
         </label>
 
         <label>
             Occupation:
             <select asp-for="Occupation">
-                <span class="text-danger" asp-validation-for="Occupation"></span>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <optgroup label="Healthcare Practitioners and Technical Occupations:">
                     <option value="Chiropractor">-  Chiropractor</option>
@@ -174,6 +185,7 @@
                     <option value="Not Applicable">-  Not Applicable</option>
                 </optgroup>
             </select>
+            <span class="text-danger" asp-validation-for="Occupation"></span>
         </label>
 
 
@@ -197,7 +209,6 @@
         <label>
             Income:
             <select asp-for="Income">
-                <span class="text-danger" asp-validation-for="Income"></span>
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="10000"> £10,000</option>
                 <option value="20000"> £20,000</option>
@@ -207,12 +218,13 @@
                 <option value="100000"> £100,000</option>
                 <option value="100000"> £1,000,000</option>
             </select>
+            <span class="text-danger" asp-validation-for="Income"></span>
         </label>
 
         <label>
             Country Of Birth:
             <select asp-for="CountryOfBirth">
-                <span class="text-danger" asp-validation-for="CountryOfBirth"></span>
+                
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
@@ -459,13 +471,14 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
             </select>
+            <span class="text-danger" asp-validation-for="CountryOfBirth"></span>
         </label>
 
 
         <label>
             Nationality:
             <select asp-for="Nationality">
-                <span class="text-danger" asp-validation-for="Nationality"></span>
+                
                 <option value="" selected="selected" disabled="disabled">-- select one --</option>
                 <option value="afghan">Afghan</option>
                 <option value="albanian">Albanian</option>
@@ -660,6 +673,7 @@
                 <option value="zambian">Zambian</option>
                 <option value="zimbabwean">Zimbabwean</option>
             </select>
+            <span class="text-danger" asp-validation-for="Nationality"></span>
 
         </label>
 

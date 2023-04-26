@@ -2,6 +2,14 @@
     padding: 20px;
     background-color: #f44336;
     color: white;
+    text-align: center;
+}
+
+.successAlert {
+    padding: 20px;
+    background-color: #b3ffb3;
+    color: black;
+    text-align: center;
 }
 
 .closebtn {

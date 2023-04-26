@@ -26,7 +26,8 @@ namespace myBankApplication.ViewModels
         public DateTime Date { get; set; } = DateTime.Now;
 
 
-        [Required, MaxLength(20)]
+        [Required(ErrorMessage = "Must be less than 20 characters")]
+        [StringLength(20)]
         public string? Reference { get; set; }
 
         [ForeignKey("AccountModel")]

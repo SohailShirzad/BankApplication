@@ -192,7 +192,7 @@ namespace myBankApplication.Controllers
 
 
 
-
+        
 
         public async Task<IActionResult> Balance(string id)
         {
@@ -214,7 +214,6 @@ namespace myBankApplication.Controllers
 
             var userAccounts = await _customerRepository.GetAllUsersAccounts();
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
-            //var userBankCards = await _customerRepository.GetAllUsersBankCards();
             var userCheques = await _customerRepository.GetAllUsersCheques();
 
         
@@ -224,7 +223,6 @@ namespace myBankApplication.Controllers
 
             {
                 Accounts = userAccounts,
-                //BankCards = userBankCards,
                 Transactions = userTransactions,
                 DepositCheque = userCheques,
 
@@ -233,7 +231,6 @@ namespace myBankApplication.Controllers
                 FName = user.FName,
                 MName = user.MName,
                 Email = user.Email,
-                Nationality = user.Nationality,
                 Profile_Picture = user.Profile_Picture,
             };
 
@@ -253,8 +250,6 @@ namespace myBankApplication.Controllers
             {
                 return RedirectToAction("Login", "UserAuthentication");
             }
-            //var user = await _customerRepository.GetUserById(id);
-            //if (user == null) return View("Error");
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
@@ -272,7 +267,6 @@ namespace myBankApplication.Controllers
                 Post_Code = user.Post_Code,
                 EmailAddress = user.Email,
                 Profile_PictureURL = user.Profile_Picture,
-
 
             };
             return View(editUserProfilVM);
@@ -348,9 +342,6 @@ namespace myBankApplication.Controllers
                 AppUserId = user.Id,
                 CardPin = bankcard.CardPin,
                 ContaclessLimit = bankcard.ContaclessLimit,
-                //ConfrimPin = bankcard.CardPin,
-
-
             };
             return View(EditCardPin);
         }
@@ -366,10 +357,8 @@ namespace myBankApplication.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Failed to edit profile");
-                return View("EditUserProfile", cardpinVM);
+                return View(cardpinVM);
             }
-
-            //var user = await _customerRepository.GetUserByIdNoTracking(cardpinVM.AppUserId);
             var user = await _customerRepository.GetUserById(cardpinVM.AppUserId);
 
             var acc = await _context.Accounts.ToListAsync();
@@ -424,33 +413,3 @@ namespace myBankApplication.Controllers
         }
     }
 }
-
-
-
-
-        //public IActionResult AppUserPayment()
-        //{
-        //    return isUserAuthenticated();
-        //}
-
-        //public IActionResult AppUserTransaction()
-        //{
-        //    return isUserAuthenticated();
-        //}
-
-        //public IActionResult AppUserDepositCash()
-        //{
-        //    return isUserAuthenticated();
-        //}
-
-
-        //public IActionResult AppUserCard()
-        //{
-        //    return isUserAuthenticated();
-        //}
-        //public IActionResult AppUserDetail()
-        //{
-        //    return isUserAuthenticated();
-        //}
-
-        // Check if the user is authenicated 

@@ -11,8 +11,8 @@ namespace myBankApplication.ViewModels
         [Range(1000,9999)]
         public int CardPin { get; set; }
 
-        [Required(ErrorMessage = "Pin confirmation is required")]
-        [Compare("CardPin", ErrorMessage = "Pin do not match, Please Try again")]
+        [Required(ErrorMessage = "PIN confirmation is required")]
+        [Compare("CardPin", ErrorMessage = "PIN does not match, Please Try again")]
         public int ConfrimPin { get; set; }
 
         public string? AppUserId { get; set; }

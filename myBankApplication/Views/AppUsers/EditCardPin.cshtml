@@ -20,18 +20,18 @@
 <div class="formbg-outer">
 <div class="formbg">
     <div class="formbg-inner padding-horizontal--48">
-        <span class="padding-bottom--15">Please select a pin number that is not easy to guess but easy for you to remember</span>
+        <span class="padding-bottom--15">Please select a PIN number that is not easy to guess but easy for you to remember</span>
 
         <form method="post" asp-action="EditCardPin">
             <input type="hidden" id="AppUserId" name="Id" asp-for="AppUserId" />
             <div class="col">
-                <label>Please enter your new pin: <input type="text" asp-for="CardPin" /></label>
+                <label>Please enter your new PIN: <input type="text" asp-for="CardPin" /></label>
                 <span class="text-danger" asp-validation-for="CardPin"></span>
 
             </div>
 
             <div class="col">
-                <label>Please confirm your new pin: <input type="text" asp-for="ConfrimPin" /></label>
+                <label>Please confirm your new PIN: <input type="text" asp-for="ConfrimPin" /></label>
                 <span class="text-danger" asp-validation-for="ConfrimPin"></span>
 
             </div>

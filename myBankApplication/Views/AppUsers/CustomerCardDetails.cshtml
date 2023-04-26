@@ -34,7 +34,7 @@
                         @Model.LName @bankcards.Account_Id</div>
                     <div class="from">EXP @bankcards.ExpiryDate.ToString("MM/yyyy")</div>
                 <div class="to"> @bankcards.CVVNumber</div>
-                <div class="pin"> Pin: @bankcards.CardPin <a asp-controller="AppUsers" asp-action="EditCardPin" style=" color: skyblue">Change Pin?</a></div>
+                <div class="pin"> PIN: @bankcards.CardPin <a asp-controller="AppUsers" asp-action="EditCardPin" style=" color: skyblue">Change Pin?</a></div>
                 <div class="ring"></div>
             </div>
 

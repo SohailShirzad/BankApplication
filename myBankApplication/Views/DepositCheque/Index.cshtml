@@ -1,4 +1,5 @@
-﻿@using myBankApplication.ViewModels
+﻿@using myBankApplication.Data.Enum
+@using myBankApplication.ViewModels
 @model List<IndexChequeViewModel>
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@
                     <th>Reference</th>
                     <th>Date</th>
                     <th>Status</th>
-                    <th>details</th>
+                    <th>Pay</th>
 
 
                 </tr>
@@ -41,7 +42,10 @@
                         <td> @cheques.Description </td>
                         <td> @cheques.Date </td>
                         <td>@cheques.Status</td>
-                        <td> Pay Cheque </td>
+                        @if (cheques.Status == Status.Inactive) {<td>   <p> Paid </p> </td>}                  
+                         else{
+                           <td><a asp-controller="Transaction" asp-action="DepositCheque" asp-route-id="@cheques.Id">Deposit Cheque</a></td>
+                         }
                         <td><a asp-controller="DepositCheque" asp-action="Detail" asp-route-id="@cheques.Id"> More details</a></td>
 
 

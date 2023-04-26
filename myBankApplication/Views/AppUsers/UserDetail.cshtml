@@ -22,32 +22,32 @@
         <!--User Details-->
         <div class="row">
             <div class="column" style="background-color:white;">
-                <h2>Account Details:</h2>
+                <h1>Account Details:</h1>
                 @foreach (var accounts in Model.Accounts)
                 {
-                    <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-user"></i> Account Number</label>
-                    <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.AccountNo</h6></div>
+                    <label style="font-size: 25px; font-weight:bold;">Account Number</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountNo</h3></div>
 
                     <br />
 
-                    <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Sort Code</label>
-                    <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.Sort_Code</h6></div>
+                    <label style="font-size: 25px; font-weight:bold;">Sort Code</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Sort_Code</h3></div>
 
                     <br />
 
 
-                    <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-phone"></i> Type </label>
-                    <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.AccountType</h6></div>
+                    <label style="font-size: 25px; font-weight:bold;"> Type </label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountType</h3></div>
 
                     <br />
 
-                    <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-house"></i> Status</label>
-                    <div style="border: 1px solid #ccc; background-color:white"> <h6> @accounts.Status</h6></div>
+                    <label style="font-size: 25px; font-weight:bold;"> Status</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Status</h3></div>
 
                     <br />
 
-                    <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Balance </label>
-                    <div style="border: 1px solid #ccc; background-color:white"> <h6>£@accounts.Balance.Value.ToString("0.00")</h6></div>
+                    <label style="font-size: 25px; font-weight:bold;"> Balance </label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3>£@accounts.Balance.Value.ToString("0.00")</h3></div>
 
                     <button type="submit" asp-controller="AppUsers" asp-action="DeleteCustomerProfile" style="background: #800000;border-radius: 1.875em; color: #fff; cursor: pointer;
                     font-size: 1rem; font-weight: 700; letter-spacing: 1px; line-height: normal; margin: 15px auto;
@@ -61,21 +61,21 @@
             </div>
             <div class="column" style="background-color:#edecf9;">
                 <h2 style="color:#192851;">Personal Details</h2>
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Title @Model.FullName</h6></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Title @Model.FullName</h3></div><br />
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Email</h6></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Email</h3></div><br />
 
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.PhoneNumber</h6></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.PhoneNumber</h3></div><br />
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6> @Model.Address, @Model.Post_Code</h6></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Address, @Model.Post_Code</h3></div><br />
 
-                <label style="font-size: 20px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h6>@Model.DateOfBirth.ToString("d")</h6></div><br>
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3>@Model.DateOfBirth.ToString("d")</h3></div><br>
                 <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
 
             </div>

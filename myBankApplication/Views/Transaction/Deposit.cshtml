@@ -39,7 +39,22 @@
 }
 
 
-<div class="formbg-outer">
+@if (ViewData["Success"] != null)
+{
+    <div class="successAlert">
+        <p>
+            <strong>
+                    @ViewData["Success"]... <a asp-action="Balance" asp-controller="AppUsers">
+                    Please click here to go back to home page.
+                </a>
+            </strong>
+        </p>
+    </div>
+
+}
+
+<body>
+    <div class="formbg-outer">
         <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
                 <span class="padding-bottom--15">Deposit Cash</span>
@@ -56,15 +71,6 @@
 
                     <div class="currency-wrap">
                         <label>
-                            Please enter your 8 digit account number:
-                        <input asp-for="ToAccount" type="text" class="form-control" placeholder="e.g. 12345678">
-                        <span class="text-danger" asp-validation-for="ToAccount"></span>
-                        </label>
-
-                    </div>
-
-                    <div class="currency-wrap">
-                        <label>
                             Description
                             <input asp-for="Reference" type="text" class="form-control">
                             <span class="text-danger" asp-validation-for="Reference"></span>
@@ -75,15 +81,19 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                     {
                         <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-            border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
                     }
                     else
                     {
                         <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-            border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
+        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
                     }
                 </form>
             </div>
         </div>
     </div>
+
+}
+
+</body>
 </html>

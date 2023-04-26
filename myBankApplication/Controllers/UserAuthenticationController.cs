@@ -58,7 +58,7 @@ namespace myBankApplication.Controllers
 
            if (!ModelState.IsValid) return View(appUsersLoginModel);
            
-                // check if the user exist
+            // check if the user exist
            var user = await _userManager.FindByEmailAsync(appUsersLoginModel.EmailAddress);
 
             if (user != null)
@@ -113,16 +113,8 @@ namespace myBankApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration(AppUsersRegistrationModel appUsersRegistrationModel)
         {
-            
-
-
             if (!ModelState.IsValid) return View(appUsersRegistrationModel);
-            
-
             var user = await _userManager.FindByEmailAsync(appUsersRegistrationModel.EmailAddress);
-            
-            //var proofId = await _photoService.AddPhotoAsync(appUsersRegistrationModel.Proof_Id);
-
             if (user != null)
             {
                 TempData["Error"] = "This email address is already in use, please use another email address";
@@ -154,14 +146,11 @@ namespace myBankApplication.Controllers
                 Proof_Id = proofId.Url.ToString(),
 
             };
-        
-
             var newAppUserResponse = await _userManager.CreateAsync(newAppUser, appUsersRegistrationModel.Password);
             if (newAppUserResponse.Succeeded)
                 await _userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-
-            return RedirectToAction("Login", "UserAuthentication");
-
+            ViewData["Success"] = "You have successfully registered with us";
+            return View();
          }
 
 

@@ -37,6 +37,20 @@
         <strong>Sorry!- @TempData["Error"]</strong>
     </div>
 }
+
+@if (ViewData["Success"] != null)
+{
+    <div class="successAlert">
+        <p>
+            <strong>
+                @ViewData["Success"]... <a asp-action="Balance" asp-controller="AppUsers">
+                    Please click here to go back to your dashboard.
+                </a>
+            </strong>
+        </p>
+    </div>
+
+}
   
 <div class="formbg-outer">
     <div class="formbg">
@@ -63,15 +77,6 @@
 
 
                 </div>
-
-            @*    <div class="currency-wrap">
-                    <label>
-                        Please enter your 8 digit account number:
-                        <input asp-for="AccountNo" type="text" class="form-control" placeholder="e.g. 12345678">
-                        <span class="text-danger" asp-validation-for="AccountNo"></span>
-                    </label>
-
-                </div>*@
 
                 <div class="currency-wrap">
                     <label>

@@ -22,31 +22,31 @@
     <!--User Details-->
     <div class="row">
             <div class="column" style="background-color:white;">
-            <h2>Account Details:</h2>
+            <h1>Account Details:</h1>
             @foreach (var accounts  in Model.Accounts)
             {
-                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-user"></i> Account Number</label>
+                <label style="font-size: 25px; font-weight:bold;"> Account Number</label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountNo</h3></div>
 
                 <br />
 
-                <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Sort Code</label>
+                <label style="font-size: 25px; font-weight:bold;"> Sort Code</label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Sort_Code</h3></div>
 
                 <br />
 
 
-                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-phone"></i> Type </label>
+                <label style="font-size: 25px; font-weight:bold;">Type </label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountType</h3></div>
 
                 <br />
 
-                <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-house"></i> Status</label>
+                <label style="font-size: 25px; font-weight:bold;">Status</label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Status</h3></div>
 
                 <br />
 
-                 <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Balance </label>
+                 <label style="font-size: 25px; font-weight:bold;">Balance </label>
                 <div style="border: 1px solid #ccc; background-color:white"> <h3>£@accounts.Balance.Value.ToString("0.00")</h3></div><br>
 
                     <a style="background-color:red; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem; border-radius: 1.875em; font-weight: 700; 
@@ -57,21 +57,21 @@
          
         </div>
             <div class="column" style="background-color:#edecf9;">
-             <h2 style="color:#192851;">Personal Details</h2>
-             <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
+             <h1 style="color:#192851;">Personal Details</h1>
+             <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
              <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Title @Model.FullName</h3></div><br />
 
-             <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
+             <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
              <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Email</h3></div><br />
 
 
-            <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
+            <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.PhoneNumber</h3></div><br />
 
-            <label style="font-size: 30px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
+            <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Address, @Model.Post_Code</h3></div><br />
 
-            <label style="font-size: 30px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+            <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
             <div style="border: 1px solid #ccc; background-color:white"> <h3>@Model.DateOfBirth.ToString("d")</h6></div><br>
                 <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
             

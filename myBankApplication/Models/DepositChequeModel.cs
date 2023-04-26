@@ -16,7 +16,8 @@ namespace myBankApplication.Models
         [Column(TypeName = "money")]
         public decimal Amount { get; set; }
 
-        [Required, MaxLength(20)]
+        [Required (ErrorMessage ="Must be less than 20 characters")]
+        [StringLength (20)]
         public string Description { get; set; }
 
         public Status Status { get; set; } = Status.Active;

@@ -33,13 +33,26 @@
     </style>
 
 </head>    
-    @if (TempData["Message"] != null)
+    @if (TempData["Error"] != null)
     {
         <div class="alertAuthentication">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Sorry!- @TempData["Message"]</strong>
+            <strong>Sorry!- @TempData["Error"]</strong>
         </div>
     }
+@if (ViewData["Success"] != null)
+{
+    <div class="successAlert">
+        <p>
+            <strong>
+                @ViewData["Success"]... <a asp-action="Index" asp-controller="AppUsers">
+                    Please click here to go back to home page.
+                </a>
+            </strong>
+        </p>
+    </div>
+
+}
 
         <div class="formbg-outer">
                     <div class="formbg">
@@ -50,7 +63,7 @@
                                 <div class="currency-wrap">
                                     <label>
                                         Amount
-                                        <input asp-for="Amount" type="number" step="any" min="0" max="2000" class="form-control">
+                                        <input asp-for="Amount".Value.ToString("0.00") type="number" step="any" min="0" max="2000" class="form-control">
                                         <span class="text-danger" asp-validation-for="Amount"></span>
                                     </label>
 
@@ -59,7 +72,7 @@
 
                                 <div class="currency-wrap">
                                     <label>
-                                        Please enter your 8 digit of recipient account number:
+                                        Recipient account number:
                                         <input asp-for="DestAccount" type="text" class="form-control" placeholder="e.g. 12345678" required>
                                         <span class="text-danger" asp-validation-for="DestAccount"></span>
                                     </label>
@@ -74,11 +87,11 @@
                                     </label>
 
                                 </div>
-                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Submit</button>
+                                <button class="cta-button buttonColor" type="submit" value="Sgin up">Approve</button>
                                 @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
                                 {
                                     <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
-                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Index">Cancel</a>
+                        border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="DepositCheque" asp-action="Index">Cancel</a>
                                 }
                                 else
                                 {
