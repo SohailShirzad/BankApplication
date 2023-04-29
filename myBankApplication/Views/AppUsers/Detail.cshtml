@@ -7,83 +7,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="~/css/sideNav.css">
-<link rel="stylesheet" href="~/css/home.css">
-<link rel="stylesheet" href="~/css/Table.css">
-<link rel="stylesheet" href="~/css/TwoColumn.css">
-<script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/sideNav.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/Table.css">
+    <link rel="stylesheet" href="~/css/TwoColumn.css">
+    <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
 
 
 </head>
 <body>
 
-<div class="content">
+    <div class="content">
 
-    <!--User Details-->
-    <div class="row">
+        <!--User Details-->
+        <div class="row">
             <div class="column" style="background-color:white;">
-            <h1>Account Details:</h1>
-            @foreach (var accounts  in Model.Accounts)
-            {
-                <label style="font-size: 25px; font-weight:bold;"> Account Number</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountNo</h3></div>
+                <h1>Account Details:</h1>
+                @foreach (var accounts in Model.Accounts)
+                {
+                    <label style="font-size: 25px; font-weight:bold;"> Account Number</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountNo</h3></div>
 
-                <br />
+                    <br />
 
-                <label style="font-size: 25px; font-weight:bold;"> Sort Code</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Sort_Code</h3></div>
+                    <label style="font-size: 25px; font-weight:bold;"> Sort Code</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Sort_Code</h3></div>
 
-                <br />
+                    <br />
 
 
-                <label style="font-size: 25px; font-weight:bold;">Type </label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountType</h3></div>
+                    <label style="font-size: 25px; font-weight:bold;">Type </label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.AccountType</h3></div>
 
-                <br />
+                    <br />
 
-                <label style="font-size: 25px; font-weight:bold;">Status</label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Status</h3></div>
+                    <label style="font-size: 25px; font-weight:bold;">Status</label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3> @accounts.Status</h3></div>
 
-                <br />
+                    <br />
 
-                 <label style="font-size: 25px; font-weight:bold;">Balance </label>
-                <div style="border: 1px solid #ccc; background-color:white"> <h3>£@accounts.Balance.Value.ToString("0.00")</h3></div><br>
+                    <label style="font-size: 25px; font-weight:bold;">Balance </label>
+                    <div style="border: 1px solid #ccc; background-color:white"> <h3>£@accounts.Balance.Value.ToString("0.00")</h3></div>
 
-                    <a style="background-color:red; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem; border-radius: 1.875em; font-weight: 700; 
+                    <br>
+
+                    <a style="background-color:red; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem; border-radius: 1.875em; font-weight: 700;
                     padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="DeleteCustomerProfile" asp-route-id="@Model.Id">Close your account</a>
-                
 
-            }
-         
-        </div>
+
+                }
+
+            </div>
             <div class="column" style="background-color:#edecf9;">
-             <h1 style="color:#192851;">Personal Details</h1>
-             <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
-             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Title @Model.FullName</h3></div><br />
+                <h1 style="color:#192851;">Personal Details</h1>
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-user"></i> Full Name</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Title @Model.FullName</h3></div><br />
 
-             <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
-             <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Email</h3></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-envelope"></i> Email</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Email</h3></div><br />
 
 
-            <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.PhoneNumber</h3></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-phone"></i> Phone</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.PhoneNumber</h3></div><br />
 
-            <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Address, @Model.Post_Code</h3></div><br />
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa fa-house"></i> Address</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3> @Model.Address, @Model.Post_Code</h3></div><br />
 
-            <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
-            <div style="border: 1px solid #ccc; background-color:white"> <h3>@Model.DateOfBirth.ToString("d")</h6></div><br>
+                <label style="font-size: 25px; font-weight:bold;"><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+                <div style="border: 1px solid #ccc; background-color:white"> <h3>@Model.DateOfBirth.ToString("d")</h6></div><br>
                 <a class="cta-button buttonColor" asp-controller="AppUsers" asp-action="EditUserProfile" asp-route-id="@Model.Id">Change Personal Details:</a>
-            
+
+            </div>
         </div>
+
+
+
+
+
+        <!--Transactions-->
+
     </div>
-
-
-
-
-
-<!--Transactions-->
-
-</div>
 </body>
 </html>

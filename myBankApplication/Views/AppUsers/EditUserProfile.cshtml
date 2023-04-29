@@ -10,9 +10,32 @@
         <link rel="stylesheet" href="~/css/header.css">
         <link rel="stylesheet" href="~/css/DepositTransactionAccount.css">
         <link rel="stylesheet" href="~/css/TwoColumn.css">
+        <link rel="stylesheet" href="~/css/Error.css">
         <script src="https://kit.fontawesome.com/6703c9cc10.js" crossorigin="anonymous"></script>
     </head>
 </head>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alertAuthentication">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong>Sorry!- @TempData["Error"]</strong>
+    </div>
+}
+
+@if (ViewData["Success"] != null)
+{
+    <div class="successAlert">
+        <p>
+            <strong>
+                @ViewData["Success"]... <a asp-action="Balance" asp-controller="AppUsers">
+                    Please click here to go back to your dashboard.
+                </a>
+            </strong>
+        </p>
+    </div>
+
+}
 <body>
 
 

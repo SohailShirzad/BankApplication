@@ -13,13 +13,11 @@ namespace myBankApplication.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountRepository _accountRepository;
-        private readonly ApplicationDbContext _dbContext;
          
 
-        public AccountController(IAccountRepository AccountRepositoy, ApplicationDbContext dbContext)
+        public AccountController(IAccountRepository AccountRepositoy)
         {
             _accountRepository = AccountRepositoy;
-            _dbContext = dbContext;
         }
 
 
@@ -30,7 +28,6 @@ namespace myBankApplication.Controllers
         }
 
         [HttpGet]
-
         public IActionResult Create()
         {
           

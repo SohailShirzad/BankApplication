@@ -1,9 +1,6 @@
 ﻿@using myBankApplication.Models
 @model AppUsersModel
 
-@{
-    Layout = "~/Views/Shared/Create.cshtml";
-}
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +79,7 @@
         <div class="form-group">
             <form action="DeleteCustomerProfile" method="post">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Confirm" class="btn btn-danger float-right mt-3" />
+                    <input style="background-color:red; border-radius:1rem; padding:0.4125em 1.875em; " type="submit" value="Confirm" />
                 <a style="background-color:#171238; color:white; line-height: normal; letter-spacing: 1px; font-size:1rem;
 border-radius: 1.875em; font-weight: 700;padding: 0.8125em 1.875em;" asp-controller="AppUsers" asp-action="Balance">Cancel</a>
             </form>

@@ -25,25 +25,24 @@ namespace myBankApplication.Controllers
     {
         private readonly SignInManager<AppUsersModel> _signInManager;
         private readonly UserManager<AppUsersModel> _userManager;
+        private readonly IAccountRepository _accountRepository;
         private ApplicationDbContext _context;
         private readonly IPhotoService _photoService;
 
         public UserAuthenticationController(SignInManager<AppUsersModel> signInManager,
                                              UserManager<AppUsersModel> userManager,
-                                             ApplicationDbContext dbContext, IPhotoService photoService)
+                                             ApplicationDbContext dbContext, 
+                                             IAccountRepository accountRepository, IPhotoService photoService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _accountRepository = accountRepository;
             _context = dbContext;
             _photoService = photoService;
 
         }
 
-
-
-
         [HttpGet]
-
         public IActionResult Login()
         {
             var getLogin = new AppUsersLoginModel();
@@ -83,8 +82,9 @@ namespace myBankApplication.Controllers
                            return RedirectToAction("Index", "AppUsers");
                         }
 
-                        var userAccounts = _context.Accounts.Where(r => r.AppUserId == user.Id);
-                        if (userAccounts.Count() == 0 && roles.Contains("user"))
+                        var acc = await _accountRepository.GetAll();
+                        var account = acc.Where(a => a.AppUserId == user.Id).SingleOrDefault();
+                        if (account == null && roles.Contains("user"))
                         {
                             return RedirectToAction("Create", "Account");
                         }

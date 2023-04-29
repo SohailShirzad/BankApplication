@@ -11,7 +11,7 @@ namespace myBankApplication.Interfaces
 
         Task<AccountModel> getByIdAsync(int id);
 
-
+        Task<IEnumerable<AccountModel>> GetAccountByUserId(string accountId);
 
 
         //Task<IEnumerable<AccountModel>> GetAccountByCustomer_Id(int CustomerId);
@@ -26,9 +26,6 @@ namespace myBankApplication.Interfaces
         bool Delete (AccountModel account);
 
         bool Save();
-
-
-
-
+       
     }
 }

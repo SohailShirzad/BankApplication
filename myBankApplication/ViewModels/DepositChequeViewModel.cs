@@ -6,7 +6,7 @@ namespace myBankApplication.ViewModels
 {
     public class DepositChequeViewModel
     {
-
+        [Range(1, double.MaxValue, ErrorMessage ="The amount should not be negative or zero.")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "Must be less than 20 characters")]

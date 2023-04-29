@@ -5,6 +5,7 @@ using myBankApplication.Data;
 using myBankApplication.Interfaces;
 using myBankApplication.Models;
 using myBankApplication.ViewModels;
+using System.Runtime.CompilerServices;
 
 namespace myBankApplication.Controllers
 {
@@ -12,18 +13,21 @@ namespace myBankApplication.Controllers
     public class AppUsersController : Controller
     {
         private readonly IBankCardRepository _bankCardRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly ApplicationDbContext _context;
         private readonly IAppUsersRepository _customerRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IPhotoService _photoService;
 
         public AppUsersController(IAppUsersRepository customerRepository, IHttpContextAccessor httpContextAccessor,
-            IPhotoService photoService, IBankCardRepository bankCardRepository, ApplicationDbContext context)
+            IPhotoService photoService, IBankCardRepository bankCardRepository, IAccountRepository accountRepository,
+            ApplicationDbContext context)
         {
             _customerRepository = customerRepository;
             _httpContextAccessor = httpContextAccessor;
             _photoService = photoService;
             _bankCardRepository = bankCardRepository;
+            _accountRepository = accountRepository;
             _context = context;
         }
 
@@ -100,7 +104,8 @@ namespace myBankApplication.Controllers
 
             if (userAccounts == null)
             {
-                return RedirectToAction("Index", "AppUsers");
+                ViewData["Error"] = "User does not have any active account.";
+                return View();
             }
 
          
@@ -144,14 +149,12 @@ namespace myBankApplication.Controllers
             {
                 return RedirectToAction("Login", "UserAuthentication");
             }
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return RedirectToAction("Index", "AppUsers");
-            }
 
-            var acc = await _context.Accounts.ToListAsync();
-            var userAccounts = acc.Where(r => r.AppUserId == user.Id);
+            var user = await _customerRepository.GetUserByIdNoTracking(id);
+
+            var userAccounts = _context.Accounts.Where(a => a.AppUserId == user.Id);
+
+
 
 
             if (userAccounts == null)
@@ -250,7 +253,7 @@ namespace myBankApplication.Controllers
             {
                 return RedirectToAction("Login", "UserAuthentication");
             }
-            var user = await _context.Users.FindAsync(id);
+            var user = await _customerRepository.GetUserByIdNoTracking(id);
             if (user == null)
             {
                 return RedirectToAction("Index", "AppUsers");
@@ -295,7 +298,8 @@ namespace myBankApplication.Controllers
                 MapEditUserProfile(user, editProfileVM, photoResult);
 
                 _customerRepository.Update(user);
-                return RedirectToAction("Detail", "AppUsers");
+                ViewData["Success"] = "User profile has been successfully updated.";
+                return View(editProfileVM);
             }
 
             else
@@ -316,7 +320,8 @@ namespace myBankApplication.Controllers
                 MapEditUserProfile(user, editProfileVM, photoResult);
 
                 _customerRepository.Update(user);
-                return RedirectToAction("Detail", "AppUsers");
+                ViewData["Success"] = "User profile has been successfully updated.";
+                return View(editProfileVM);
             }
         }
 
@@ -332,7 +337,7 @@ namespace myBankApplication.Controllers
             var user = await _customerRepository.GetUserById(id);
             var userBankCards = await _customerRepository.GetAllUsersBankCards();
 
-            var acc = await _context.Accounts.ToListAsync();
+            var acc = await _accountRepository.GetAll();
             var account = acc.Where(a => a.AppUserId == user.Id).SingleOrDefault();
 
             var bankcard = userBankCards.Where(a => a.Account_Id == account.AccountNo).FirstOrDefault();
@@ -361,7 +366,7 @@ namespace myBankApplication.Controllers
             }
             var user = await _customerRepository.GetUserById(cardpinVM.AppUserId);
 
-            var acc = await _context.Accounts.ToListAsync();
+            var acc = await _accountRepository.GetAll();
             var account = acc.Where(a => a.AppUserId == user.Id).SingleOrDefault();
 
 

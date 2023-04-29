@@ -14,14 +14,14 @@ namespace myBankApplication.Controllers
     public class DepositChequeController : Controller
     {
         private readonly IDepositChequeRepository _depositChequeRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IPhotoService _photoService;
-        private readonly ApplicationDbContext _context;
 
-        public DepositChequeController(IDepositChequeRepository depositChequeRepository, IPhotoService photoService, ApplicationDbContext context)
+        public DepositChequeController(IDepositChequeRepository depositChequeRepository, IAccountRepository accountRepository, IPhotoService photoService)
         {
             _depositChequeRepository = depositChequeRepository;
             _photoService = photoService;
-            _context = context; 
+            _accountRepository = accountRepository;
         }
 
         [HttpGet("Cheques")]
@@ -56,7 +56,7 @@ namespace myBankApplication.Controllers
             {
                 return RedirectToAction("Index", "AppUsers");
             }
-            var acc = await _context.Accounts.ToListAsync();
+            var acc = await _accountRepository.GetAll();
             var account = acc.Where(a => a.AccountNo == cheques.AccountNum).SingleOrDefault();
             var indexChequeViewModel = new IndexChequeViewModel()
             {
@@ -99,7 +99,7 @@ namespace myBankApplication.Controllers
                 return RedirectToAction("Login", "UserAuthentication");
             }
             var curUserId = HttpContext.User.GetUserId();
-            var acc = await _context.Accounts.ToListAsync();
+            var acc = await _accountRepository.GetAll();
             var account = acc.Where(a => a.AppUserId == curUserId).SingleOrDefault();
 
             var amount = ChequeVM.Amount;
@@ -124,7 +124,7 @@ namespace myBankApplication.Controllers
                     AccountNum = account.AccountNo,
                 };
                 _depositChequeRepository.Add(depositChequeModel);
-                ViewData["Success"] = "Transaction has been successful";
+                ViewData["Success"] = "Transaction has been successful, the amount will be added to your account once admin has approved your cheque.";
                 return View();
             }
             else
