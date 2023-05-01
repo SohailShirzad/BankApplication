@@ -219,7 +219,6 @@ namespace myBankApplication.Controllers
             var userTransactions = await _customerRepository.GetAllUsersTransactions();
             var userCheques = await _customerRepository.GetAllUsersCheques();
 
-        
 
             var appUsersViewModel = new AppUsersViewModel()
 

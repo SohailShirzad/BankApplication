@@ -75,7 +75,8 @@ namespace myBankApplication.Controllers
                     Account_Id = BankCardVM.Account_Id,
                 };
                 _bankCardRepository.Add(bankCard);
-                return RedirectToAction("Index", "AppUsers");
+                ViewData["Success"] = "Card has been created successfull";
+                return View(BankCardVM);
 
             }
             else
